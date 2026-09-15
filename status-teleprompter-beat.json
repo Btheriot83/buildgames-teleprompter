@@ -1,5 +1,5 @@
 {
-  "status": "beat_complete",
+  "status": "beat_shipped",
   "product": "MileCue",
   "aesthetic": "MileCue / Cueglass Desk",
   "identityLocked": true,
@@ -132,6 +132,19 @@
     "verdictVsOriginal": "Candidate wins as craft teleprompter tool UI; original still wins consumer marketing landing. Overall product craft for the job (write\u2192stage\u2192scroll): candidate preferred.",
     "beatsOriginalOverall": true
   },
-  "finishedAtPt": "2026-09-15 12:43 AM PT",
-  "branch": "gauntlet/beat-original-cueglass"
+  "finishedAtPt": "2026-09-15 12:46 AM PT",
+  "branch": "gauntlet/beat-original-cueglass",
+  "prUrl": "https://github.com/Btheriot83/buildgames-teleprompter/pull/14",
+  "prMerged": true,
+  "deployUrl": "https://buildgames-teleprompter.vercel.app",
+  "previewUrl": "https://buildgames-teleprompter-git-ga-d85ce5-brandon-theriots-projects.vercel.app",
+  "liveHttp": 200,
+  "liveSmoke": {
+    "ok": true,
+    "scrolled": true,
+    "beforeY": 0,
+    "afterY": -52.0032,
+    "css": "assets/index-CfGanuCM.css",
+    "atPt": "2026-09-15 12:46 AM PT"
+  }
 }
