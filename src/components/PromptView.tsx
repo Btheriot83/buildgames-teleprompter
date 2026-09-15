@@ -30,6 +30,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
   const [camDenied, setCamDenied] = useState(false)
   const [recording, setRecording] = useState(false)
   const [speechOk, setSpeechOk] = useState(false)
+  const [moreOpen, setMoreOpen] = useState(false)
 
   speedRef.current = settings.speed
   playingRef.current = playing
@@ -71,7 +72,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
     setChromeVisible(true)
     window.clearTimeout(idleTimer.current)
     if (playingRef.current) {
-      idleTimer.current = window.setTimeout(() => setChromeVisible(false), 3000)
+      idleTimer.current = window.setTimeout(() => setChromeVisible(false), 2600)
     }
   }, [])
 
@@ -275,7 +276,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
 
   return (
     <div
-      className="prompt-stage"
+      className="prompt-stage is-entering"
       data-testid="prompt-stage"
       onMouseMove={bumpChrome}
       role="application"
@@ -292,7 +293,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
       )}
       {camDenied && <div className="cam-note">Camera permission denied — using solid stage</div>}
 
-      <div className="prompt-marker" style={{ top: `${settings.markerY}%` }} aria-hidden />
+      <div className={`prompt-marker${playing ? ' is-playing' : ''}`} style={{ top: `${settings.markerY}%` }} aria-hidden />
 
       <div className="prompt-scroll">
         <div
@@ -346,26 +347,6 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
             />
           </label>
           <span className="font-readout">{settings.fontSize}px</span>
-          <label className="slider-wrap">
-            Width
-            <input
-              type="range"
-              min={40}
-              max={96}
-              value={settings.textWidth}
-              onChange={(e) => patch({ textWidth: Number(e.target.value) })}
-            />
-          </label>
-          <label className="slider-wrap">
-            Marker
-            <input
-              type="range"
-              min={15}
-              max={70}
-              value={settings.markerY}
-              onChange={(e) => patch({ markerY: Number(e.target.value) })}
-            />
-          </label>
           <button
             type="button"
             className={`btn${settings.mirror ? ' is-on' : ''}`}
@@ -376,50 +357,90 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
           </button>
           <button
             type="button"
-            className={`btn${settings.cameraOn ? ' is-on' : ''}`}
-            onClick={() => patch({ cameraOn: !settings.cameraOn })}
+            className={`btn${moreOpen ? ' is-on' : ''}`}
+            onClick={() => setMoreOpen((v) => !v)}
+            data-testid="more-controls"
           >
-            Camera
+            More
           </button>
-          {settings.cameraOn && (
+
+          <div className="prompt-more" hidden={!moreOpen}>
             <label className="slider-wrap">
-              Cam opacity
+              Width
               <input
                 type="range"
-                min={0.05}
-                max={0.85}
-                step={0.05}
-                value={settings.cameraOpacity}
-                onChange={(e) => patch({ cameraOpacity: Number(e.target.value) })}
+                min={40}
+                max={96}
+                value={settings.textWidth}
+                onChange={(e) => patch({ textWidth: Number(e.target.value) })}
               />
             </label>
-          )}
-          {settings.cameraOn && !recording && (
-            <button type="button" className="btn" onClick={startRec}>
-              Record
-            </button>
-          )}
-          {recording && (
-            <button type="button" className="btn btn-danger" onClick={stopRec}>
-              Stop rec
-            </button>
-          )}
-          {speechOk && (
+            <label className="slider-wrap">
+              Marker
+              <input
+                type="range"
+                min={15}
+                max={70}
+                value={settings.markerY}
+                onChange={(e) => patch({ markerY: Number(e.target.value) })}
+              />
+            </label>
+            <label className="slider-wrap">
+              Leading
+              <input
+                type="range"
+                min={120}
+                max={200}
+                value={Math.round(settings.lineHeight * 100)}
+                onChange={(e) => patch({ lineHeight: Number(e.target.value) / 100 })}
+              />
+            </label>
             <button
               type="button"
-              className={`btn${settings.voiceExperimental ? ' is-on' : ''}`}
-              onClick={() => patch({ voiceExperimental: !settings.voiceExperimental })}
-              title="Experimental"
+              className={`btn${settings.cameraOn ? ' is-on' : ''}`}
+              onClick={() => patch({ cameraOn: !settings.cameraOn })}
             >
-              Voice (experimental)
+              Camera
             </button>
-          )}
+            {settings.cameraOn && (
+              <label className="slider-wrap">
+                Cam opacity
+                <input
+                  type="range"
+                  min={0.05}
+                  max={0.85}
+                  step={0.05}
+                  value={settings.cameraOpacity}
+                  onChange={(e) => patch({ cameraOpacity: Number(e.target.value) })}
+                />
+              </label>
+            )}
+            {settings.cameraOn && !recording && (
+              <button type="button" className="btn" onClick={startRec}>
+                Record
+              </button>
+            )}
+            {recording && (
+              <button type="button" className="btn btn-danger" onClick={stopRec}>
+                Stop rec
+              </button>
+            )}
+            {speechOk && (
+              <button
+                type="button"
+                className={`btn${settings.voiceExperimental ? ' is-on' : ''}`}
+                onClick={() => patch({ voiceExperimental: !settings.voiceExperimental })}
+                title="Experimental"
+              >
+                Voice (exp)
+              </button>
+            )}
+          </div>
         </div>
         <div className="prompt-keys">
-          Space play/pause · ↑↓ speed · ←→ jump 3s · R reset · M mirror · F fullscreen · Esc exit
+          Space play/pause · ↑↓ speed · ←→ jump · R reset · M mirror · F fullscreen · Esc exit
         </div>
       </div>
     </div>
   )
 }
-

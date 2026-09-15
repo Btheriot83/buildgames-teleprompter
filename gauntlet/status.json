@@ -1,0 +1,55 @@
+{
+  "status": "phase_b_complete",
+  "product": "MileCue",
+  "slug": "teleprompter",
+  "demoUrl": "https://buildgames-teleprompter.vercel.app",
+  "bar": "https://www.teleprompter.com/",
+  "path": "/workspace/build-games/apps/teleprompter",
+  "phaseA": {
+    "done": true,
+    "techniquesDone": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "identityPath": "apps/teleprompter/docs/IDENTITY.md",
+    "lennyDiscoverPath": "apps/teleprompter/docs/DISCOVER.md",
+    "lennyDefinePath": "apps/teleprompter/docs/DEFINE.md",
+    "lennyDeliverPath": "apps/teleprompter/docs/DELIVER.md",
+    "imagesGenerated": [
+      "public/asphalt-marker.jpg",
+      "public/milecue-mark.jpg"
+    ],
+    "videoOrMotionPath": "public/asphalt-drift.mp4",
+    "criticFreshContext": true,
+    "copyHandRewritten": true
+  },
+  "phaseB": {
+    "roundsCompleted": 5,
+    "roundsTarget": 5,
+    "workbench": "apps/teleprompter/gauntlet/workbench.md",
+    "baselineScore": 3.8,
+    "finalScore": 6.2,
+    "identityHeld": true
+  },
+  "ai": {
+    "endpoint": "/api/tighten",
+    "job": "script tighten / teleprompter-format",
+    "envKeys": [
+      "BUILD_GAMES_LLM_API_KEY",
+      "XAI_API_KEY",
+      "OPENAI_API_KEY",
+      "ANTHROPIC_AUTH_TOKEN"
+    ],
+    "clientSecrets": false
+  },
+  "mobbin": "paid_plan_required",
+  "finishedAtUtc": "2026-09-15T03:47:00Z",
+  "finishedAtPt": "2026-09-14 8:47 PM PT",
+  "notes": "Phase A Anshu 1-8 once + IDENTITY lock; Phase B five execution rounds vs teleprompter.com without reseeding. Honest 3.8\u21926.2."
+}
