@@ -4656,3 +4656,96 @@ a {
 .prompt-text {
   transform: translateY(var(--prompt-y, 0px));
 }
+
+/* ============================================================
+   CRAFT WAVE craft5 — homepage mini matches stage Lexend
+   Real --prompt-y; hardware-feel mini controls; kill amber glow.
+   ============================================================ */
+.mkt-primary {
+  box-shadow: none;
+  border-radius: 2px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.88rem;
+}
+.mkt-nav-cta {
+  border-radius: 2px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+.mkt-preview {
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45), 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+.mkt-preview:hover {
+  transform: translateY(-2px);
+}
+.mkt-preview-text {
+  font-family: var(--font-prompt);
+  font-weight: 500;
+  font-optical-sizing: auto;
+  letter-spacing: -0.018em;
+  font-size: 1.35rem;
+  line-height: 1.48;
+  color: #fafaf8;
+  text-shadow: none;
+  transform: translate3d(0, var(--prompt-y, 38%), 0);
+}
+.mkt-cue-line {
+  height: 1px;
+  background: var(--amber);
+  box-shadow: none;
+}
+.mkt-preview-controls {
+  background: #050504;
+  border-top: 1px solid #2a2620;
+  gap: 0.4rem;
+}
+.mkt-ctrl {
+  height: 2rem;
+  padding: 0 0.75rem;
+  border-radius: 2px;
+  border: 1px solid #3a3630;
+  background: #161410;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+.mkt-ctrl.primary {
+  background: var(--amber);
+  border-color: color-mix(in srgb, var(--amber) 55%, #3a3630);
+  color: #120e08;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+.mkt-speed input[type='range'] {
+  height: 3px;
+  border-radius: 0;
+  background: #2a2620;
+}
+.mkt-speed input[type='range']::-webkit-slider-thumb {
+  width: 11px;
+  height: 11px;
+  border-radius: 1px;
+  box-shadow: none;
+}
+.mkt-proof {
+  grid-template-columns: repeat(3, 1fr);
+}
+.mkt-card {
+  border-radius: 10px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+}
+.mkt-card:hover {
+  transform: translateY(-2px);
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
