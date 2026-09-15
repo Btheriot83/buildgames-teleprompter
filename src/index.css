@@ -3347,3 +3347,19 @@ a {
   padding: 38vh 0 55vh;
   transform: translateY(var(--prompt-y, 0px));
 }
+
+/* ============================================================
+   BEAT-ORIGINAL beat14 — Open stage CTA craft
+   ============================================================ */
+.editor-toolbar .btn-stage {
+  min-height: 2.5rem;
+  padding: 0.45rem 1.15rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+}
+.brand .tag {
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-size: 0.7rem;
+}
