@@ -3116,3 +3116,70 @@ a {
   height: 2px;
   margin: 0.35rem 0.5rem 0;
 }
+
+/* ============================================================
+   BEAT-ORIGINAL beat4 — library desk quiet (remove-ai-tells / cut)
+   Kill asphalt wallpaper competing with the teleprompter job.
+   ============================================================ */
+.asphalt-field { display: none; }
+.app {
+  background: #0a0908;
+}
+.topbar {
+  background: #0a0908;
+  border-bottom: 1px solid var(--line);
+}
+.sidebar {
+  background: #0c0b0a;
+  width: 16rem;
+  border-right: 1px solid #221e18;
+}
+.script-card {
+  background: #141210;
+  border: 1px solid #2a2620;
+  box-shadow: none;
+  border-radius: 4px;
+}
+.script-card.is-active {
+  border-color: var(--amber);
+  background: #1a1712;
+  outline: none;
+}
+.script-card .title {
+  color: var(--ink);
+  font-size: 0.92rem;
+}
+.script-card .meta {
+  color: #6e675c;
+}
+.editor {
+  background: #0a0908;
+}
+.body-input,
+.title-input {
+  background: #100e0c;
+  border-color: #2a2620;
+}
+.stage-preview {
+  background: #080706;
+  border-color: #2a2620;
+  border-left: 2px solid var(--amber);
+}
+
+/* ============================================================
+   BEAT-ORIGINAL beat5 — 3-2-1 countdown (make-it-alive)
+   ============================================================ */
+.stage-countdown {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  z-index: 6;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3.5rem, 12vw, 6.5rem);
+  letter-spacing: 0.04em;
+  color: var(--amber-hot);
+  text-shadow: 0 2px 0 #000, 0 8px 24px rgba(0, 0, 0, 0.85);
+  pointer-events: none;
+}
