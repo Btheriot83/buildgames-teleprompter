@@ -3787,3 +3787,7 @@ a {
 .prompt-text {
   transform: translateY(var(--prompt-y, 0px));
 }
+
+/* elevate12-follow: marker hairline 1px */
+.prompt-marker { height: 1px; }
+.prompt-text { transform: translateY(var(--prompt-y, 0px)); }
