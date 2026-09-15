@@ -11,3 +11,12 @@
 4. E2E asserts **computed** translateY delta (inline style alone was a false green).
 
 **Proof:** `npm run test:e2e` + live smoke screenshots with Y delta.
+
+## Live proof (2026-09-14 PT)
+
+- Demo: https://buildgames-teleprompter.vercel.app
+- PR: https://github.com/Btheriot83/buildgames-teleprompter/pull/10 (merged)
+- Before: `gauntlet/shots/play-broken-before.png` — Pause/% moved, computed transform identity
+- After: `gauntlet/shots/play-fixed-after.png` — cue text advanced
+- Metrics: beforeY=0 → afterY≈-42..-45 (`play-fixed-metrics.json`); `npm run smoke:live` → `scrolled=true`
+

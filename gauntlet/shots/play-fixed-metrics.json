@@ -1,0 +1,20 @@
+{
+  "demo": "https://buildgames-teleprompter.vercel.app",
+  "before": {
+    "computedY": 0,
+    "computed": "matrix(1, 0, 0, 1, 0, 0)",
+    "note": "pre-fix: inline translateY moved but computed stayed identity"
+  },
+  "after_deploy": {
+    "beforeY": 0,
+    "afterY": -45.4944,
+    "delta": -45.4944,
+    "promptY": "-45.49439999999999px",
+    "computedAfter": "matrix(1, 0, 0, 1, 0, -45.4944)",
+    "scrolled": true,
+    "pct": "2%",
+    "play": "Pause"
+  },
+  "pr": "https://github.com/Btheriot83/buildgames-teleprompter/pull/10",
+  "deployment": "dpl_CG1WBCxY75sFwLsmGx7XwHbS2CiC"
+}

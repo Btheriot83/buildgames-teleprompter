@@ -4,16 +4,16 @@
   "scrolled": true,
   "status": 200,
   "log": [
-    "home status=200 title=MileCue — local teleprompter",
+    "home status=200 title=MileCue — browser teleprompter",
     "shot live-library.png",
     "opened prompt",
     "shot live-prompt.png",
-    "before= after=translateY(-47.9952px) scrolled=true",
+    "beforeY=0 afterY=-42 scrolled=true",
     "shot live-playing.png",
     "mirrored",
     "shot live-mirror.png",
     "shot original-teleprompter-home.png",
     "original title=Free Online Teleprompter for iOS, Android, Mac & Web | Teleprompter.com"
   ],
-  "at": "2026-09-15T03:29:50.692Z"
+  "at": "2026-09-15T05:27:07.729Z"
 }
