@@ -2251,3 +2251,201 @@ a {
   padding: 0.05rem 0.28rem;
   background: #12100e;
 }
+
+/* ============================================================
+   r5 Phase A — MileCue / Cueglass Desk
+   Stage = matte cueglass reading surface (not asphalt wallpaper).
+   Library keeps roadside clipboard skin. Flat chrome. No gradients.
+   PLAY FIX LOCK: .prompt-text transform = translateY(var(--prompt-y))
+   only; mile-stage-rise must stay opacity-only.
+   ============================================================ */
+
+:root {
+  --asphalt: #0c0b0a;
+  --asphalt-2: #141210;
+  --panel: #1b1915;
+  --panel-2: #25221c;
+  --line: #3f3a32;
+  --amber: #e8941f;
+  --amber-dim: #b87314;
+  --amber-hot: #f0b04a;
+  --sand: #e6d9bf;
+  --fog: #948c7c;
+  --ink: #f5eee4;
+}
+
+/* Library field quieter — stage owns the drama */
+.asphalt-field-img {
+  filter: contrast(1.08) saturate(0.7) brightness(0.42);
+  opacity: 0.9;
+}
+.asphalt-field-wash {
+  background: rgba(6, 5, 4, 0.72);
+}
+
+.topbar {
+  border-bottom-width: 2px;
+  background: #100f0d;
+}
+
+.brand .tag {
+  color: var(--fog);
+  letter-spacing: 0.04em;
+}
+
+/* Job banner — flatter, tool desk */
+.job-banner {
+  background: #12100e;
+  border-bottom: 1px solid var(--line);
+}
+.job-banner-stripe {
+  background: var(--amber);
+  height: 3px;
+}
+.hero-title {
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  letter-spacing: 0.02em;
+}
+
+/* Cueglass stage background */
+.stage-road-img {
+  filter: brightness(0.55) contrast(1.15) saturate(0.35);
+  opacity: 0.55;
+  object-fit: cover;
+}
+.stage-road-vignette {
+  background: rgba(0, 0, 0, 0.78);
+}
+.stage-road-vignette::before,
+.stage-road-vignette::after {
+  height: 18%;
+  background: rgba(0, 0, 0, 0.88);
+}
+.stage-road-grain {
+  opacity: 0.12;
+}
+
+/* Near-opaque reading column — hardware glass feel */
+.stage-read-veil {
+  background: rgba(0, 0, 0, 0.88);
+  border-left: 1px solid rgba(232, 148, 31, 0.12);
+  border-right: 1px solid rgba(232, 148, 31, 0.12);
+}
+
+.prompt-scroll::before,
+.prompt-scroll::after {
+  height: 14%;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.prompt-text {
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  line-height: inherit;
+  color: #ffffff;
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 1),
+    0 2px 8px rgba(0, 0, 0, 0.75);
+  /* KEEP — scroll drive; do not animate transform */
+  transform: translateY(var(--prompt-y, 0px));
+}
+
+/* Hardware hairline — thinner than Roadside paint stripe */
+.prompt-marker {
+  height: 4px;
+}
+.prompt-marker-paint {
+  background: var(--amber);
+  border-top: none;
+  border-bottom: none;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
+}
+.prompt-marker-cap {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  padding: 0.14rem 0.36rem;
+  border-width: 1px;
+  background: var(--amber);
+  color: #120e08;
+}
+.prompt-marker::before,
+.prompt-marker::after {
+  border-top-width: 5px;
+  border-bottom-width: 5px;
+}
+.prompt-marker::before {
+  border-left-width: 8px;
+}
+.prompt-marker::after {
+  border-right-width: 8px;
+}
+.prompt-marker.is-playing .prompt-marker-paint {
+  animation: mile-marker-pulse 1.15s ease-in-out infinite;
+}
+
+/* Quieter stage topbar — less badge shout */
+.stage-topbar {
+  background: rgba(8, 7, 6, 0.92);
+  border-bottom: 1px solid #2a2620;
+  padding: 0.45rem 0.85rem;
+}
+.stage-badge {
+  background: transparent;
+  color: var(--amber);
+  border: 1px solid var(--amber-dim);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  padding: 0.15rem 0.4rem;
+}
+.stage-script-title {
+  font-weight: 500;
+  color: var(--sand);
+}
+
+/* Transport — single solid Play, quieter tools */
+.btn-transport {
+  min-width: 7.5rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.prompt-chrome {
+  background: #080706;
+  border-top: 1px solid #2e2a24;
+}
+.prompt-keys {
+  color: #6e675c;
+  font-size: 0.72rem;
+}
+
+/* Stage preview mirrors cueglass */
+.stage-preview-frame {
+  background: #050504;
+  border: 1px solid #2a2620;
+}
+.stage-preview-bar {
+  height: 3px;
+  background: var(--amber);
+}
+.stage-preview-text {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Start hint — flat card, no glow */
+.stage-start-hint {
+  background: #0e0c0a;
+  border: 1px solid var(--amber-dim);
+  box-shadow: none;
+}
+.stage-start-main {
+  letter-spacing: 0.08em;
+}
+
+/* Opacity-only enter — NEVER put transform here (PLAY_FIX) */
+.prompt-stage.is-entering .prompt-text {
+  animation: mile-stage-rise 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes mile-stage-rise {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

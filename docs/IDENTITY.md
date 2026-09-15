@@ -1,55 +1,60 @@
-# IDENTITY — MileCue (LOCKED)
+# IDENTITY — MileCue (LOCKED after Anshu r5 reseed)
 
-**Frozen after Phase A.** Gauntlet rounds must not reseed or rename this world.
+**Frozen after Phase A (Cueglass Desk).** Gauntlet r5 rounds must not reseed or rename this world.
 
 ## Aesthetic name
-**MileCue / Roadside Dispatch**
+**MileCue / Cueglass Desk**
+
+Evolved from Roadside Dispatch: library keeps roadside clipboard skin; **stage** is hardware cueglass.
 
 ## Feel
-Warm asphalt at dusk under one painted amber mile-marker stripe. Dispatch radio click when play starts. Text rolls like a road stripe under headlights. Confidence from the marker line — not badges.
+Matte near-black cueglass at eye line. One thin amber hairline you trust. Soft dispatch click when Play starts. Text rolls under the line. Confidence from the read line — not badges, not asphalt wallpaper.
 
 ## Palette
 | Token | Hex | Use |
 |-------|-----|-----|
-| asphalt | `#12110f` | page field |
-| asphalt-2 | `#1a1916` | chrome / sidebar |
-| panel | `#23211c` | cards / inputs |
-| line | `#3d3930` | borders |
-| amber | `#e8952a` | marker, primary CTA |
-| rust | `#b85428` | danger accent only |
-| sand | `#d4c7ab` | display headings |
-| fog | `#8f8878` | meta |
-| ink | `#f2ebe0` | body |
+| asphalt | `#0c0b0a` | page field |
+| asphalt-2 | `#141210` | chrome / sidebar |
+| panel | `#1b1915` | cards / inputs |
+| line | `#3f3a32` | borders |
+| amber | `#e8941f` | hairline, primary CTA |
+| rust | `#b85428` | danger only |
+| sand | `#e6d9bf` | display headings |
+| fog | `#948c7c` | meta |
+| ink | `#f5eee4` | body |
 
-**Never:** vibe purple (`#6366f1`–`#8b5cf6`), glass blur chrome, saturated glow shadows, blue→indigo gradients.
+**Never:** vibe purple, glass blur chrome, saturated glow, blue→indigo gradients, decorative body washes.
 
 ## Type
-- Display: **Barlow Condensed** (uppercase titles)
+- Display: **Barlow Condensed**
 - UI / prompt: **IBM Plex Sans**
 - Meta: **IBM Plex Mono**
-- Never: Inter, Geist, Space Grotesk, Fraunces-as-UI, Instrument Serif duo
+- Never: Inter, Geist, Space Grotesk, Fraunces-as-UI
 
 ## Materials / imagery
-- Real Imagine assets: `public/asphalt-marker.jpg`, `public/milecue-mark.jpg`
-- Motion: `public/asphalt-drift.mp4` (empty board loop) + marker pulse while playing
-- No CSS mesh blobs as personality
+- Cueglass stage: `public/cueglass-stage.jpg` (Imagine)
+- Brand mark: `public/milecue-mark.jpg` (Imagine r5)
+- Motion: `public/cueglass-drift.mp4` (or asphalt-drift fallback) + marker pulse while playing
+- Library may keep asphalt tile as quiet field — stage must not
 
 ## Motion rules
-- Core job motion = rAF `translateY` scroll
-- Marker pulse only while playing (subtle scaleY)
-- Stage enter: short rise/blur clear (~520ms)
-- transitions.dev recipes OK as feedback (toast, skeleton) — not a substitute for Imagine/video
+- Core job = rAF `--prompt-y` → `translateY(var(--prompt-y))`
+- **Enter animation opacity-only** — never owns `transform` (PLAY_FIX.md)
+- Drop `is-entering` after ~560ms
+- Marker pulse only while playing
+- transitions.dev as feedback only
 
 ## Copy voice
-Short. Specific. Roadside/dispatch. No SaaS hype, no emoji, no fake stats.
-Examples locked: “Empty board”, “Open stage”, “Cut for stage”, “Cue filed”.
+Short. Specific. Dispatch + cue desk. No SaaS hype, no emoji, no fake stats.
+Locked: “Empty board”, “Open stage”, “Cut for stage”, “Cue filed”, “cueglass”.
 
 ## One job
-Fullscreen scroll teleprompter + AI script tighten/format via `/api/tighten`.
+Write cue → Open stage → Play scroll. AI tighten via `/api/tighten`.
 
 ## What we will NOT change in gauntlet
-- Aesthetic name / seed direction
-- Palette family (asphalt/amber/rust)
+- Aesthetic name / Cueglass Desk direction
+- Palette family (near-black / amber)
 - Type pairing
 - Product name **MileCue**
-- Local-first storage model (no forced accounts)
+- Local-first storage
+- Play scroll architecture (`--prompt-y`, opacity-only enter)

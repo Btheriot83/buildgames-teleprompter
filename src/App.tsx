@@ -205,7 +205,7 @@ export default function App() {
           <img className="brand-mark-img" src="/milecue-mark.jpg" alt="" width={36} height={36} />
           <div className="brand-copy">
             <h1>MileCue</h1>
-            <span className="tag">Local teleprompter · roadside skin</span>
+            <span className="tag">Local cue · cueglass stage</span>
           </div>
         </div>
         <div className="topbar-actions">
@@ -334,8 +334,8 @@ export default function App() {
               <div className="empty-hero">
                 <video
                   className="empty-motion"
-                  src="/asphalt-drift.mp4"
-                  poster="/asphalt-marker.jpg"
+                  src="/cueglass-drift.mp4"
+                  poster="/cueglass-stage.jpg"
                   autoPlay
                   muted
                   loop
@@ -389,7 +389,7 @@ export default function App() {
                 {/* R4: mini stage preview — shows scroll job before opening */}
                 {stageReady && (
                   <div className="stage-preview" aria-hidden>
-                    <div className="stage-preview-cap">STAGE PREVIEW</div>
+                    <div className="stage-preview-cap">CUEGLASS PREVIEW</div>
                     <div className="stage-preview-frame">
                       <div className="stage-preview-marker">
                         <span>READ</span>
