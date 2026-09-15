@@ -3292,3 +3292,22 @@ a {
 .prompt-text {
   transform: translateY(var(--prompt-y, 0px));
 }
+
+/* ============================================================
+   BEAT-ORIGINAL beat11 — soften library shout (cut / hand-rewrite)
+   ============================================================ */
+.sidebar-head h2 {
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  font-weight: 600;
+  color: var(--ink);
+}
+.editor-job-kicker {
+  letter-spacing: 0.08em;
+  font-size: 0.62rem;
+}
+.brand h1 {
+  letter-spacing: 0.06em;
+}

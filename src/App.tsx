@@ -259,13 +259,13 @@ export default function App() {
           <aside className="sidebar">
             <div className="sidebar-head">
               <div className="sidebar-head-copy">
-                <p className="sidebar-kicker">CUES</p>
+                <p className="sidebar-kicker">Library</p>
                 <h2 className="t-texts-reveal" data-state="in">
-                  Cue board
+                  Scripts
                 </h2>
               </div>
               <span className="board-count" aria-label={`${scripts.length} scripts`}>
-                <span className="board-count-label">CUES</span>
+                <span className="board-count-label">n</span>
                 <span className="t-digit-group is-animating" key={digitPop}>
                   {String(scripts.length)
                     .split('')
@@ -335,8 +335,7 @@ export default function App() {
             ) : (
               <>
                 <div className="editor-job-label">
-                  <span className="editor-job-kicker">CURRENT CUE</span>
-                  <span className="editor-job-hint">Script you scroll on stage</span>
+                  <span className="editor-job-kicker">Script</span>
                 </div>
                 <div className="editor-toolbar">
                   <input
@@ -372,7 +371,7 @@ export default function App() {
                 {/* R4: mini stage preview — shows scroll job before opening */}
                 {stageReady && (
                   <div className="stage-preview" aria-hidden>
-                    <div className="stage-preview-cap">CUEGLASS PREVIEW</div>
+                    <div className="stage-preview-cap">Preview</div>
                     <div className="stage-preview-frame">
                       <div className="stage-preview-marker">
                         <span>READ</span>
@@ -385,7 +384,7 @@ export default function App() {
                 )}
 
                 <label className="body-label" htmlFor="cue-body">
-                  Script
+                  Lines
                 </label>
                 <textarea
                   id="cue-body"
