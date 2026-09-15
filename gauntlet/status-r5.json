@@ -81,13 +81,27 @@
     "number-pop-in": "New cue board count",
     "texts-reveal": "Cue board heading"
   },
-  "finishedAtUtc": "2026-09-15T06:55:37Z",
-  "finishedAtPt": "2026-09-14 11:55 PM PT",
+  "finishedAtUtc": "2026-09-15T06:56:45Z",
+  "finishedAtPt": "2026-09-14 11:56 PM PT",
   "workbench": "apps/teleprompter/gauntlet/workbench-r5.md",
-  "mainSha": "86f4752",
-  "prUrl": null,
-  "prMerged": false,
+  "mainSha": "8888df6",
+  "prUrl": "https://github.com/Btheriot83/buildgames-teleprompter/pull/11",
+  "prMerged": true,
   "deployUrl": "https://buildgames-teleprompter.vercel.app",
-  "liveHttp": null,
-  "liveSmoke": null
+  "liveHttp": 200,
+  "liveSmoke": {
+    "ok": true,
+    "scrolled": true,
+    "beforeY": 0,
+    "afterY": -48,
+    "atUtc": "2026-09-15T06:56:36Z",
+    "atPt": "2026-09-14 11:56 PM PT",
+    "checks": [
+      "GET / 200",
+      "prod CSS index-D09Y1_UC.css",
+      "cueglass markers in CSS",
+      "cueglass-stage.jpg 200",
+      "live-smoke scrolled=true (Y 0\u2192-48)"
+    ]
+  }
 }
