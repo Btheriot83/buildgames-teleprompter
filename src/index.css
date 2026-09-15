@@ -3274,3 +3274,21 @@ a {
   font-size: 0.68rem;
   opacity: 0.75;
 }
+
+/* ============================================================
+   BEAT-ORIGINAL beat10 — stage topbar final quiet
+   ============================================================ */
+.stage-topbar {
+  min-height: 1.7rem;
+  padding: 0.22rem 0.75rem;
+  background: rgba(5, 4, 4, 0.9);
+  border-bottom: 1px solid #1a1714;
+}
+.stage-script-title {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #cfc6b0;
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
