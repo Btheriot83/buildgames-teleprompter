@@ -110,3 +110,10 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - verdict: vs bar — boot feedback is real; original marketing still cleaner first paint
 - commit: fd4b13d
 
+
+## r13 — fonts (cue title sentence case)
+- files: src/index.css (.title-input no uppercase)
+- shot: gauntlet/shots-r4/r13-title-sentence.png
+- verdict: vs target — titles read as scripts not road signs; vs bar — closer to product-tool clarity
+- commit: ce1ad2e
+

@@ -2172,3 +2172,12 @@ a {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* r13: fonts — cue title sentence case (not billboard shout) */
+.title-input {
+  text-transform: none;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+}
