@@ -369,6 +369,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
       <div className={`stage-topbar${chromeVisible ? '' : ' is-hidden'}`}>
         <span className="stage-badge">TELEPROMPTER</span>
         <span className="stage-script-title">{script.title || 'Untitled cue'}</span>
+        {settings.mirror && <span className="stage-mirror-chip">MIRROR</span>}
         <span className="stage-scroll-pct" data-testid="scroll-pct">
           {scrollPct}%
         </span>

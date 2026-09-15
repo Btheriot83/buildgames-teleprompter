@@ -131,3 +131,10 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - verdict: vs target — chrome yields to white prompt; vs bar — original device mock still simpler
 - commit: ffdca6f
 
+
+## r16 — contrast (mirror chip on stage)
+- files: src/components/PromptView.tsx, src/index.css
+- shot: gauntlet/shots-r4/r16-mirror-chip.png
+- verdict: vs bar — mirror state now obvious without competing with prompt; original still has cleaner consumer chrome
+- commit: e2e2040
+

@@ -2207,3 +2207,17 @@ a {
   color: #d8d0c0;
   text-shadow: none;
 }
+
+/* r16: contrast — mirror chip when mirrored */
+.stage-mirror-chip {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  color: #1a1208;
+  background: var(--amber);
+  padding: 0.15rem 0.4rem;
+  border: 1px solid #1a1208;
+}
+.prompt-controls .btn-tool.is-on {
+  background: #1f1a12;
+}
