@@ -19,7 +19,7 @@
   --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
   --font-ui: 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
-  --font-prompt: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-prompt: 'Lexend', 'IBM Plex Sans', system-ui, sans-serif;
   color-scheme: dark;
 }
 
@@ -3182,4 +3182,18 @@ a {
   color: var(--amber-hot);
   text-shadow: 0 2px 0 #000, 0 8px 24px rgba(0, 0, 0, 0.85);
   pointer-events: none;
+}
+
+/* ============================================================
+   BEAT-ORIGINAL beat6 — Lexend reading face (specify-the-look)
+   Beat teleprompter.com dyslexia-font claim with intentional stage type.
+   ============================================================ */
+.prompt-text {
+  font-family: var(--font-prompt);
+  font-weight: 500;
+  font-optical-sizing: auto;
+  transform: translateY(var(--prompt-y, 0px));
+}
+.stage-preview-text {
+  font-family: var(--font-prompt);
 }
