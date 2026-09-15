@@ -45,6 +45,7 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 | error-state-shake | Empty Open stage / import fail on title+body |
 | panel-reveal | PromptView on Open stage enter |
 | skeleton-reveal | Boot library shell |
+| number-pop-in | New cue bumps board count (re-key) |
 
 ## r4 — bar gap (compact job rail vs numbered steps)
 - files: src/App.tsx (job-rail), src/index.css (.job-rail; hide .job-loop; shorter hero), .gitignore (.dream-loop), gauntlet/shots-r4/dream-target.png
@@ -129,12 +130,20 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - files: src/index.css (.stage-topbar / badge / title)
 - shot: gauntlet/shots-r4/r15-stage-topbar.png · bar A/B: gauntlet/shots-r4/bar-r15-home.png
 - verdict: vs target — chrome yields to white prompt; vs bar — original device mock still simpler
-- commit: ffdca6f
+- commit: b34621c
 
 
 ## r16 — contrast (mirror chip on stage)
 - files: src/components/PromptView.tsx, src/index.css
 - shot: gauntlet/shots-r4/r16-mirror-chip.png
 - verdict: vs bar — mirror state now obvious without competing with prompt; original still has cleaner consumer chrome
-- commit: e2e2040
+- commit: 973fbff
+
+
+## r17 — transitions (number-pop on New cue)
+- files: src/App.tsx (digitPop re-key on onNew)
+- shot: gauntlet/shots-r4/r17-number-pop.png
+- transitions: number-pop-in → New cue count; toast+success-check on Cue filed
+- verdict: vs bar — count feedback is real action wiring; original still wins marketing polish
+- commit: de778b3
 

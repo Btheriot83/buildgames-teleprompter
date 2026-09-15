@@ -36,6 +36,7 @@ export default function App() {
   const [toasts, setToasts] = useState<ToastMsg[]>([])
   const [titleError, setTitleError] = useState(false)
   const [bodyDirty, setBodyDirty] = useState(false)
+  const [digitPop, setDigitPop] = useState(0)
   const fileRef = useRef<HTMLInputElement>(null)
   const bodyTimer = useRef(0)
   const bodyRef = useRef<HTMLTextAreaElement>(null)
@@ -107,6 +108,7 @@ export default function App() {
     const s = createScript(`Cue ${scripts.length + 1}`)
     persist([s, ...scripts])
     setSelectedId(s.id)
+    setDigitPop((n) => n + 1)
     pushToast('Cue filed', 'ok')
     window.setTimeout(() => bodyRef.current?.focus(), 50)
   }
@@ -281,7 +283,7 @@ export default function App() {
               </div>
               <span className="board-count" aria-label={`${scripts.length} scripts`}>
                 <span className="board-count-label">CUES</span>
-                <span className="t-digit-group is-animating">
+                <span className="t-digit-group is-animating" key={digitPop}>
                   {String(scripts.length)
                     .split('')
                     .map((d, i) => (
