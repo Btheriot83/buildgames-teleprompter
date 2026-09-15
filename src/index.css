@@ -2983,3 +2983,29 @@ a {
 .prompt-text {
   transform: translateY(var(--prompt-y, 0px));
 }
+
+/* ============================================================
+   BEAT-ORIGINAL beat1 — studio reading field (specify-the-look)
+   Cueglass Desk LOCKED. PLAY FIX: --prompt-y only on .prompt-text.
+   ============================================================ */
+.prompt-text {
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  line-height: inherit;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: #f7f7f5;
+  text-shadow: 0 1px 0 #000, 0 2px 8px rgba(0, 0, 0, 0.75);
+  transform: translateY(var(--prompt-y, 0px));
+}
+.stage-read-veil {
+  max-width: 46rem;
+  background: rgba(0, 0, 0, 0.97);
+}
+.stage-preview-text {
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
