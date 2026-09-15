@@ -2449,3 +2449,19 @@ a {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* r1 fonts — teleprompter reading scale */
+.prompt-text {
+  font-weight: 600;
+  letter-spacing: 0.012em;
+  font-size: inherit;
+}
+.stage-preview-text {
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
