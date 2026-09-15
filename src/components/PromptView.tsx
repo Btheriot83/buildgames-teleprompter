@@ -386,11 +386,6 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
         <div className="stage-road-grain" />
       </div>
 
-      {!settings.cameraOn && (
-        <div className="prompt-cam-plate" aria-hidden>
-          <span>Cam off</span>
-        </div>
-      )}
       {settings.cameraOn && (
         <div className="prompt-cam-frame" aria-hidden={!recording}>
           <video
@@ -697,9 +692,11 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
             )}
           </div>
         </div>
-        <div className="prompt-keys">
-          Space play/pause · Wheel scrub · ↑↓ speed · [ ] size · ←→ jump · R reset · M mirror · Esc exit
-        </div>
+        {moreOpen && (
+          <div className="prompt-keys">
+            Space play/pause · Wheel scrub · ↑↓ speed · [ ] size · ←→ jump · R reset · M mirror · Esc exit
+          </div>
+        )}
       </div>
     </div>
   )

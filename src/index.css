@@ -4530,3 +4530,52 @@ a {
 .prompt-text {
   transform: translateY(var(--prompt-y, 0px));
 }
+
+/* ============================================================
+   CRAFT WAVE craft3 — quieter chrome (cut-elements)
+   Script owns the frame; hide empty cam plate; retreat topbar.
+   ============================================================ */
+.prompt-cam-plate { display: none !important; }
+.stage-topbar {
+  opacity: 0.42;
+  background: transparent;
+  border: none;
+  padding: 0.45rem 0.85rem;
+}
+.stage-badge {
+  border: none;
+  color: #6e675c;
+  letter-spacing: 0.14em;
+  font-size: 0.58rem;
+  padding: 0;
+}
+.stage-script-title {
+  color: #8a8274;
+  font-weight: 500;
+  font-size: 0.78rem;
+}
+.stage-scroll-pct {
+  color: #6e675c;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+.stage-start-hint {
+  opacity: 0.4;
+  border: 1px solid #1f1c18;
+  background: transparent;
+  max-width: 6.5rem;
+  padding: 0.28rem 0.45rem;
+}
+.stage-progress {
+  height: 1px;
+  background: #0c0b0a;
+  opacity: 0.7;
+}
+.prompt-chrome.is-hidden {
+  transform: translateY(110%);
+  opacity: 0;
+  pointer-events: none;
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
