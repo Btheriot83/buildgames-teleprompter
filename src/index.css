@@ -2233,3 +2233,17 @@ a {
 .ticket-stub {
   display: none;
 }
+
+/* r19: contrast — quieter hint row (don't compete with editor) */
+.hint-row {
+  font-size: 0.72rem;
+  color: #7a7466;
+  opacity: 0.9;
+}
+.hint-row kbd {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  border: 1px solid #3a3630;
+  padding: 0.05rem 0.28rem;
+  background: #12100e;
+}

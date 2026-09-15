@@ -145,12 +145,20 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - shot: gauntlet/shots-r4/r17-number-pop.png
 - transitions: number-pop-in → New cue count; toast+success-check on Cue filed
 - verdict: vs bar — count feedback is real action wiring; original still wins marketing polish
-- commit: de778b3
+- commit: 79e0bd0
 
 
 ## r18 — dream/bar (flatter cue cards)
 - files: src/index.css (flat script-card; hide ticket-stub)
 - shot: gauntlet/shots-r4/r18-flat-cue-cards.png
 - verdict: vs target.png — closer denser tool list; vs bar — original still wins bright SaaS + device mock; MileCue closer but not better overall
-- commit: 40d302e
+- commit: 469312a
+
+
+## r19 — contrast + tests (quieter hint row)
+- files: src/index.css (.hint-row)
+- shot: gauntlet/shots-r4/r19-hint-row.png
+- tests: vitest + playwright core loop (see commit)
+- verdict: vs bar — editor chrome quieter; original still wins overall polish; tests guard Open stage → scroll
+- commit: 5c1c8e5
 
