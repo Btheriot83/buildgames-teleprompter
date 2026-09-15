@@ -232,32 +232,15 @@ export default function App() {
         </div>
       </header>
 
-      {/* r8 dream: thin job banner — closer to target.png (no video soup) */}
       <section className="job-banner" aria-label="What MileCue does">
         <div className="job-banner-copy">
           <p className="hero-kicker">BROWSER TELEPROMPTER</p>
-          <h2 className="hero-title">Write cue → Open stage → Play</h2>
+          <h2 className="hero-title">Look at the lens. We hold the line.</h2>
         </div>
-        <div className="hero-cta-row">
-          <button
-            type="button"
-            className="btn btn-primary btn-stage"
-            onClick={openPrompt}
-            disabled={!stageReady}
-            data-testid="hero-open-stage"
-          >
-            {stageReady ? 'Open stage' : 'Write a cue first'}
-          </button>
-        </div>
-        <div className="job-banner-stripe" aria-hidden />
-      </section>
-
-      {/* r8: status chip only — job line lives in banner */}
-      <div className="job-rail job-rail-slim" aria-label="Stage readiness">
         <span className={`job-rail-status${stageReady ? ' is-ready' : ''}`}>
-          {stageReady ? 'Stage ready · Space scrolls on stage' : 'Write lines first'}
+          {stageReady ? 'Space scrolls' : 'Write lines first'}
         </span>
-      </div>
+      </section>
 
       {booting ? (
         <div className="layout skeleton-lib loading-shell t-skeleton-reveal" aria-busy data-state="in">
@@ -276,13 +259,13 @@ export default function App() {
           <aside className="sidebar">
             <div className="sidebar-head">
               <div className="sidebar-head-copy">
-                <p className="sidebar-kicker">CUES</p>
+                <p className="sidebar-kicker">Library</p>
                 <h2 className="t-texts-reveal" data-state="in">
-                  Cue board
+                  Scripts
                 </h2>
               </div>
               <span className="board-count" aria-label={`${scripts.length} scripts`}>
-                <span className="board-count-label">CUES</span>
+                <span className="board-count-label" aria-hidden></span>
                 <span className="t-digit-group is-animating" key={digitPop}>
                   {String(scripts.length)
                     .split('')
@@ -352,8 +335,7 @@ export default function App() {
             ) : (
               <>
                 <div className="editor-job-label">
-                  <span className="editor-job-kicker">CURRENT CUE</span>
-                  <span className="editor-job-hint">Script you scroll on stage</span>
+                  <span className="editor-job-kicker">Script</span>
                 </div>
                 <div className="editor-toolbar">
                   <input
@@ -389,7 +371,7 @@ export default function App() {
                 {/* R4: mini stage preview — shows scroll job before opening */}
                 {stageReady && (
                   <div className="stage-preview" aria-hidden>
-                    <div className="stage-preview-cap">CUEGLASS PREVIEW</div>
+                    <div className="stage-preview-cap">Preview</div>
                     <div className="stage-preview-frame">
                       <div className="stage-preview-marker">
                         <span>READ</span>
@@ -402,7 +384,7 @@ export default function App() {
                 )}
 
                 <label className="body-label" htmlFor="cue-body">
-                  Script
+                  Lines
                 </label>
                 <textarea
                   id="cue-body"

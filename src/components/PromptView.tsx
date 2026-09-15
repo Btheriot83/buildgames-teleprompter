@@ -33,6 +33,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
   const [speechOk, setSpeechOk] = useState(false)
   const [moreOpen, setMoreOpen] = useState(false)
   const [showStartHint, setShowStartHint] = useState(true)
+  const [countdown, setCountdown] = useState<number | null>(null)
 
   useEffect(() => {
     const id = window.setTimeout(() => setShowStartHint(false), 2400)
@@ -89,6 +90,17 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
     const t = window.setTimeout(() => setEntering(false), 560)
     return () => window.clearTimeout(t)
   }, [])
+
+  useEffect(() => {
+    if (countdown == null) return
+    if (countdown <= 0) {
+      setCountdown(null)
+      setPlaying(true)
+      return
+    }
+    const t = window.setTimeout(() => setCountdown((c) => (c == null ? null : c - 1)), 400)
+    return () => window.clearTimeout(t)
+  }, [countdown])
 
   const bumpChrome = useCallback(() => {
     setChromeVisible(true)
@@ -230,7 +242,13 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
       }
       if (e.key === ' ' || e.code === 'Space') {
         e.preventDefault()
-        setPlaying((p) => !p)
+        if (playingRef.current) {
+          setPlaying(false)
+          setCountdown(null)
+          return
+        }
+        setShowStartHint(false)
+        setCountdown(3)
         return
       }
       if (e.key === 'ArrowUp') {
@@ -371,10 +389,9 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
       {settings.cameraOn && (
         <video
           ref={videoRef}
-          className="prompt-cam"
+          className="prompt-cam prompt-cam-pip"
           muted
           playsInline
-          style={{ opacity: settings.cameraOpacity }}
         />
       )}
       {camDenied && <div className="cam-note">Camera blocked — cueglass stage</div>}
@@ -407,15 +424,24 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
         <div className="stage-progress-fill" style={{ width: `${scrollPct}%` }} />
       </div>
 
-      {showStartHint && !playing && (
+      {countdown != null && (
+        <div className="stage-countdown" data-testid="stage-countdown" aria-live="polite">
+          {countdown === 0 ? 'Go' : countdown}
+        </div>
+      )}
+
+      {showStartHint && !playing && countdown == null && (
         <button
           type="button"
           className="stage-start-hint"
           data-testid="start-hint"
-          onClick={() => setPlaying(true)}
+          onClick={() => {
+            setShowStartHint(false)
+            setCountdown(3)
+          }}
         >
-          <span className="stage-start-main">Space · Play</span>
-          <span className="stage-start-sub">Wheel scrub · line fixed</span>
+          <span className="stage-start-main">Space</span>
+          <span className="stage-start-sub">Play scroll</span>
         </button>
       )}
 
@@ -432,8 +458,6 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
         aria-hidden
       >
         <span className="prompt-marker-paint" />
-        <span className="prompt-marker-cap prompt-marker-cap-l">READ</span>
-        <span className="prompt-marker-cap prompt-marker-cap-r">LINE</span>
       </div>
 
       <div
@@ -470,7 +494,15 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
               type="button"
               className="btn btn-transport btn-scroll"
               data-testid="play-toggle"
-              onClick={() => setPlaying((p) => !p)}
+              onClick={() => {
+                if (playing || countdown != null) {
+                  setCountdown(null)
+                  setPlaying(false)
+                  return
+                }
+                setShowStartHint(false)
+                setCountdown(3)
+              }}
             >
               <span className="transport-glyph" aria-hidden>
                 {playing ? '❚❚' : '▶'}
@@ -497,8 +529,8 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
               −
             </button>
             <span className="speed-readout" data-testid="speed-readout">
-              {settings.speed}
-              <em>px/s</em>
+              {(settings.speed / 48).toFixed(1)}
+              <em>x</em>
             </span>
             <button type="button" className="btn btn-nudge" onClick={() => nudgeSpeed(8)} aria-label="Faster">
               +
@@ -547,6 +579,16 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
           >
             Mirror
           </button>
+          {settings.cameraOn && !recording && (
+            <button type="button" className="btn btn-record" data-testid="record-btn" onClick={startRec} aria-label="Record">
+              <span className="record-dot" aria-hidden />
+            </button>
+          )}
+          {recording && (
+            <button type="button" className="btn btn-record is-hot" data-testid="record-btn" onClick={stopRec} aria-label="Stop recording">
+              <span className="record-dot" aria-hidden />
+            </button>
+          )}
           <button
             type="button"
             className={`btn btn-tool${moreOpen ? ' is-on' : ''}`}

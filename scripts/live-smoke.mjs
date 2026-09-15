@@ -39,6 +39,7 @@ const readY = () =>
   });
 const beforeY = await readY();
 await page.getByTestId("play-toggle").click();
+await page.getByTestId("play-toggle").filter({ hasText: /Pause/i }).waitFor({ timeout: 5000 });
 await page.waitForTimeout(1000);
 const afterY = await readY();
 const scrolled = afterY < beforeY - 20;
