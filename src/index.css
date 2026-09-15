@@ -3370,3 +3370,63 @@ a {
 .prompt-text {
   transform: translateY(var(--prompt-y, 0px));
 }
+
+/* ============================================================
+   ELEVATE elevate1 — BIGVU Speed · Play · Size · Pos rail
+   Fix broken nth-of-type order; surface Position. PLAY FIX held.
+   ============================================================ */
+.prompt-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem 0.7rem;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.prompt-controls .cluster-speed { order: 1; }
+.prompt-controls .transport { order: 2; }
+.prompt-controls .cluster-size { order: 3; }
+.prompt-controls .cluster-position { order: 4; }
+.prompt-controls > .btn-tool { order: 5; }
+.prompt-controls > .btn-record { order: 5; }
+.prompt-controls > .btn-exit { order: 6; opacity: 0.7; }
+.prompt-controls .prompt-more { order: 7; width: 100%; justify-content: center; }
+.prompt-controls .prompt-keys { order: 8; width: 100%; }
+
+.control-cluster {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid #2a2620;
+  border-radius: 2px;
+  background: #100e0c;
+}
+.cluster-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fog);
+  min-width: 2.4rem;
+}
+.pos-readout,
+.font-readout,
+.speed-readout {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  min-width: 2.1rem;
+  text-align: center;
+  color: var(--sand);
+}
+.speed-readout em {
+  font-style: normal;
+  color: var(--fog);
+  margin-left: 0.05rem;
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
+
