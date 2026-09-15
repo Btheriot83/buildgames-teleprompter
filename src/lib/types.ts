@@ -23,9 +23,9 @@ export const SCRIPTS_KEY = 'milecue-scripts-v2'
 
 export const DEFAULT_SETTINGS: PromptSettings = {
   speed: 48,
-  fontSize: 56,
-  lineHeight: 1.42,
-  textWidth: 64,
+  fontSize: 58,
+  lineHeight: 1.48,
+  textWidth: 62,
   mirror: false,
   markerY: 48,
   cameraOpacity: 0.28,

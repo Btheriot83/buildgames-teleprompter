@@ -4342,3 +4342,65 @@ a {
 .prompt-text {
   transform: translateY(var(--prompt-y, 0px));
 }
+
+
+/* ============================================================
+   CRAFT WAVE craft1 — PromptSmart reading-field typography
+   Script is the stage. Lexend optical; flat cueglass. PLAY lock.
+   ============================================================ */
+.stage-read-veil {
+  max-width: 46rem;
+  background: #000;
+  border-left: 1px solid #12100e;
+  border-right: 1px solid #12100e;
+  box-shadow: none;
+}
+.prompt-scroll {
+  background: #000;
+}
+.prompt-scroll::before,
+.prompt-scroll::after {
+  height: 20%;
+  background: #000;
+  opacity: 0.88;
+}
+.prompt-text {
+  font-family: var(--font-prompt);
+  font-weight: 500;
+  font-optical-sizing: auto;
+  letter-spacing: -0.018em;
+  word-spacing: 0.02em;
+  color: var(--cue-read, #fafaf8);
+  text-shadow: none;
+  max-width: 42rem;
+  text-align: center;
+  text-wrap: pretty;
+  transform: translateY(var(--prompt-y, 0px));
+}
+.prompt-marker {
+  height: 1px;
+}
+.prompt-marker-paint {
+  background: var(--amber);
+  box-shadow: none;
+  position: relative;
+}
+.prompt-marker-paint::before,
+.prompt-marker-paint::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  width: 1px;
+  height: 7px;
+  background: var(--amber);
+  opacity: 0.9;
+}
+.prompt-marker-paint::before { left: 8%; }
+.prompt-marker-paint::after { right: 8%; }
+.prompt-stage.is-entering .prompt-text {
+  animation: mile-stage-rise 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes mile-stage-rise {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
