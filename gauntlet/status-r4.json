@@ -39,7 +39,7 @@
     "79e0bd0",
     "469312a",
     "524a920",
-    "b652db5"
+    "bcafe2e"
   ],
   "shotCount": 28,
   "barShotRounds": [
@@ -65,5 +65,5 @@
   "finishedAtUtc": "2026-09-15T05:16:41Z",
   "finishedAtPt": "2026-09-14 10:16 PM PT",
   "workbench": "apps/teleprompter/gauntlet/workbench-r4.md",
-  "mainSha": "b652db5"
+  "mainSha": "bcafe2e"
 }

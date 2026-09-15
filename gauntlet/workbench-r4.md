@@ -167,5 +167,5 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - files: gauntlet/workbench-r4.md, gauntlet/status-r4.json, /workspace/build-games/gauntlet/status-teleprompter-r4.json, gauntlet/shots-r4/r20-*.png, bar-r20-home.png
 - shot: gauntlet/shots-r4/r20-final-library.png · gauntlet/shots-r4/r20-final-stage.png · bar A/B: gauntlet/shots-r4/bar-r20-home.png
 - verdict: vs dream target — library denser/cleaner, stage contrast+controls closer; vs teleprompter.com — original still wins overall (light SaaS, VoiceGlide, device mock fantasy). MileCue closer under locked Roadside Dispatch, not better.
-- commit: b652db5
+- commit: bcafe2e
 
