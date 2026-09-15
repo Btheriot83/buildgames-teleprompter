@@ -3430,3 +3430,46 @@ a {
   transform: translateY(var(--prompt-y, 0px));
 }
 
+/* ============================================================
+   ELEVATE elevate2 — specify-the-look: pure cueglass reading field
+   Script is the stage. Kill road texture competing with Lexend.
+   ============================================================ */
+.stage-road-img {
+  opacity: 0;
+  visibility: hidden;
+}
+.stage-road-vignette {
+  background: #000;
+}
+.stage-road-vignette::before,
+.stage-road-vignette::after {
+  display: none;
+}
+.stage-road-grain { display: none; }
+.stage-read-veil {
+  max-width: 48rem;
+  background: #000;
+  border-left: 1px solid #1a1714;
+  border-right: 1px solid #1a1714;
+}
+.prompt-text {
+  font-family: var(--font-prompt);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  max-width: 44rem;
+  color: #fafaf8;
+  text-shadow: none;
+  transform: translateY(var(--prompt-y, 0px));
+}
+.prompt-scroll::before,
+.prompt-scroll::after {
+  background: #000;
+}
+.prompt-marker {
+  height: 2px;
+}
+.prompt-marker-paint {
+  background: var(--amber);
+  box-shadow: none;
+}
+
