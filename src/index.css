@@ -3363,3 +3363,20 @@ a {
   letter-spacing: 0.04em;
   font-size: 0.7rem;
 }
+
+/* ============================================================
+   BEAT-ORIGINAL beat15 — countdown + marker calm
+   ============================================================ */
+.stage-countdown {
+  font-size: clamp(4rem, 14vw, 7rem);
+  color: #fff;
+  mix-blend-mode: normal;
+  text-shadow: 0 0 0 #000, 0 2px 0 var(--amber), 0 12px 40px rgba(0, 0, 0, 0.9);
+}
+.prompt-marker.is-playing .prompt-marker-paint {
+  animation: none;
+  opacity: 1;
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
