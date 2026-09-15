@@ -4749,3 +4749,93 @@ a {
 .prompt-text {
   transform: translateY(var(--prompt-y, 0px));
 }
+
+/* ============================================================
+   CRAFT WAVE craft6 — flat anti-slop desk chrome
+   Kill leftover lift/glow; hairline density; Cueglass stay.
+   ============================================================ */
+.topbar {
+  border-bottom: 1px solid var(--line);
+  box-shadow: none;
+  background: var(--asphalt-2);
+}
+.job-banner {
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  box-shadow: none;
+  padding: 0.55rem 1.1rem 0.6rem;
+}
+.job-banner .hero-title {
+  font-size: clamp(0.98rem, 1.6vw, 1.15rem);
+  font-weight: 600;
+  color: var(--ink);
+}
+.btn-primary,
+.btn-stage {
+  border-radius: 2px;
+  box-shadow: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+}
+.btn:hover {
+  transform: none;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.board-count {
+  opacity: 0.55;
+}
+.editor textarea,
+.title-input {
+  border-radius: 8px;
+  box-shadow: none;
+}
+.onboard-card {
+  border-radius: 12px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4), 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+.onboard-actions .next {
+  border-radius: 2px;
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+/* ============================================================
+   CRAFT WAVE craft7 — playing: reading field owns frame
+   ============================================================ */
+.prompt-stage.is-playing .stage-topbar {
+  opacity: 0.28;
+}
+.prompt-stage.is-playing .stage-progress {
+  opacity: 0.35;
+}
+.prompt-stage.is-playing .prompt-chrome {
+  border-top-color: #1a1714;
+  background: #030302;
+}
+.prompt-stage.is-playing .prompt-marker-paint {
+  background: var(--amber-hot);
+}
+.prompt-stage.is-playing .prompt-marker-paint::before,
+.prompt-stage.is-playing .prompt-marker-paint::after {
+  background: var(--amber-hot);
+}
+.prompt-stage.is-playing .stage-start-hint {
+  display: none;
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
+.prompt-stage.is-entering .prompt-text {
+  animation: mile-stage-rise 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes mile-stage-rise {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

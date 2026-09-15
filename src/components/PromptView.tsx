@@ -106,7 +106,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
     setChromeVisible(true)
     window.clearTimeout(idleTimer.current)
     if (playingRef.current) {
-      idleTimer.current = window.setTimeout(() => setChromeVisible(false), 2800)
+      idleTimer.current = window.setTimeout(() => setChromeVisible(false), 1800)
     }
   }, [])
 
