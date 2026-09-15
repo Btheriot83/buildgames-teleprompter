@@ -2666,3 +2666,29 @@ a {
   border-radius: 3px;
   border: 1px solid var(--line);
 }
+
+/* ============================================================
+   r6 integrity — Cueglass Desk locked (no reseed)
+   PLAY FIX LOCK held: --prompt-y + opacity-only mile-stage-rise
+   ============================================================ */
+
+/* r1 fonts — reading scale closer to teleprompter.com device mock */
+.prompt-text {
+  font-weight: 580;
+  letter-spacing: -0.008em;
+  word-spacing: 0.02em;
+}
+.stage-preview-text {
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.hero-title {
+  letter-spacing: 0.01em;
+  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+}
+.script-card-title {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
