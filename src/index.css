@@ -2125,3 +2125,26 @@ a {
   border-width: 1px;
   background: #141210;
 }
+
+/* r10: dream/bar — thinner reading line like studio guide */
+.prompt-marker {
+  height: 6px;
+}
+.prompt-marker-paint {
+  opacity: 0.95;
+}
+.prompt-marker-cap {
+  font-size: 0.62rem;
+  padding: 0.12rem 0.35rem;
+  border-width: 1px;
+}
+.prompt-marker::before,
+.prompt-marker::after {
+  border-top-width: 8px;
+  border-bottom-width: 8px;
+}
+.prompt-marker::before { border-left-width: 10px; }
+.prompt-marker::after { border-right-width: 10px; }
+.stage-preview-bar {
+  height: 4px;
+}

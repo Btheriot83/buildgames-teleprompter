@@ -85,5 +85,12 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - files: src/App.tsx (CURRENT CUE / CUES / STAGE PREVIEW labels), src/index.css
 - shot: gauntlet/shots-r4/r9-dream-editor-chrome.png
 - verdict: vs target — labels closer; vs bar — still denser/tool-dark than white SaaS original
-- commit: bc7b11d
+- commit: b883f9b
+
+
+## r10 — dream/bar (thinner reading line)
+- files: src/index.css (.prompt-marker 6px; quieter caps)
+- shot: gauntlet/shots-r4/r10-reading-line.png · bar A/B: gauntlet/shots-r4/bar-r10-home.png
+- verdict: vs target/bar — marker guides without dominating white glyphs; original still cleaner device-stage marketing mock
+- commit: 3eba0d8
 
