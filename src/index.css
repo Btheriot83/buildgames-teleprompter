@@ -2549,3 +2549,26 @@ a {
   background: var(--amber);
   height: 100%;
 }
+
+/* r6 library — flatter cue cards */
+.script-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: none;
+  border-radius: 3px;
+}
+.script-card.is-active {
+  border-color: var(--amber);
+  background: #221e18;
+}
+.ticket-mile {
+  background: #161410;
+  border-right: 1px solid var(--line);
+}
+.ticket-stub {
+  display: none;
+}
+.sidebar {
+  background: var(--asphalt-2);
+  border-right: 1px solid var(--line);
+}
