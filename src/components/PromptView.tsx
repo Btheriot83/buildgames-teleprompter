@@ -33,6 +33,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
   const [speechOk, setSpeechOk] = useState(false)
   const [moreOpen, setMoreOpen] = useState(false)
   const [showStartHint, setShowStartHint] = useState(true)
+  const [countdown, setCountdown] = useState<number | null>(null)
 
   useEffect(() => {
     const id = window.setTimeout(() => setShowStartHint(false), 2400)
@@ -89,6 +90,17 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
     const t = window.setTimeout(() => setEntering(false), 560)
     return () => window.clearTimeout(t)
   }, [])
+
+  useEffect(() => {
+    if (countdown == null) return
+    if (countdown <= 0) {
+      setCountdown(null)
+      setPlaying(true)
+      return
+    }
+    const t = window.setTimeout(() => setCountdown((c) => (c == null ? null : c - 1)), 400)
+    return () => window.clearTimeout(t)
+  }, [countdown])
 
   const bumpChrome = useCallback(() => {
     setChromeVisible(true)
@@ -230,7 +242,13 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
       }
       if (e.key === ' ' || e.code === 'Space') {
         e.preventDefault()
-        setPlaying((p) => !p)
+        if (playingRef.current) {
+          setPlaying(false)
+          setCountdown(null)
+          return
+        }
+        setShowStartHint(false)
+        setCountdown(3)
         return
       }
       if (e.key === 'ArrowUp') {
@@ -407,12 +425,21 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
         <div className="stage-progress-fill" style={{ width: `${scrollPct}%` }} />
       </div>
 
-      {showStartHint && !playing && (
+      {countdown != null && (
+        <div className="stage-countdown" data-testid="stage-countdown" aria-live="polite">
+          {countdown === 0 ? 'Go' : countdown}
+        </div>
+      )}
+
+      {showStartHint && !playing && countdown == null && (
         <button
           type="button"
           className="stage-start-hint"
           data-testid="start-hint"
-          onClick={() => setPlaying(true)}
+          onClick={() => {
+            setShowStartHint(false)
+            setCountdown(3)
+          }}
         >
           <span className="stage-start-main">Space</span>
           <span className="stage-start-sub">Play scroll</span>
@@ -468,7 +495,15 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
               type="button"
               className="btn btn-transport btn-scroll"
               data-testid="play-toggle"
-              onClick={() => setPlaying((p) => !p)}
+              onClick={() => {
+                if (playing || countdown != null) {
+                  setCountdown(null)
+                  setPlaying(false)
+                  return
+                }
+                setShowStartHint(false)
+                setCountdown(3)
+              }}
             >
               <span className="transport-glyph" aria-hidden>
                 {playing ? '❚❚' : '▶'}

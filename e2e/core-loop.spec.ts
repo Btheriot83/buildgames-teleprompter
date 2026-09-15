@@ -25,7 +25,8 @@ test('library → open prompt → play scrolls', async ({ page }) => {
 
   const before = await readY()
   await page.getByTestId('play-toggle').click()
-  await expect(page.getByTestId('play-toggle')).toContainText(/Pause/i)
+  // 3-2-1 countdown (~400ms × 3) then Play
+  await expect(page.getByTestId('play-toggle')).toContainText(/Pause/i, { timeout: 5_000 })
   await page.waitForTimeout(900)
   const after = await readY()
   // Continuous scroll moves prompt up (more negative translateY)
