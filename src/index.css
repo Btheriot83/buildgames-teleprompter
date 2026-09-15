@@ -2221,3 +2221,15 @@ a {
 .prompt-controls .btn-tool.is-on {
   background: #1f1a12;
 }
+
+/* r18: dream — flatter cue cards (less ticket paper wash vs target) */
+.script-card {
+  background: #1a1814;
+  background-image: none;
+}
+.script-card .ticket-body {
+  background: transparent;
+}
+.ticket-stub {
+  display: none;
+}

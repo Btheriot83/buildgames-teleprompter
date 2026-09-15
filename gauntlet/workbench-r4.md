@@ -147,3 +147,10 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - verdict: vs bar — count feedback is real action wiring; original still wins marketing polish
 - commit: de778b3
 
+
+## r18 — dream/bar (flatter cue cards)
+- files: src/index.css (flat script-card; hide ticket-stub)
+- shot: gauntlet/shots-r4/r18-flat-cue-cards.png
+- verdict: vs target.png — closer denser tool list; vs bar — original still wins bright SaaS + device mock; MileCue closer but not better overall
+- commit: 40d302e
+
