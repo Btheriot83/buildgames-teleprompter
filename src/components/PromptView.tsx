@@ -31,6 +31,8 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
   const [recording, setRecording] = useState(false)
   const [speechOk, setSpeechOk] = useState(false)
   const [moreOpen, setMoreOpen] = useState(false)
+  const [showStartHint, setShowStartHint] = useState(true)
+  const [scrollPct, setScrollPct] = useState(0)
 
   speedRef.current = settings.speed
   playingRef.current = playing
@@ -39,6 +41,8 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
     const el = textRef.current
     if (!el) return
     el.style.transform = `translateY(${-offsetRef.current}px)`
+    const max = Math.max(1, (el.scrollHeight ?? 0) - window.innerHeight * 0.4)
+    setScrollPct(Math.min(100, Math.round((offsetRef.current / max) * 100)))
   }, [])
 
   const tick = useCallback(
@@ -78,6 +82,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
 
   useEffect(() => {
     bumpChrome()
+    if (playing) setShowStartHint(false)
   }, [playing, bumpChrome])
 
   useEffect(() => {
@@ -280,7 +285,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
       data-testid="prompt-stage"
       onMouseMove={bumpChrome}
       role="application"
-      aria-label="Teleprompter stage"
+      aria-label="Teleprompter stage — scrolling cue"
     >
       <div className="stage-road" aria-hidden>
         <img className="stage-road-img" src="/asphalt-marker.jpg" alt="" />
@@ -299,13 +304,37 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
       )}
       {camDenied && <div className="cam-note">Camera blocked — night road stage</div>}
 
+      <div className={`stage-topbar${chromeVisible ? '' : ' is-hidden'}`}>
+        <span className="stage-badge">TELEPROMPTER</span>
+        <span className="stage-script-title">{script.title || 'Untitled cue'}</span>
+        <span className="stage-scroll-pct" data-testid="scroll-pct">
+          {scrollPct}%
+        </span>
+      </div>
+
+      <div className="stage-progress" aria-hidden>
+        <div className="stage-progress-fill" style={{ width: `${scrollPct}%` }} />
+      </div>
+
+      {showStartHint && !playing && (
+        <button
+          type="button"
+          className="stage-start-hint"
+          data-testid="start-hint"
+          onClick={() => setPlaying(true)}
+        >
+          <span className="stage-start-kicker">SCROLL THE CUE</span>
+          <span className="stage-start-main">Space · Start scroll</span>
+          <span className="stage-start-sub">Reading line stays put. Text rolls up.</span>
+        </button>
+      )}
+
       <div
         className={`prompt-marker${playing ? ' is-playing' : ''}`}
         style={{ top: `${settings.markerY}%` }}
         aria-hidden
       >
         <span className="prompt-marker-paint" />
-        <span className="prompt-marker-glow" />
         <span className="prompt-marker-cap prompt-marker-cap-l">READ</span>
         <span className="prompt-marker-cap prompt-marker-cap-r">LINE</span>
       </div>
@@ -329,14 +358,14 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
         <div className="prompt-controls">
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary btn-scroll"
             data-testid="play-toggle"
             onClick={() => setPlaying((p) => !p)}
           >
-            {playing ? 'Pause' : 'Play'}
+            {playing ? 'Pause scroll' : 'Start scroll'}
           </button>
           <button type="button" className="btn" onClick={onExit} data-testid="exit-prompt">
-            Exit
+            Exit stage
           </button>
           <span className="speed-readout" data-testid="speed-readout">
             {settings.speed} px/s
@@ -453,7 +482,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
           </div>
         </div>
         <div className="prompt-keys">
-          Space play/pause · ↑↓ speed · ←→ jump · R reset · M mirror · F fullscreen · Esc exit
+          Teleprompter · Space start/pause scroll · ↑↓ speed · ←→ jump · R reset · M mirror · F fullscreen · Esc exit
         </div>
       </div>
     </div>

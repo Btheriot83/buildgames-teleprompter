@@ -16,10 +16,13 @@ beforeEach(() => {
 })
 
 describe('storage', () => {
-  it('seeds sample script on first load', () => {
+  it('seeds real teleprompter cues on first load', () => {
     const list = loadScripts()
-    expect(list.length).toBe(1)
-    expect(list[0].title).toMatch(/Sample/i)
+    expect(list.length).toBe(3)
+    expect(list[0].title).toMatch(/Hotshot ETA/i)
+    expect(list[0].body).toMatch(/serpentine|ETA/i)
+    expect(list[1].title).toMatch(/Shop wrap/i)
+    expect(list[2].title).toMatch(/Insurance/i)
     expect(localStorage.getItem(SCRIPTS_KEY)).toBeTruthy()
   })
 

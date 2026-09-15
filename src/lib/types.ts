@@ -18,7 +18,8 @@ export type PromptSettings = {
 }
 
 export const SETTINGS_KEY = 'milecue-settings-v1'
-export const SCRIPTS_KEY = 'milecue-scripts-v1'
+/** B2: bumped so first-load seeds real teleprompter cues (not product-meta sample). */
+export const SCRIPTS_KEY = 'milecue-scripts-v2'
 
 export const DEFAULT_SETTINGS: PromptSettings = {
   speed: 48,
@@ -32,23 +33,63 @@ export const DEFAULT_SETTINGS: PromptSettings = {
   voiceExperimental: false,
 }
 
-export const SAMPLE_SCRIPT: Script = {
-  id: 'sample-dispatch-001',
-  title: 'Dispatch wrap — sample',
-  body: `Eyes on the amber line.
+/** Real spoken cues — roadside flavor OK; reads as teleprompter scripts first. */
+export const SEED_SCRIPTS: Script[] = [
+  {
+    id: 'cue-hotshot-eta-001',
+    title: 'Hotshot ETA — I-17 mile 214',
+    body: `Driver, this is MileCue board.
 
-Thank them. Name the fault. Give the ETA. Close clean.
+You're on I-17 northbound, mile two-fourteen.
+Broken serpentine. Cab's hot. Hazards on.
 
-Breathe on the commas.
-Let the scroll carry you.
+We've got a tech rolling from Flagstaff.
+ETA forty minutes. White Dodge. Unit seven.
 
-If the line sits high, move the marker.
-If you’re rushing, tap ↓.
-Space starts. Space stops.
+Stay with the truck.
+If temp climbs past two-twenty, shut it down.
+Call me when you see the amber light bar.
 
-This cue stays on this machine.
-Export when you leave.
+That's it. Clear.`,
+    updatedAt: Date.now() - 1000 * 60 * 40,
+  },
+  {
+    id: 'cue-shop-wrap-002',
+    title: 'Shop wrap — customer pickup',
+    body: `Thanks for waiting.
 
-Esc exits the stage.`,
-  updatedAt: Date.now(),
-}
+We replaced the glow plugs and the relay.
+Battery held a load test clean.
+Oil's topped. Filter stamped.
+
+Total is four-eighty even.
+Card or fleet account — either works.
+
+Keys are on the board under your name.
+Call if the idle dips under six hundred.
+
+Appreciate the business. Drive safe.`,
+    updatedAt: Date.now() - 1000 * 60 * 90,
+  },
+  {
+    id: 'cue-insurance-003',
+    title: 'Insurance call — roadside claim',
+    body: `Hi, this is dispatch for AZ Mobile Diesel.
+
+I'm calling about claim number four-nine-two-eight.
+Tow was at mile marker eighty-one on the sixty.
+
+Cause was a failed water pump.
+No other vehicles involved.
+Photos and invoice are in the portal.
+
+Tech notes are in the attachment.
+Call me back if adjuster needs a statement.
+
+Thanks.`,
+    updatedAt: Date.now() - 1000 * 60 * 180,
+  },
+]
+
+/** @deprecated use SEED_SCRIPTS[0] — kept for tests that import SAMPLE_SCRIPT */
+export const SAMPLE_SCRIPT: Script = SEED_SCRIPTS[0]
