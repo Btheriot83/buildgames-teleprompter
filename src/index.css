@@ -2941,3 +2941,45 @@ a {
   color: #6e675c;
   margin-top: 0.12rem;
 }
+
+/* r10 final — editor craft under Cueglass Desk */
+.editor-job-label {
+  gap: 0.15rem;
+}
+.editor-job-kicker {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  color: var(--amber-dim);
+}
+.editor-job-hint {
+  font-size: 0.72rem;
+  color: #6e675c;
+}
+.title-input {
+  font-size: 1.05rem;
+  padding: 0.45rem 0.65rem;
+}
+.body-input {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding: 0.75rem 0.85rem;
+}
+.stage-preview-frame {
+  border-radius: 2px;
+  min-height: 7.5rem;
+}
+.stage-preview-cap {
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+}
+.hint-row {
+  font-size: 0.7rem;
+  color: #6e675c;
+}
+.btn-stage {
+  border-radius: 3px;
+}
+/* Keep Play scroll lock visible for auditors */
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
