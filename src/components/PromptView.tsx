@@ -33,6 +33,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
   const [speechOk, setSpeechOk] = useState(false)
   const [moreOpen, setMoreOpen] = useState(false)
   const [showStartHint, setShowStartHint] = useState(true)
+  const [entering, setEntering] = useState(true)
   const [scrollPct, setScrollPct] = useState(0)
 
   speedRef.current = settings.speed
@@ -45,7 +46,8 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
   const applyOffset = useCallback(() => {
     const el = textRef.current
     if (!el) return
-    el.style.transform = `translateY(${-offsetRef.current}px)`
+    // CSS var — never fight enter-animation transform on the same property
+    el.style.setProperty('--prompt-y', `${-offsetRef.current}px`)
     const max = Math.max(1, maxOffset())
     setScrollPct(Math.min(100, Math.round((offsetRef.current / max) * 100)))
   }, [maxOffset])
@@ -76,6 +78,12 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
     rafRef.current = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(rafRef.current)
   }, [tick])
+
+  // Drop enter class after rise so fill-mode cannot pin transform forever
+  useEffect(() => {
+    const t = window.setTimeout(() => setEntering(false), 560)
+    return () => window.clearTimeout(t)
+  }, [])
 
   const bumpChrome = useCallback(() => {
     setChromeVisible(true)
@@ -332,7 +340,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
 
   return (
     <div
-      className={`prompt-stage is-entering t-panel-reveal${playing ? " is-playing" : ""}`}
+      className={`prompt-stage t-panel-reveal${entering ? ' is-entering' : ''}${playing ? ' is-playing' : ''}`}
       data-state="in"
       data-testid="prompt-stage"
       onMouseMove={(e) => {

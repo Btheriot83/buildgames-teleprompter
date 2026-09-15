@@ -968,18 +968,22 @@ a {
   }
 }
 
+.prompt-text {
+  /* Scroll offset — animation must NOT own `transform` (see PLAY_FIX.md) */
+  transform: translateY(var(--prompt-y, 0px));
+}
+
 .prompt-stage.is-entering .prompt-text {
+  /* Opacity-only enter; transform reserved for --prompt-y scroll */
   animation: mile-stage-rise 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes mile-stage-rise {
   from {
     opacity: 0;
-    transform: translateY(12px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
