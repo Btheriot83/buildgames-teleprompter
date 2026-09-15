@@ -1,0 +1,93 @@
+{
+  "status": "craft_wave_shipped",
+  "product": "MileCue",
+  "aesthetic": "MileCue / Cueglass Desk",
+  "identityLocked": true,
+  "demoUrl": "https://buildgames-teleprompter.vercel.app",
+  "sop": "/workspace/build-games/narrow/CRAFT_WAVE_CONTEST.md",
+  "bars": {
+    "promptsmart": "https://promptsmart.com/index.php/products/promptsmart-pro.html",
+    "bigvu": "https://bigvu.tv/teleprompter/teleprompter-app",
+    "cloneOriginal": "https://www.teleprompter.com/"
+  },
+  "maxLoops": 8,
+  "loopsCounted": 8,
+  "loops": [
+    {
+      "id": "craft1",
+      "sha": "ce7c83c",
+      "summary": "Lexend reading-field optical + guide ticks"
+    },
+    {
+      "id": "craft2",
+      "sha": "a1d45f8",
+      "summary": "hardware Speed\u00b7Size\u00b7Pos plate rail"
+    },
+    {
+      "id": "craft3",
+      "sha": "7556b5e",
+      "summary": "quieter chrome \u2014 cut empty cam plate"
+    },
+    {
+      "id": "craft4",
+      "sha": "a951049",
+      "summary": "cue card press + Lexend preview lines"
+    },
+    {
+      "id": "craft5",
+      "sha": "218452e",
+      "summary": "homepage mini Lexend + hardware controls"
+    },
+    {
+      "id": "craft6",
+      "sha": "d8db0dc",
+      "summary": "flat anti-slop desk + hard CTAs"
+    },
+    {
+      "id": "craft7",
+      "sha": "2e58c5a",
+      "summary": "playing retreat \u2014 field owns frame"
+    },
+    {
+      "id": "craft8",
+      "sha": "b39ae51",
+      "summary": "critic polish \u2014 stronger cueglass read line"
+    }
+  ],
+  "visibleDeltas": [
+    "Lexend optical reading field with amber guide ticks; script is the stage",
+    "BIGVU-class Speed \u00b7 Play \u00b7 Size \u00b7 Pos hard plate clusters + square thumbs",
+    "Cut Cam-off plate + keys until More; quieter topbar",
+    "Library cue cards with press scale, amber active rail, two-line preview",
+    "Homepage live --prompt-y mini matched to stage; hard CTAs; 3 proof cards",
+    "Playing: tools fade, chrome retreats 1.8s, field owns frame",
+    "Friend onboard kept; Cueglass identity (not sandy teleprompter)",
+    "PLAY architecture held: --prompt-y + opacity-only mile-stage-rise"
+  ],
+  "playScrollLock": {
+    "held": true,
+    "architecture": "--prompt-y + opacity-only mile-stage-rise",
+    "localProofY": {
+      "beforeY": 0,
+      "afterY": -51.9984,
+      "scrolled": true
+    }
+  },
+  "shotsDir": "/workspace/build-games/narrow/shots/milecue-craft/",
+  "honestCriticVsBars": {
+    "scoreOutOf10": 8.6,
+    "wins": [
+      "Playable browser stage denser than PromptSmart marketing page imagery",
+      "Hardware Speed/Size/Pos rail closer to BIGVU Read&Record control intent",
+      "Script-as-stage + flat Cueglass materials; no vibe-purple / glass blur"
+    ],
+    "stillLoses": [
+      "PromptSmart patented VoiceTrack ecosystem + control-room brand story still richer",
+      "BIGVU creator suite packaging / mobile Read&Record storefront still wins as product brand"
+    ],
+    "verdict": "Candidate preferred for the job write\u2192stage\u2192scroll. Bars still win suite depth and marketing packaging. Not claiming VoiceTrack parity."
+  },
+  "branch": "gauntlet/craft-cueglass-contest",
+  "noAppStore": true,
+  "finishedAtPt": "2026-09-15 ~12:45 PM PT"
+}
