@@ -3552,3 +3552,71 @@ a {
   color: var(--fog);
 }
 
+/* ============================================================
+   ELEVATE elevate5 — remove-ai-tells: hard PIP, no glow countdown
+   ============================================================ */
+.prompt-cam-frame {
+  position: absolute;
+  right: 1rem;
+  bottom: 5.25rem;
+  z-index: 4;
+  width: min(20vw, 180px);
+  pointer-events: none;
+}
+.prompt-cam-pip {
+  position: static !important;
+  right: auto;
+  bottom: auto;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 2px;
+  border: 1px solid #3a3630;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+.pip-rec-chip,
+.stage-rec-chip {
+  position: absolute;
+  top: 0.35rem;
+  left: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  padding: 0.12rem 0.35rem;
+  background: #e05a3c;
+  color: #fff;
+  border-radius: 1px;
+}
+.stage-rec-chip,
+.stage-voice-chip {
+  position: static;
+  margin-left: 0.35rem;
+}
+.stage-voice-chip {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  padding: 0.12rem 0.4rem;
+  border: 1px solid var(--amber-dim);
+  color: var(--amber);
+  border-radius: 999px;
+}
+.stage-countdown {
+  color: #fff;
+  text-shadow: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+.stage-badge {
+  border-radius: 2px;
+  background: transparent;
+  color: var(--fog);
+  border: 1px solid #2a2620;
+  letter-spacing: 0.16em;
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
+
