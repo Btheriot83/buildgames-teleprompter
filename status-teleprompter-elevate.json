@@ -1,0 +1,140 @@
+{
+  "status": "elevate_shipped",
+  "product": "MileCue",
+  "aesthetic": "MileCue / Cueglass Desk",
+  "identityLocked": true,
+  "demoUrl": "https://buildgames-teleprompter.vercel.app",
+  "bars": {
+    "promptsmart": "https://promptsmart.com/index.php/products/promptsmart-pro.html",
+    "bigvu": "https://bigvu.tv/tutorials/teleprompter",
+    "bigvuNote": "product URL /teleprompter/teleprompter-app 404; used tutorials + home",
+    "cloneOriginal": "https://www.teleprompter.com/"
+  },
+  "sop": "/workspace/build-games/narrow/ELEVATE_PRO_BARS.md",
+  "designCatalog": {
+    "prompts": "https://design-catalog-three.vercel.app/data/prompts.json",
+    "guide": "/workspace/build-games/narrow/DESIGN_CATALOG_GUIDE.md",
+    "techniquesUsed": [
+      "specify-the-look",
+      "critic-subagents",
+      "cut-elements",
+      "remove-ai-tells",
+      "hand-rewrite-copy",
+      "make-it-alive",
+      "design-system-from-assets",
+      "thinking-before-prompt",
+      "give-real-context"
+    ]
+  },
+  "playScrollLock": {
+    "held": true,
+    "architecture": "--prompt-y + opacity-only mile-stage-rise",
+    "e2e": "passed",
+    "localProofY": {
+      "beforeY": 0,
+      "afterY": -51.9936,
+      "scrolled": true,
+      "animationName": "none"
+    }
+  },
+  "maxLoops": 12,
+  "loopsCounted": 12,
+  "loops": [
+    {
+      "id": "elevate1",
+      "sha": "6df303b",
+      "summary": "elevate1: BIGVU Speed \u00b7 Play \u00b7 Size \u00b7 Pos rail"
+    },
+    {
+      "id": "elevate2",
+      "sha": "c4ce0c3",
+      "summary": "elevate2: pure cueglass reading field (specify-the-look)"
+    },
+    {
+      "id": "elevate3",
+      "sha": "1ae14df",
+      "summary": "elevate3: hardware flat chrome plate (design-system)"
+    },
+    {
+      "id": "elevate4",
+      "sha": "6102924",
+      "summary": "elevate4: cut MI tickets + quieter start hint (cut-elements)"
+    },
+    {
+      "id": "elevate5",
+      "sha": "c5f18fc",
+      "summary": "elevate5: hard PIP + no-glow countdown (remove-ai-tells)"
+    },
+    {
+      "id": "elevate6",
+      "sha": "33f0145",
+      "summary": "elevate6: Cueglass Desk hand-rewritten copy"
+    },
+    {
+      "id": "elevate7",
+      "sha": "4fcbbf5",
+      "summary": "elevate7: VoiceTrack-class + Read&Record chrome (make-it-alive)"
+    },
+    {
+      "id": "elevate8",
+      "sha": "2ffde9d",
+      "summary": "elevate8: playing state \u2014 reading field owns frame"
+    },
+    {
+      "id": "elevate9",
+      "sha": "1d2fbc6",
+      "summary": "elevate9: library desk denser vs pro bars"
+    },
+    {
+      "id": "elevate10",
+      "sha": "f6fd63c",
+      "summary": "elevate10: hard-bar tokens + Lexend optical (design-system)"
+    },
+    {
+      "id": "elevate11",
+      "sha": "2963f15",
+      "summary": "elevate11: Read&Record cam plate vs BIGVU"
+    },
+    {
+      "id": "elevate12",
+      "sha": "dce8d78",
+      "summary": "elevate12: critic polish \u2014 denser rail + 1px hairline"
+    }
+  ],
+  "shots": [
+    "gauntlet/shots-elevate/bar-promptsmart.png",
+    "gauntlet/shots-elevate/bar-bigvu.png",
+    "gauntlet/shots-elevate/bar-bigvu-home.png",
+    "gauntlet/shots-elevate/e12-library.png",
+    "gauntlet/shots-elevate/e12-final.png",
+    "gauntlet/shots-elevate/e12-countdown.png",
+    "gauntlet/shots-elevate/e11-cam.png",
+    "gauntlet/shots-elevate/play-smoke-y.png"
+  ],
+  "critic": {
+    "mode": "screenshots-only vs PromptSmart Pro page + BIGVU tutorial/home Read&Record mocks + candidate library/stage/playing",
+    "aestheticNamed": "Cueglass Desk / hardware teleprompter tool",
+    "studioBar": "PromptSmart VoiceTrack reading field + BIGVU size/speed/position Read&Record chrome",
+    "scoreOutOf10": 8.4,
+    "winsOverBars": [
+      "Playable browser stage denser than PromptSmart marketing (broken product imagery) and BIGVU tutorial cards",
+      "BIGVU-class Speed \u00b7 Play \u00b7 Size \u00b7 Pos hardware rail with Lexend cueglass reading field",
+      "Flat hard bar, Cam plate/PIP, countdown; no vibe-purple / gradient chrome",
+      "Honest local-first Cueglass Desk copy; PLAY --prompt-y architecture held"
+    ],
+    "stillLoses": [
+      "PromptSmart patented VoiceTrack story + ecosystem control-room narrative still richer as a product brand",
+      "BIGVU consumer Read&Record packaging / camera-hero mobile craft still wins as video-creator storefront"
+    ],
+    "verdictVsProBars": "Candidate wins as craft teleprompter stage UI (script-as-stage + hardware controls). Professional bars still win marketing packaging and VoiceTrack/creator-suite depth. Overall for the job write\u2192stage\u2192scroll: candidate preferred.",
+    "beatsProBarsForJob": true,
+    "honestNote": "Not claiming 9+/studio parity with PromptSmart VoiceTrack or BIGVU suite; 8.4 on stage-craft bar."
+  },
+  "finishedAtPt": "2026-09-15 6:36 AM PT",
+  "branch": "gauntlet/elevate-cueglass-pro-bars",
+  "prUrl": null,
+  "prMerged": false,
+  "deployUrl": "https://buildgames-teleprompter.vercel.app",
+  "liveHttp": null,
+  "liveSmoke": null
+}
