@@ -26,12 +26,23 @@ await page.waitForSelector('[data-testid="prompt-stage"]', { timeout: 10000 });
 log.push("opened prompt");
 await shot("live-prompt.png");
 
-const before = await page.getByTestId("prompt-text").evaluate((el) => el.style.transform);
+const readY = () =>
+  page.getByTestId("prompt-text").evaluate((el) => {
+    const m = getComputedStyle(el).transform;
+    if (m.startsWith("matrix3d(")) {
+      return Number(m.slice(9, -1).split(",")[13]);
+    }
+    if (m.startsWith("matrix(")) {
+      return Number(m.slice(7, -1).split(",")[5]);
+    }
+    return el.getBoundingClientRect().y;
+  });
+const beforeY = await readY();
 await page.getByTestId("play-toggle").click();
 await page.waitForTimeout(1000);
-const after = await page.getByTestId("prompt-text").evaluate((el) => el.style.transform);
-const scrolled = after !== before && /translateY\(/.test(after);
-log.push(`before=${before} after=${after} scrolled=${scrolled}`);
+const afterY = await readY();
+const scrolled = afterY < beforeY - 20;
+log.push(`beforeY=${beforeY} afterY=${afterY} scrolled=${scrolled}`);
 await shot("live-playing.png");
 
 await page.getByTestId("mirror-toggle").click();
