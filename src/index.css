@@ -2921,3 +2921,23 @@ a {
   font-size: 0.85rem;
   background: #12100e;
 }
+
+/* r9 start hint — less loud overlay on reading field */
+.stage-start-hint {
+  padding: 0.45rem 0.75rem;
+  border-radius: 2px;
+  max-width: 12.5rem;
+  border: 1px solid #3a3228;
+  background: rgba(10, 9, 8, 0.88);
+  opacity: 0.9;
+}
+.stage-start-main {
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--sand);
+}
+.stage-start-sub {
+  font-size: 0.65rem;
+  color: #6e675c;
+  margin-top: 0.12rem;
+}

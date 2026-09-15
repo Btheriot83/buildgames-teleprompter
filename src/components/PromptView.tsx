@@ -33,6 +33,11 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
   const [speechOk, setSpeechOk] = useState(false)
   const [moreOpen, setMoreOpen] = useState(false)
   const [showStartHint, setShowStartHint] = useState(true)
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setShowStartHint(false), 2400)
+    return () => window.clearTimeout(id)
+  }, [])
   const [entering, setEntering] = useState(true)
   const [scrollPct, setScrollPct] = useState(0)
 
