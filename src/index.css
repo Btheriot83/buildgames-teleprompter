@@ -3264,3 +3264,13 @@ a {
   text-align: right;
   color: var(--fog);
 }
+
+/* ============================================================
+   BEAT-ORIGINAL beat9 — cut keys + empty motion (cut-elements)
+   ============================================================ */
+.prompt-keys { display: none; }
+.empty-motion { display: none !important; }
+.hint-row {
+  font-size: 0.68rem;
+  opacity: 0.75;
+}
