@@ -1,0 +1,93 @@
+{
+  "status": "phase_a_anshu_plus_r5_integrity_complete",
+  "product": "MileCue",
+  "slug": "teleprompter",
+  "phase": "R5",
+  "demoUrl": "https://buildgames-teleprompter.vercel.app",
+  "bar": "https://www.teleprompter.com/",
+  "path": "/workspace/build-games/apps/teleprompter",
+  "identityHeld": true,
+  "aesthetic": "MileCue / Cueglass Desk",
+  "reseed": true,
+  "reseedNote": "WEAK per REASSESS \u2014 full Anshu 1\u20138 reading-experience reseed; Roadside library skin evolved to Cueglass stage",
+  "phaseA": {
+    "done": true,
+    "techniquesDone": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "identityPath": "docs/IDENTITY.md",
+    "lennyDiscoverPath": "docs/DISCOVER.md",
+    "lennyDefinePath": "docs/DEFINE.md",
+    "lennyDeliverPath": "docs/DELIVER.md",
+    "imagesGenerated": [
+      "public/cueglass-stage.jpg",
+      "public/milecue-mark.jpg"
+    ],
+    "videoOrMotionPath": "public/cueglass-drift.mp4",
+    "criticFreshContext": true,
+    "copyHandRewritten": true,
+    "commit": "c02440c"
+  },
+  "playScroll": {
+    "held": true,
+    "architecture": "--prompt-y + opacity-only mile-stage-rise; is-entering dropped ~560ms",
+    "e2e": "npm run test:e2e passed after r10"
+  },
+  "dreamLoop": {
+    "baseline": [
+      ".dream-loop/baseline-library.png",
+      ".dream-loop/baseline-stage.png"
+    ],
+    "target": ".dream-loop/target.png",
+    "targetCopy": "gauntlet/shots-r5/dream-target.png",
+    "notes": "Cueglass stage target; r7\u2013r8 closed chrome toward target under locked identity"
+  },
+  "roundsCounted": 10,
+  "roundShas": [
+    "06c694d",
+    "4d674dd",
+    "450ef20",
+    "64a5bc0",
+    "414baad",
+    "3a9b076",
+    "f0c775d",
+    "3d7d6a4",
+    "86800dc",
+    "86f4752"
+  ],
+  "shotCount": 19,
+  "barShotRounds": [
+    5,
+    10
+  ],
+  "honestNotes": [
+    "teleprompter.com still wins overall (light SaaS, device mock, VoiceGlide).",
+    "Cueglass Desk closed asphalt-vs-text stage gap; hairline + veil reading craft improved.",
+    "Play scroll did not regress (computed translateY e2e green)."
+  ],
+  "transitionsWired": {
+    "toast": "ToastHost on autosave/cue filed/tighten/errors",
+    "success-check": "ok toasts",
+    "error-state-shake": "empty Open stage / import fail",
+    "panel-reveal": "Open stage enter",
+    "skeleton-reveal": "boot library shell",
+    "number-pop-in": "New cue board count",
+    "texts-reveal": "Cue board heading"
+  },
+  "finishedAtUtc": "2026-09-15T06:55:37Z",
+  "finishedAtPt": "2026-09-14 11:55 PM PT",
+  "workbench": "apps/teleprompter/gauntlet/workbench-r5.md",
+  "mainSha": "86f4752",
+  "prUrl": null,
+  "prMerged": false,
+  "deployUrl": "https://buildgames-teleprompter.vercel.app",
+  "liveHttp": null,
+  "liveSmoke": null
+}
