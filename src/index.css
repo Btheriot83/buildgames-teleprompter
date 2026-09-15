@@ -4852,3 +4852,43 @@ a {
 .prompt-text {
   transform: translateY(var(--prompt-y, 0px));
 }
+
+/* ============================================================
+   CRAFT WAVE craft8 — critic polish vs PromptSmart/BIGVU
+   Read-line must read at a glance; keep flat Cueglass.
+   ============================================================ */
+.prompt-marker {
+  height: 2px;
+  z-index: 5;
+}
+.prompt-marker-paint {
+  background: var(--amber);
+}
+.prompt-marker-paint::before,
+.prompt-marker-paint::after {
+  top: -4px;
+  height: 10px;
+  width: 2px;
+  background: var(--amber);
+}
+.stage-ready-chip,
+.ready-chip,
+.job-banner .status,
+.hero-status {
+  opacity: 0.7;
+  letter-spacing: 0.1em;
+  font-size: 0.65rem;
+}
+.mkt-hero h1 {
+  letter-spacing: 0.01em;
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
+.prompt-stage.is-entering .prompt-text {
+  animation: mile-stage-rise 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes mile-stage-rise {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
