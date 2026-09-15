@@ -236,7 +236,7 @@ export default function App() {
       <section className="job-banner" aria-label="What MileCue does">
         <div className="job-banner-copy">
           <p className="hero-kicker">BROWSER TELEPROMPTER</p>
-          <h2 className="hero-title">Write cue → Open stage → Scroll</h2>
+          <h2 className="hero-title">Write cue → Open stage → Play scroll</h2>
         </div>
         <div className="hero-cta-row">
           <button
