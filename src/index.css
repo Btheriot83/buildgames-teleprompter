@@ -2817,3 +2817,33 @@ a {
 .stage-preview-bar {
   height: 2px;
 }
+
+/* r6 library — list rows closer to product chrome (keep Cueglass palette) */
+.script-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0.55rem 0.7rem;
+  gap: 0.15rem;
+  border-radius: 2px;
+  border-left-width: 2px;
+}
+.script-card.is-active {
+  border-left-color: var(--amber);
+  border-color: var(--line);
+  border-left-width: 2px;
+  background: #1f1c17;
+}
+.ticket-mile {
+  display: none;
+}
+.script-card-meta {
+  font-size: 0.7rem;
+  color: var(--fog);
+}
+.sidebar-head {
+  padding: 0.55rem 0.75rem;
+  font-size: 0.72rem;
+}
+.sidebar {
+  width: 15.5rem;
+}
