@@ -1,0 +1,69 @@
+{
+  "status": "phase_b4_integrity_complete",
+  "product": "MileCue",
+  "slug": "teleprompter",
+  "phase": "B4",
+  "demoUrl": "https://buildgames-teleprompter.vercel.app",
+  "bar": "https://www.teleprompter.com/",
+  "path": "/workspace/build-games/apps/teleprompter",
+  "identityHeld": true,
+  "aesthetic": "MileCue / Roadside Dispatch",
+  "reseed": false,
+  "dreamLoop": {
+    "baseline": [
+      ".dream-loop/baseline-library.png",
+      ".dream-loop/baseline-stage.png"
+    ],
+    "target": ".dream-loop/target.png",
+    "targetCopy": "gauntlet/shots-r4/dream-target.png",
+    "notes": "Refined UI screenshot toward teleprompter.com craft under locked asphalt/amber; several rN closed live\u2192target"
+  },
+  "roundsCounted": 20,
+  "roundShas": [
+    "99000ba",
+    "a31a947",
+    "a0cd9cd",
+    "9f1cb4a",
+    "9c0f241",
+    "52260b0",
+    "af2d94a",
+    "5d4830e",
+    "b883f9b",
+    "ff42cba",
+    "2499ff0",
+    "8d5f01d",
+    "2c41d6c",
+    "614179c",
+    "b34621c",
+    "973fbff",
+    "79e0bd0",
+    "469312a",
+    "524a920",
+    "b652db5"
+  ],
+  "shotCount": 28,
+  "barShotRounds": [
+    5,
+    10,
+    15,
+    20
+  ],
+  "honestNotes": [
+    "Original teleprompter.com still wins overall (light SaaS, device mock, VoiceGlide depth).",
+    "MileCue closed density/chrome soup, stage contrast, single primary CTA, thinner reading line under locked Roadside Dispatch.",
+    "Dream target pulled library toward cleaner tool layout; not better than bar."
+  ],
+  "transitionsWired": {
+    "toast": "ToastHost on autosave/cue filed/tighten/errors",
+    "success-check": "ok toasts",
+    "error-state-shake": "empty Open stage / import fail",
+    "panel-reveal": "Open stage enter",
+    "skeleton-reveal": "boot library shell",
+    "number-pop-in": "New cue board count",
+    "texts-reveal": "Cue board heading"
+  },
+  "finishedAtUtc": "2026-09-15T05:16:41Z",
+  "finishedAtPt": "2026-09-14 10:16 PM PT",
+  "workbench": "apps/teleprompter/gauntlet/workbench-r4.md",
+  "mainSha": "b652db5"
+}

@@ -51,7 +51,7 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - files: src/App.tsx (job-rail), src/index.css (.job-rail; hide .job-loop; shorter hero), .gitignore (.dream-loop), gauntlet/shots-r4/dream-target.png
 - shot: gauntlet/shots-r4/r4-bar-gap-job-rail.png
 - verdict: vs target+bar — killing 01·02·03 strip closes anti-slop and density gap; hero still taller/busier than dream target and original still wins light SaaS clarity
-- commit: dc76462
+- commit: 9f1cb4a
 
 ## r5 — bar gap / dream density (cue cards)
 - files: src/index.css (smaller ticket-mile, quieter stub, denser script-card), .gitignore
@@ -160,5 +160,12 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - shot: gauntlet/shots-r4/r19-hint-row.png
 - tests: vitest + playwright core loop (see commit)
 - verdict: vs bar — editor chrome quieter; original still wins overall polish; tests guard Open stage → scroll
-- commit: 5c1c8e5
+- commit: 524a920
+
+
+## r20 — ship (final A/B + status)
+- files: gauntlet/workbench-r4.md, gauntlet/status-r4.json, /workspace/build-games/gauntlet/status-teleprompter-r4.json, gauntlet/shots-r4/r20-*.png, bar-r20-home.png
+- shot: gauntlet/shots-r4/r20-final-library.png · gauntlet/shots-r4/r20-final-stage.png · bar A/B: gauntlet/shots-r4/bar-r20-home.png
+- verdict: vs dream target — library denser/cleaner, stage contrast+controls closer; vs teleprompter.com — original still wins overall (light SaaS, VoiceGlide, device mock fantasy). MileCue closer under locked Roadside Dispatch, not better.
+- commit: b652db5
 
