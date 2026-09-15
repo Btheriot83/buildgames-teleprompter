@@ -2572,3 +2572,23 @@ a {
   background: var(--asphalt-2);
   border-right: 1px solid var(--line);
 }
+
+/* r7 stage topbar — dream quieter */
+.stage-topbar {
+  min-height: 2.1rem;
+  padding: 0.35rem 0.75rem;
+  background: #070605;
+}
+.stage-badge {
+  font-size: 0.6rem;
+  padding: 0.1rem 0.35rem;
+}
+.stage-script-title {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+.stage-scroll-pct {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--fog);
+}
