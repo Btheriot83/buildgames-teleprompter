@@ -2847,3 +2847,33 @@ a {
 .sidebar {
   width: 15.5rem;
 }
+
+/* r7 stage topbar — dream quieter chrome density */
+.stage-topbar {
+  min-height: 1.85rem;
+  padding: 0.28rem 0.7rem;
+  background: rgba(5, 4, 4, 0.94);
+  border-bottom: 1px solid #1e1b17;
+}
+.stage-badge {
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  padding: 0.08rem 0.3rem;
+  border-color: #3a3228;
+  color: var(--amber-dim);
+}
+.stage-script-title {
+  font-size: 0.78rem;
+  font-weight: 500;
+  opacity: 0.82;
+  color: var(--sand);
+}
+.stage-scroll-pct {
+  font-size: 0.68rem;
+  color: #6e675c;
+}
+.stage-mirror-chip {
+  font-size: 0.55rem;
+  padding: 0.06rem 0.25rem;
+  opacity: 0.85;
+}
