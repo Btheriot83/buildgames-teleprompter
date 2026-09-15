@@ -45,7 +45,7 @@
   "honestNotes": [
     "teleprompter.com still wins overall (light SaaS, device mock, VoiceGlide).",
     "Cueglass Desk closed denser chrome / hairline / circular Play gap vs r5.",
-    "Play scroll did not regress (computed translateY e2e green)."
+    "Play scroll did not regress (computed translateY e2e green + live smoke Y 0\u2192-47)."
   ],
   "transitionsWired": {
     "toast": "ToastHost on autosave/cue filed/tighten/errors",
@@ -56,13 +56,26 @@
     "number-pop-in": "New cue board count",
     "texts-reveal": "Cue board heading"
   },
-  "finishedAtUtc": "2026-09-15T07:13:57Z",
-  "finishedAtPt": "2026-09-15 12:13 AM PT",
+  "finishedAtUtc": "2026-09-15T07:15:50Z",
+  "finishedAtPt": "2026-09-15 12:15 AM PT",
   "workbench": "apps/teleprompter/gauntlet/workbench-r6.md",
-  "mainSha": null,
-  "prUrl": null,
-  "prMerged": false,
+  "mainSha": "86bad36",
+  "prUrl": "https://github.com/Btheriot83/buildgames-teleprompter/pull/13",
+  "prMerged": true,
   "deployUrl": "https://buildgames-teleprompter.vercel.app",
-  "liveHttp": null,
-  "liveSmoke": null
+  "liveHttp": 200,
+  "liveSmoke": {
+    "ok": true,
+    "scrolled": true,
+    "beforeY": 0,
+    "afterY": -47.1984,
+    "atUtc": "2026-09-15T07:15:38Z",
+    "atPt": "2026-09-15 12:15 AM PT",
+    "checks": [
+      "GET / 200",
+      "prod CSS index-4zabEvmd.css",
+      "cueglass markers in CSS",
+      "live-smoke scrolled=true (Y 0\u2192-47)"
+    ]
+  }
 }
