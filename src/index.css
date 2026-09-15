@@ -3311,3 +3311,13 @@ a {
 .brand h1 {
   letter-spacing: 0.06em;
 }
+
+/* ============================================================
+   BEAT-ORIGINAL beat12 — transport order like dream-target
+   ============================================================ */
+.prompt-controls .control-cluster:nth-of-type(1) { order: 1; } /* speed */
+.prompt-controls .transport { order: 2; }
+.prompt-controls .control-cluster:nth-of-type(2) { order: 3; } /* size */
+.prompt-controls > .btn-tool { order: 4; }
+.prompt-controls > .btn-record { order: 4; }
+.prompt-controls > .btn-exit { order: 5; }
