@@ -1896,3 +1896,29 @@ a {
 .ticket-mile-num {
   color: var(--amber-hot);
 }
+
+/* ============================================================
+   Phase B4 INTEGRITY — per-round craft vs teleprompter.com
+   Roadside Dispatch LOCKED. Flat chrome. No decorative gradients.
+   ============================================================ */
+
+/* r2: contrast — blacker reading column, quieter road wash */
+.stage-read-veil {
+  background: rgba(0, 0, 0, 0.92);
+}
+.stage-road-img {
+  filter: brightness(0.28) contrast(1.05) saturate(0.55);
+}
+.stage-road-vignette {
+  background: rgba(0, 0, 0, 0.62);
+}
+.prompt-scroll::before,
+.prompt-scroll::after {
+  background: rgba(0, 0, 0, 0.9);
+}
+.prompt-text {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.95), 0 3px 18px rgba(0, 0, 0, 0.85);
+}
