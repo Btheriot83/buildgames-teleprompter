@@ -55,12 +55,23 @@
     "glassBlur": "killed",
     "materials": "flat_panels_plus_real_photos"
   },
-  "finishedAtUtc": "2026-09-15T04:38:54Z",
-  "finishedAtPt": "2026-09-14 9:38 PM PT",
+  "finishedAtUtc": "2026-09-15T04:40:09Z",
+  "finishedAtPt": "2026-09-14 9:40 PM PT",
   "notes": "Phase B3 twenty rounds under locked Roadside Dispatch. Craft focus vs teleprompter.com: stage veil, transport controls, type/contrast, scroll UX. Honest critic ~5.6 \u2014 closer, not better.",
-  "prUrl": null,
-  "prMerged": false,
-  "liveHttp": null,
+  "prUrl": "https://github.com/Btheriot83/buildgames-teleprompter/pull/8",
+  "prMerged": true,
+  "liveHttp": 200,
   "deployUrl": "https://buildgames-teleprompter.vercel.app",
-  "liveSmoke": null
+  "liveSmoke": {
+    "ok": true,
+    "atPt": "2026-09-14 9:40 PM PT",
+    "checks": [
+      "GET / 200",
+      "Open stage \u2192 Play scrolls (translateY)",
+      "stage-read-veil + btn-transport + Wheel to scrub in prod JS",
+      "flat chrome no decorative gradients",
+      "Open stage sole amber primary"
+    ]
+  },
+  "mainSha": "3d2b643"
 }
