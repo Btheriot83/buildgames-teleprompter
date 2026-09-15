@@ -3660,3 +3660,19 @@ a {
   color: var(--amber-hot);
 }
 
+/* ============================================================
+   ELEVATE elevate8 — playing: reading field owns the frame
+   ============================================================ */
+.prompt-stage.is-playing .stage-topbar {
+  opacity: 0.55;
+}
+.prompt-stage.is-playing .prompt-chrome {
+  border-top-color: #1f1c18;
+}
+.prompt-stage.is-playing .stage-start-hint {
+  display: none;
+}
+.prompt-marker.is-playing .prompt-marker-paint {
+  background: var(--amber-hot);
+}
+
