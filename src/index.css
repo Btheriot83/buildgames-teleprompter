@@ -2592,3 +2592,27 @@ a {
   font-size: 0.75rem;
   color: var(--fog);
 }
+
+/* r8 dream — close live→target chrome */
+.prompt-chrome {
+  padding: 0.55rem 0.85rem 0.65rem;
+}
+.prompt-controls {
+  gap: 0.4rem 0.45rem;
+}
+.control-cluster .cluster-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: var(--fog);
+}
+.speed-readout,
+.font-readout {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  min-width: 4.2rem;
+  text-align: center;
+}
+.prompt-keys {
+  margin-top: 0.35rem;
+  opacity: 0.75;
+}
