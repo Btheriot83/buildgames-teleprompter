@@ -2616,3 +2616,22 @@ a {
   margin-top: 0.35rem;
   opacity: 0.75;
 }
+
+/* r9 start hint — quieter overlay */
+.stage-start-hint {
+  padding: 0.65rem 1rem;
+  border-radius: 3px;
+  max-width: 16rem;
+}
+.stage-start-main {
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+}
+.stage-start-sub {
+  font-size: 0.72rem;
+  color: var(--fog);
+  margin-top: 0.2rem;
+}
+.stage-start-kicker {
+  display: none;
+}
