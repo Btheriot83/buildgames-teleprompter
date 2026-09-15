@@ -108,12 +108,19 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - shot: gauntlet/shots-r4/r12-skeleton-boot.png
 - transitions: skeleton-reveal → initial boot skeleton
 - verdict: vs bar — boot feedback is real; original marketing still cleaner first paint
-- commit: fd4b13d
+- commit: 8d5f01d
 
 
 ## r13 — fonts (cue title sentence case)
 - files: src/index.css (.title-input no uppercase)
 - shot: gauntlet/shots-r4/r13-title-sentence.png
 - verdict: vs target — titles read as scripts not road signs; vs bar — closer to product-tool clarity
-- commit: ce1ad2e
+- commit: 2c41d6c
+
+
+## r14 — buttons (single Open stage primary)
+- files: src/App.tsx (remove stage-preview-go), src/index.css
+- shot: gauntlet/shots-r4/r14-single-primary.png
+- verdict: vs target/bar — one loud amber CTA like original Start-for-free pattern; preview no longer duplicates
+- commit: 0cd9583
 

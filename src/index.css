@@ -2181,3 +2181,9 @@ a {
   font-size: 1.15rem;
   letter-spacing: 0.01em;
 }
+
+/* r14: buttons — single Open stage primary (toolbar); preview is proof only */
+.stage-preview {
+  grid-template-columns: 1fr;
+}
+.stage-preview-go { display: none !important; }

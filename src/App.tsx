@@ -396,9 +396,6 @@ export default function App() {
                       </div>
                       <pre className="stage-preview-text">{previewLines(selected.body, 2)}</pre>
                     </div>
-                    <button type="button" className="btn btn-primary btn-stage stage-preview-go" onClick={openPrompt}>
-                      Open stage
-                    </button>
                   </div>
                 )}
 
