@@ -2788,3 +2788,32 @@ a {
 .topbar {
   padding: 0.45rem 1rem;
 }
+
+/* r5 reading line — hardware hairline; quieter caps */
+.prompt-marker {
+  height: 2px;
+}
+.prompt-marker-paint {
+  background: var(--amber);
+  box-shadow: none;
+}
+.prompt-marker-cap {
+  font-size: 0.52rem;
+  letter-spacing: 0.16em;
+  padding: 0.08rem 0.28rem;
+  opacity: 0.72;
+  border-radius: 2px;
+}
+.prompt-marker::before,
+.prompt-marker::after {
+  border-top-width: 4px;
+  border-bottom-width: 4px;
+}
+.prompt-marker::before { border-left-width: 6px; }
+.prompt-marker::after { border-right-width: 6px; }
+.stage-progress {
+  height: 2px;
+}
+.stage-preview-bar {
+  height: 2px;
+}
