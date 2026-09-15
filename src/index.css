@@ -3242,3 +3242,25 @@ a {
   width: 0.7rem;
   height: 0.7rem;
 }
+
+/* ============================================================
+   BEAT-ORIGINAL beat8 — progress scrub craft
+   ============================================================ */
+.stage-progress {
+  height: 3px;
+  background: #161410;
+  cursor: ew-resize;
+}
+.stage-progress:hover,
+.stage-progress:active {
+  height: 5px;
+}
+.stage-progress-fill {
+  background: var(--amber-hot);
+}
+.stage-scroll-pct {
+  font-variant-numeric: tabular-nums;
+  min-width: 2.6rem;
+  text-align: right;
+  color: var(--fog);
+}
