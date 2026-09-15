@@ -2877,3 +2877,47 @@ a {
   padding: 0.06rem 0.25rem;
   opacity: 0.85;
 }
+
+/* r8 dream — close live→target control deck */
+.prompt-chrome {
+  padding: 0.45rem 0.75rem 0.5rem;
+  background: #050404;
+  border-top: 1px solid #1e1b17;
+}
+.prompt-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem 0.65rem;
+}
+.control-cluster {
+  gap: 0.25rem;
+}
+.control-cluster .cluster-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: #6e675c;
+}
+.speed-readout,
+.font-readout {
+  font-size: 0.72rem;
+  min-width: 3.6rem;
+  color: var(--sand);
+}
+.slider-inline {
+  width: 4.5rem;
+  max-width: 4.5rem;
+}
+.prompt-keys {
+  text-align: center;
+  font-size: 0.68rem;
+  opacity: 0.65;
+  margin-top: 0.25rem;
+}
+.btn-nudge {
+  min-width: 1.75rem;
+  min-height: 1.75rem;
+  font-size: 0.85rem;
+  background: #12100e;
+}
