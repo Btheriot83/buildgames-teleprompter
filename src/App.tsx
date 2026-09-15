@@ -365,6 +365,7 @@ export default function App() {
                   >
                     <span className="ticket-body">
                       <p className="title">{s.title || 'Untitled'}</p>
+                      <p className="preview">{previewLines(s.body, 2) || 'Empty board'}</p>
                       <p className="meta">
                         {s.body.trim()
                           ? `${s.body.trim().split(/\s+/).length} words · filed ${new Date(
