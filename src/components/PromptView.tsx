@@ -282,6 +282,12 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
       role="application"
       aria-label="Teleprompter stage"
     >
+      <div className="stage-road" aria-hidden>
+        <img className="stage-road-img" src="/asphalt-marker.jpg" alt="" />
+        <div className="stage-road-vignette" />
+        <div className="stage-road-grain" />
+      </div>
+
       {settings.cameraOn && (
         <video
           ref={videoRef}
@@ -291,9 +297,18 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
           style={{ opacity: settings.cameraOpacity }}
         />
       )}
-      {camDenied && <div className="cam-note">Camera permission denied — using solid stage</div>}
+      {camDenied && <div className="cam-note">Camera blocked — night road stage</div>}
 
-      <div className={`prompt-marker${playing ? ' is-playing' : ''}`} style={{ top: `${settings.markerY}%` }} aria-hidden />
+      <div
+        className={`prompt-marker${playing ? ' is-playing' : ''}`}
+        style={{ top: `${settings.markerY}%` }}
+        aria-hidden
+      >
+        <span className="prompt-marker-paint" />
+        <span className="prompt-marker-glow" />
+        <span className="prompt-marker-cap prompt-marker-cap-l">READ</span>
+        <span className="prompt-marker-cap prompt-marker-cap-r">LINE</span>
+      </div>
 
       <div className="prompt-scroll">
         <div

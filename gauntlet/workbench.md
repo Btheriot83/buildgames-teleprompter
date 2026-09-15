@@ -29,3 +29,9 @@ Anshu 1–8 complete → IDENTITY frozen. See DISCOVER / DEFINE / DELIVER.
 ## Phase B — Round 5 (coherence + hand copy under identity)
 - Pieces: copy voice lock, video empty loop, vitest exclude, deploy
 - Critic: **6.2** — honest vs live original; identity held; not ≥9 without VoiceGlide parity
+
+## Visibility fail → rework (2026-09-14 ~9:00 PM PT)
+
+**Brandon:** previous gauntlet produced NO visible change — fail.
+
+Rework under locked IDENTITY (no reseed): full-bleed asphalt + drift video hero, ticket/mile cards, billboard Barlow titles, giant stage READ LINE, night-road stage background. Proof: `gauntlet/VISIBLE_DELTA.md`.
