@@ -2187,3 +2187,23 @@ a {
   grid-template-columns: 1fr;
 }
 .stage-preview-go { display: none !important; }
+
+/* r15: dream — quieter stage topbar (don't compete with prompt) */
+.stage-topbar {
+  padding: 0.4rem 0.85rem;
+  background: rgba(0, 0, 0, 0.72);
+}
+.stage-badge {
+  font-size: 0.68rem;
+  padding: 0.15rem 0.4rem;
+  border-width: 1px;
+}
+.stage-script-title {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-weight: 500;
+  color: #d8d0c0;
+  text-shadow: none;
+}

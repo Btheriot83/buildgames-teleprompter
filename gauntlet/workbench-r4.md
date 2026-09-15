@@ -122,5 +122,12 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - files: src/App.tsx (remove stage-preview-go), src/index.css
 - shot: gauntlet/shots-r4/r14-single-primary.png
 - verdict: vs target/bar — one loud amber CTA like original Start-for-free pattern; preview no longer duplicates
-- commit: 0cd9583
+- commit: 614179c
+
+
+## r15 — dream/bar (quieter stage topbar)
+- files: src/index.css (.stage-topbar / badge / title)
+- shot: gauntlet/shots-r4/r15-stage-topbar.png · bar A/B: gauntlet/shots-r4/bar-r15-home.png
+- verdict: vs target — chrome yields to white prompt; vs bar — original device mock still simpler
+- commit: ffdca6f
 
