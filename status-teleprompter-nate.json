@@ -1,0 +1,34 @@
+{
+  "status": "nate_alive_shipped",
+  "product": "MileCue",
+  "aesthetic": "MileCue / Cueglass Desk",
+  "identityLocked": true,
+  "demoUrl": "https://buildgames-teleprompter.vercel.app",
+  "guide": "/workspace/build-games/narrow/builder-guides/02-nate.md",
+  "specifyTheLook": "docs/SPECIFY_THE_LOOK.md",
+  "onboarding": "docs/ONBOARDING.md",
+  "techniques": [
+    "specify-the-look",
+    "make-it-alive",
+    "friend-walkthrough-onboarding",
+    "quieter-chrome",
+    "modern-cards-press-hover"
+  ],
+  "visibleDeltas": [
+    "Homepage at / with playable --prompt-y cueglass mini (Play/Pause/Restart/Pace) — not CSS fake",
+    "One primary CTA: Open the desk → /app",
+    "Friend walkthrough ≤4 skippable cards (milecue-onboarded.v1), ?onboard=1 preview",
+    "Modern rounded cue cards with hover lift + press scale; hairline topbar (less brass billboard)",
+    "SPECIFY_THE_LOOK.md + ONBOARDING.md lock Cueglass fonts/palette/mood distinct from sandy Apple calm"
+  ],
+  "honestNoteVsBars": "Still a craft browser stage — PromptSmart VoiceTrack ecosystem story and BIGVU creator Read&Record packaging remain richer as product brands. Candidate wins playable above-fold demo + local desk activation; does not claim suite depth.",
+  "localSmoke": {
+    "miniScrolled": true,
+    "ctaToApp": true,
+    "onboardSkipVisible": true,
+    "atPt": "2026-09-15 ~11:20 AM PT"
+  },
+  "branch": "gauntlet/nate-cueglass-alive",
+  "noAppStore": true,
+  "noGlm": true
+}
