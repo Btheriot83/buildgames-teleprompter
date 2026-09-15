@@ -89,5 +89,17 @@
   },
   "branch": "gauntlet/craft-cueglass-contest",
   "noAppStore": true,
-  "finishedAtPt": "2026-09-15 ~12:45 PM PT"
+  "finishedAtPt": "2026-09-15 ~12:45 PM PT",
+  "mergeCommit": "759d205",
+  "mergeCommitFull": "759d20566a3ff7ee87750029412c78ab6131c290",
+  "prUrl": "https://github.com/Btheriot83/buildgames-teleprompter/pull/17",
+  "prMerged": true,
+  "deployUrl": "https://buildgames-teleprompter.vercel.app",
+  "vercel": "READY",
+  "liveSmoke": {
+    "ok": true,
+    "stageScrolled": true,
+    "css": "assets/index-h7-4Cgue.css",
+    "atPt": "2026-09-15 ~12:50 PM PT"
+  }
 }
