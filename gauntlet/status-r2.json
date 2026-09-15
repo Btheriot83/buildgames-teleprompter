@@ -31,13 +31,28 @@
     "vitest": "pass",
     "playwrightCoreLoop": "pass"
   },
-  "finishedAtUtc": "2026-09-15T04:23:02Z",
-  "finishedAtPt": "2026-09-14 09:23 PM PT",
+  "finishedAtUtc": "2026-09-15T04:24:21Z",
+  "finishedAtPt": "2026-09-14 09:24 PM PT",
   "notes": "Phase B2 ten rounds under locked Roadside Dispatch. Job clarity amplified; stage READ LINE/night-road kept; real hotshot/shop/insurance cues seeded.",
   "antiSlopHardBar": {
     "gradients": "stripped_from_chrome",
     "glow": "killed",
     "glassBlur": "killed",
     "materials": "flat_panels_plus_real_photos"
+  },
+  "prUrl": "https://github.com/Btheriot83/buildgames-teleprompter/pull/7",
+  "prMerged": true,
+  "mainSha": "a102baf5aa25e177eb147f9c374c127f6fc58bfb",
+  "liveHttp": 200,
+  "deployUrl": "https://buildgames-teleprompter.vercel.app",
+  "liveSmoke": {
+    "ok": true,
+    "atPt": "2026-09-14 09:24 PM PT",
+    "checks": [
+      "GET / 200",
+      "hero WRITE CUE \u2192 OPEN STAGE \u2192 SCROLL",
+      "Open stage \u2192 Pause scroll",
+      "flat chrome no decorative gradients"
+    ]
   }
 }
