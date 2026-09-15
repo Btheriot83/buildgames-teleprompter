@@ -34,19 +34,21 @@ export const DEFAULT_SETTINGS: PromptSettings = {
 
 export const SAMPLE_SCRIPT: Script = {
   id: 'sample-dispatch-001',
-  title: 'Sample — roadside wrap',
-  body: `Alright crew — this is your MileCue sample.
+  title: 'Dispatch wrap — sample',
+  body: `Eyes on the amber line.
 
-Keep your eyes on the amber line. Breathe on the commas. Let the scroll do the walking.
+Thank them. Name the fault. Give the ETA. Close clean.
 
-Today we roll a short dispatch: thank the customer, name the issue, give the ETA, and close clean.
+Breathe on the commas.
+Let the scroll carry you.
 
-One — open with calm. Two — state the facts without fluff. Three — own the next step.
+If the line sits high, move the marker.
+If you’re rushing, tap ↓.
+Space starts. Space stops.
 
-If the marker feels high, drag it. If the pace feels hot, tap down arrow. Space starts and stops.
+This cue stays on this machine.
+Export when you leave.
 
-This copy lives only in your browser. Export anytime. No accounts. No cloud.
-
-End of sample. Hit Escape to leave the prompt stage.`,
+Esc exits the stage.`,
   updatedAt: Date.now(),
 }

@@ -48,6 +48,38 @@ export default function App() {
     setToasts((t) => [...t, { id, text, kind }])
   }, [])
 
+  const [tightening, setTightening] = useState(false)
+
+  const onTighten = async () => {
+    if (!selected || !selected.body.trim()) {
+      pushToast('Write something first', 'err')
+      return
+    }
+    setTightening(true)
+    try {
+      const res = await fetch('/api/tighten', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ text: selected.body, mode: 'teleprompter' }),
+      })
+      const data = (await res.json()) as { text?: string; error?: string; hint?: string; model?: string }
+      if (!res.ok) {
+        pushToast(data.error || data.hint || 'Tighten failed', 'err')
+        return
+      }
+      if (!data.text) {
+        pushToast('Empty AI response', 'err')
+        return
+      }
+      updateSelected({ body: data.text })
+      pushToast(data.model ? `Cut down · ${data.model}` : 'Cut down for the stage', 'ok')
+    } catch {
+      pushToast('Tighten network error', 'err')
+    } finally {
+      setTightening(false)
+    }
+  }
+
   const updateSelected = (patch: Partial<Script>) => {
     if (!selected) return
     const next = scripts.map((s) =>
@@ -60,7 +92,7 @@ export default function App() {
     const s = createScript(`Cue ${scripts.length + 1}`)
     persist([s, ...scripts])
     setSelectedId(s.id)
-    pushToast('Script created', 'ok')
+    pushToast('Cue filed', 'ok')
   }
 
   const onDelete = () => {
@@ -107,7 +139,7 @@ export default function App() {
     if (!selected || !selected.body.trim()) {
       setTitleError(true)
       window.setTimeout(() => setTitleError(false), 600)
-      pushToast('Add script body first', 'err')
+      pushToast('Write something first', 'err')
       return
     }
     setView('prompt')
@@ -139,7 +171,7 @@ export default function App() {
         <div className="brand">
           <span className="brand-mark" aria-hidden />
           <h1>MileCue</h1>
-          <span className="tag">local teleprompter</span>
+          <span className="tag">local cue</span>
         </div>
         <div className="topbar-actions">
           <button type="button" className="btn" onClick={onExport}>
@@ -160,7 +192,7 @@ export default function App() {
             }}
           />
           <button type="button" className="btn btn-primary" onClick={onNew} data-testid="new-script">
-            New script
+            New cue
           </button>
         </div>
       </header>
@@ -214,11 +246,21 @@ export default function App() {
           <main className="editor">
             {!selected ? (
               <div className="empty-hero">
+                <video
+                  className="empty-motion"
+                  src="/asphalt-drift.mp4"
+                  poster="/asphalt-marker.jpg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  aria-hidden
+                />
                 <div className="stripe" />
-                <h2>No cue loaded</h2>
-                <p>Create a script or pick one from the roadside library.</p>
+                <h2>Empty board</h2>
+                <p>Nothing on the board. Write a cue, or grab one from the library.</p>
                 <button type="button" className="btn btn-primary" onClick={onNew}>
-                  New script
+                  New cue
                 </button>
               </div>
             ) : (
@@ -234,11 +276,20 @@ export default function App() {
                   />
                   <button
                     type="button"
+                    className="btn btn-ai"
+                    onClick={() => void onTighten()}
+                    disabled={tightening}
+                    data-testid="tighten-ai"
+                  >
+                    {tightening ? 'Cutting…' : 'Cut for stage'}
+                  </button>
+                  <button
+                    type="button"
                     className="btn btn-primary"
                     onClick={openPrompt}
                     data-testid="open-prompt"
                   >
-                    Open prompt
+                    Open stage
                   </button>
                   <button type="button" className="btn btn-danger" onClick={onDelete}>
                     Delete
@@ -252,14 +303,14 @@ export default function App() {
                   spellCheck
                   aria-label="Script body"
                   data-testid="script-body"
-                  placeholder="Write the lines you’ll deliver…"
+                  placeholder="Lines you’ll say — short beats, blank line for a pause."
                 />
                 <div className="hint-row">
                   <span>
-                    Autosave on blur · data in <kbd>localStorage</kbd>
+                    Saves here. Tighten when the draft rambles.
                   </span>
                   <span>
-                    Prompt: <kbd>Space</kbd> play · <kbd>M</kbd> mirror · <kbd>Esc</kbd> exit
+                    Stage: <kbd>Space</kbd> · <kbd>M</kbd> mirror · <kbd>Esc</kbd> out
                   </span>
                 </div>
               </>
