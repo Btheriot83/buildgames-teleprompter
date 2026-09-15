@@ -61,5 +61,13 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - shot: gauntlet/shots-r4/r6-error-shake.png
 - transitions: error-state-shake → Open stage with empty cue / import fail; toast+success-check already on ok paths
 - verdict: vs target/bar — feedback is real interaction not CSS-only; original still wins polish of empty-to-record fantasy
-- commit: 627a962
+- commit: 52260b0
+
+
+## r7 — transitions (panel-reveal on Open stage)
+- files: src/components/PromptView.tsx (t-panel-reveal data-state=in), src/index.css
+- shot: gauntlet/shots-r4/r7-stage-panel-reveal.png
+- transitions: panel-reveal → Open stage enter
+- verdict: vs target — stage enter feels intentional; vs bar — original device mock still cleaner empty-to-record fantasy
+- commit: cbdcb33
 

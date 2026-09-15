@@ -332,7 +332,8 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
 
   return (
     <div
-      className={`prompt-stage is-entering${playing ? " is-playing" : ""}`}
+      className={`prompt-stage is-entering t-panel-reveal${playing ? " is-playing" : ""}`}
+      data-state="in"
       data-testid="prompt-stage"
       onMouseMove={(e) => {
         bumpChrome()
