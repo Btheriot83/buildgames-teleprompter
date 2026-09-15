@@ -207,10 +207,10 @@ export default function App() {
           </div>
         </div>
         <div className="topbar-actions">
-          <button type="button" className="btn" onClick={onExport}>
+          <button type="button" className="btn btn-quiet" onClick={onExport}>
             Export
           </button>
-          <button type="button" className="btn" onClick={() => fileRef.current?.click()}>
+          <button type="button" className="btn btn-quiet" onClick={() => fileRef.current?.click()}>
             Import
           </button>
           <input
@@ -224,7 +224,7 @@ export default function App() {
               e.target.value = ''
             }}
           />
-          <button type="button" className="btn btn-primary" onClick={onNew} data-testid="new-script">
+          <button type="button" className="btn btn-tool" onClick={onNew} data-testid="new-script">
             New cue
           </button>
         </div>
@@ -242,13 +242,12 @@ export default function App() {
           playsInline
         />
         <div className="library-hero-shade" />
-        <div className="library-hero-stripe" aria-hidden />
         <div className="library-hero-copy">
           <p className="hero-kicker">BROWSER TELEPROMPTER</p>
           <h2 className="hero-title">Write cue → Open stage → Scroll</h2>
           <p className="hero-sub">
-            Paste the lines you&apos;ll say. Fullscreen scroll with a reading line. Roadside look is skin —
-            the job is the prompter.
+            Paste spoken lines. Fullscreen scroll with a reading line. Dispatch look is skin — the job is the
+            prompter.
           </p>
           <div className="hero-cta-row">
             <button
@@ -260,15 +259,12 @@ export default function App() {
             >
               {stageReady ? 'Open stage' : 'Write a cue first'}
             </button>
-            <button
-              type="button"
-              className="btn"
-              onClick={() => bodyRef.current?.focus()}
-            >
+            <button type="button" className="btn btn-tool" onClick={() => bodyRef.current?.focus()}>
               Edit cue
             </button>
           </div>
         </div>
+        <div className="library-hero-stripe" aria-hidden />
       </section>
 
       {/* R3: unmistakable 3-step job loop */}
@@ -388,7 +384,7 @@ export default function App() {
                 <div className="stripe" />
                 <h2>No cue yet</h2>
                 <p>Write the words you&apos;ll say on camera. Then open stage and scroll.</p>
-                <button type="button" className="btn btn-primary" onClick={onNew}>
+                <button type="button" className="btn btn-primary btn-stage" onClick={onNew}>
                   New cue
                 </button>
               </div>
@@ -409,22 +405,22 @@ export default function App() {
                   />
                   <button
                     type="button"
-                    className="btn btn-ai"
-                    onClick={() => void onTighten()}
-                    disabled={tightening}
-                    data-testid="tighten-ai"
-                  >
-                    {tightening ? 'Cutting…' : 'Cut for stage'}
-                  </button>
-                  <button
-                    type="button"
                     className="btn btn-primary btn-stage"
                     onClick={openPrompt}
                     data-testid="open-prompt"
                   >
                     Open stage
                   </button>
-                  <button type="button" className="btn btn-danger" onClick={onDelete}>
+                  <button
+                    type="button"
+                    className="btn btn-tool"
+                    onClick={() => void onTighten()}
+                    disabled={tightening}
+                    data-testid="tighten-ai"
+                  >
+                    {tightening ? 'Cutting…' : 'Cut for stage'}
+                  </button>
+                  <button type="button" className="btn btn-quiet" onClick={onDelete}>
                     Delete
                   </button>
                 </div>
@@ -432,17 +428,17 @@ export default function App() {
                 {/* R4: mini stage preview — shows scroll job before opening */}
                 {stageReady && (
                   <div className="stage-preview" aria-hidden>
-                    <div className="stage-preview-cap">STAGE PREVIEW · scroll job</div>
+                    <div className="stage-preview-cap">STAGE PREVIEW · how the cue scrolls</div>
                     <div className="stage-preview-frame">
                       <div className="stage-preview-marker">
                         <span>READ</span>
                         <span className="stage-preview-bar" />
                         <span>LINE</span>
                       </div>
-                      <pre className="stage-preview-text">{previewLines(selected.body)}</pre>
+                      <pre className="stage-preview-text">{previewLines(selected.body, 2)}</pre>
                     </div>
                     <button type="button" className="btn btn-primary btn-stage stage-preview-go" onClick={openPrompt}>
-                      Open fullscreen stage
+                      Open stage
                     </button>
                   </div>
                 )}

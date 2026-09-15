@@ -24,6 +24,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
   const chunksRef = useRef<Blob[]>([])
   const recognitionRef = useRef<SpeechRecognition | null>(null)
   const tokenIndexRef = useRef(0)
+  const scrubbingRef = useRef(false)
 
   const [playing, setPlaying] = useState(false)
   const [chromeVisible, setChromeVisible] = useState(true)
@@ -37,22 +38,26 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
   speedRef.current = settings.speed
   playingRef.current = playing
 
+  const maxOffset = useCallback(() => {
+    return Math.max(0, (textRef.current?.scrollHeight ?? 0) - window.innerHeight * 0.42)
+  }, [])
+
   const applyOffset = useCallback(() => {
     const el = textRef.current
     if (!el) return
     el.style.transform = `translateY(${-offsetRef.current}px)`
-    const max = Math.max(1, (el.scrollHeight ?? 0) - window.innerHeight * 0.4)
+    const max = Math.max(1, maxOffset())
     setScrollPct(Math.min(100, Math.round((offsetRef.current / max) * 100)))
-  }, [])
+  }, [maxOffset])
 
   const tick = useCallback(
     (ts: number) => {
-      if (playingRef.current) {
+      if (playingRef.current && !scrubbingRef.current) {
         if (lastTs.current == null) lastTs.current = ts
         const dt = (ts - lastTs.current) / 1000
         lastTs.current = ts
         offsetRef.current += speedRef.current * dt
-        const max = Math.max(0, (textRef.current?.scrollHeight ?? 0) - window.innerHeight * 0.4)
+        const max = maxOffset()
         if (offsetRef.current > max) {
           offsetRef.current = max
           playingRef.current = false
@@ -64,7 +69,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
       }
       rafRef.current = requestAnimationFrame(tick)
     },
-    [applyOffset],
+    [applyOffset, maxOffset],
   )
 
   useEffect(() => {
@@ -76,7 +81,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
     setChromeVisible(true)
     window.clearTimeout(idleTimer.current)
     if (playingRef.current) {
-      idleTimer.current = window.setTimeout(() => setChromeVisible(false), 2600)
+      idleTimer.current = window.setTimeout(() => setChromeVisible(false), 2800)
     }
   }, [])
 
@@ -184,6 +189,22 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
     [onSettings, settings],
   )
 
+  const nudgeSpeed = (delta: number) => patch({ speed: clamp(settings.speed + delta, 8, 240) })
+  const nudgeSize = (delta: number) => patch({ fontSize: clamp(settings.fontSize + delta, 28, 120) })
+
+  // Wheel scrub — teleprompter tool feel
+  useEffect(() => {
+    const onWheel = (e: WheelEvent) => {
+      if (!(e.target as HTMLElement)?.closest?.('.prompt-stage')) return
+      e.preventDefault()
+      bumpChrome()
+      offsetRef.current = clamp(offsetRef.current + e.deltaY * 0.85, 0, maxOffset())
+      applyOffset()
+    }
+    window.addEventListener('wheel', onWheel, { passive: false })
+    return () => window.removeEventListener('wheel', onWheel)
+  }, [applyOffset, bumpChrome, maxOffset])
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement)?.tagName
@@ -201,12 +222,12 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
       }
       if (e.key === 'ArrowUp') {
         e.preventDefault()
-        patch({ speed: clamp(settings.speed + 8, 8, 240) })
+        nudgeSpeed(8)
         return
       }
       if (e.key === 'ArrowDown') {
         e.preventDefault()
-        patch({ speed: clamp(settings.speed - 8, 8, 240) })
+        nudgeSpeed(-8)
         return
       }
       if (e.key === 'ArrowLeft') {
@@ -219,6 +240,16 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
         e.preventDefault()
         offsetRef.current += jumpPx(settings.speed)
         applyOffset()
+        return
+      }
+      if (e.key === '[' || e.key === '-') {
+        e.preventDefault()
+        nudgeSize(-4)
+        return
+      }
+      if (e.key === ']' || e.key === '=' || e.key === '+') {
+        e.preventDefault()
+        nudgeSize(4)
         return
       }
       if (e.key === 'r' || e.key === 'R') {
@@ -240,6 +271,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings, onExit, applyOffset, bumpChrome, patch])
 
   const startRec = () => {
@@ -279,11 +311,40 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
     setRecording(false)
   }
 
+  const onScrubStart = (clientY: number) => {
+    scrubbingRef.current = true
+    bumpChrome()
+    const ratio = clamp(clientY / window.innerHeight, 0, 1)
+    offsetRef.current = ratio * maxOffset()
+    applyOffset()
+  }
+
+  const onScrubMove = (clientY: number) => {
+    if (!scrubbingRef.current) return
+    const ratio = clamp(clientY / window.innerHeight, 0, 1)
+    offsetRef.current = ratio * maxOffset()
+    applyOffset()
+  }
+
+  const onScrubEnd = () => {
+    scrubbingRef.current = false
+  }
+
   return (
     <div
-      className="prompt-stage is-entering"
+      className={`prompt-stage is-entering${playing ? " is-playing" : ""}`}
       data-testid="prompt-stage"
-      onMouseMove={bumpChrome}
+      onMouseMove={(e) => {
+        bumpChrome()
+        onScrubMove(e.clientY)
+      }}
+      onMouseUp={onScrubEnd}
+      onMouseLeave={onScrubEnd}
+      onTouchMove={(e) => {
+        const t = e.touches[0]
+        if (t) onScrubMove(t.clientY)
+      }}
+      onTouchEnd={onScrubEnd}
       role="application"
       aria-label="Teleprompter stage — scrolling cue"
     >
@@ -312,7 +373,22 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
         </span>
       </div>
 
-      <div className="stage-progress" aria-hidden>
+      <div
+        className="stage-progress"
+        role="slider"
+        aria-label="Scroll position"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={scrollPct}
+        data-testid="scroll-scrub"
+        onMouseDown={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect()
+          const ratio = clamp((e.clientX - rect.left) / rect.width, 0, 1)
+          offsetRef.current = ratio * maxOffset()
+          applyOffset()
+          bumpChrome()
+        }}
+      >
         <div className="stage-progress-fill" style={{ width: `${scrollPct}%` }} />
       </div>
 
@@ -325,9 +401,16 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
         >
           <span className="stage-start-kicker">SCROLL THE CUE</span>
           <span className="stage-start-main">Space · Start scroll</span>
-          <span className="stage-start-sub">Reading line stays put. Text rolls up.</span>
+          <span className="stage-start-sub">Wheel to scrub. Reading line stays put.</span>
         </button>
       )}
+
+      {/* Flat reading veil — high-contrast column like a real prompter */}
+      <div
+        className="stage-read-veil"
+        style={{ width: `${Math.min(96, settings.textWidth + 8)}%` }}
+        aria-hidden
+      />
 
       <div
         className={`prompt-marker${playing ? ' is-playing' : ''}`}
@@ -339,7 +422,18 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
         <span className="prompt-marker-cap prompt-marker-cap-r">LINE</span>
       </div>
 
-      <div className="prompt-scroll">
+      <div
+        className="prompt-scroll"
+        onMouseDown={(e) => {
+          if ((e.target as HTMLElement).closest('.prompt-chrome, .stage-topbar, .stage-start-hint, button, input, label'))
+            return
+          onScrubStart(e.clientY)
+        }}
+        onTouchStart={(e) => {
+          const t = e.touches[0]
+          if (t) onScrubStart(t.clientY)
+        }}
+      >
         <div
           ref={textRef}
           className="prompt-text"
@@ -356,44 +450,84 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
 
       <div className={`prompt-chrome${chromeVisible ? '' : ' is-hidden'}`}>
         <div className="prompt-controls">
+          {/* Transport cluster — real teleprompter tool buttons */}
+          <div className="transport" role="group" aria-label="Scroll transport">
+            <button
+              type="button"
+              className="btn btn-transport btn-scroll"
+              data-testid="play-toggle"
+              onClick={() => setPlaying((p) => !p)}
+            >
+              <span className="transport-glyph" aria-hidden>
+                {playing ? '❚❚' : '▶'}
+              </span>
+              {playing ? 'Pause' : 'Play'}
+            </button>
+            <button
+              type="button"
+              className="btn btn-tool"
+              data-testid="reset-scroll"
+              onClick={() => {
+                offsetRef.current = 0
+                applyOffset()
+              }}
+              title="Reset scroll (R)"
+            >
+              Reset
+            </button>
+          </div>
+
+          <div className="control-cluster" role="group" aria-label="Scroll speed">
+            <span className="cluster-label">Speed</span>
+            <button type="button" className="btn btn-nudge" onClick={() => nudgeSpeed(-8)} aria-label="Slower">
+              −
+            </button>
+            <span className="speed-readout" data-testid="speed-readout">
+              {settings.speed}
+              <em>px/s</em>
+            </span>
+            <button type="button" className="btn btn-nudge" onClick={() => nudgeSpeed(8)} aria-label="Faster">
+              +
+            </button>
+            <label className="slider-wrap slider-inline">
+              <input
+                type="range"
+                min={8}
+                max={240}
+                value={settings.speed}
+                onChange={(e) => patch({ speed: Number(e.target.value) })}
+                aria-label="Speed slider"
+              />
+            </label>
+          </div>
+
+          <div className="control-cluster" role="group" aria-label="Type size">
+            <span className="cluster-label cluster-aa">
+              <span className="aa-sm">A</span>
+              <span className="aa-lg">A</span>
+            </span>
+            <button type="button" className="btn btn-nudge" onClick={() => nudgeSize(-4)} aria-label="Smaller type">
+              −
+            </button>
+            <span className="font-readout">{settings.fontSize}px</span>
+            <button type="button" className="btn btn-nudge" onClick={() => nudgeSize(4)} aria-label="Larger type">
+              +
+            </button>
+            <label className="slider-wrap slider-inline">
+              <input
+                type="range"
+                min={28}
+                max={120}
+                value={settings.fontSize}
+                onChange={(e) => patch({ fontSize: Number(e.target.value) })}
+                aria-label="Font size slider"
+              />
+            </label>
+          </div>
+
           <button
             type="button"
-            className="btn btn-primary btn-scroll"
-            data-testid="play-toggle"
-            onClick={() => setPlaying((p) => !p)}
-          >
-            {playing ? 'Pause scroll' : 'Start scroll'}
-          </button>
-          <button type="button" className="btn" onClick={onExit} data-testid="exit-prompt">
-            Exit stage
-          </button>
-          <span className="speed-readout" data-testid="speed-readout">
-            {settings.speed} px/s
-          </span>
-          <label className="slider-wrap">
-            Speed
-            <input
-              type="range"
-              min={8}
-              max={240}
-              value={settings.speed}
-              onChange={(e) => patch({ speed: Number(e.target.value) })}
-            />
-          </label>
-          <label className="slider-wrap">
-            Size
-            <input
-              type="range"
-              min={28}
-              max={120}
-              value={settings.fontSize}
-              onChange={(e) => patch({ fontSize: Number(e.target.value) })}
-            />
-          </label>
-          <span className="font-readout">{settings.fontSize}px</span>
-          <button
-            type="button"
-            className={`btn${settings.mirror ? ' is-on' : ''}`}
+            className={`btn btn-tool${settings.mirror ? ' is-on' : ''}`}
             data-testid="mirror-toggle"
             onClick={() => patch({ mirror: !settings.mirror })}
           >
@@ -401,11 +535,14 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
           </button>
           <button
             type="button"
-            className={`btn${moreOpen ? ' is-on' : ''}`}
+            className={`btn btn-tool${moreOpen ? ' is-on' : ''}`}
             onClick={() => setMoreOpen((v) => !v)}
             data-testid="more-controls"
           >
             More
+          </button>
+          <button type="button" className="btn btn-exit" onClick={onExit} data-testid="exit-prompt">
+            Exit
           </button>
 
           <div className="prompt-more" hidden={!moreOpen}>
@@ -441,7 +578,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
             </label>
             <button
               type="button"
-              className={`btn${settings.cameraOn ? ' is-on' : ''}`}
+              className={`btn btn-tool${settings.cameraOn ? ' is-on' : ''}`}
               onClick={() => patch({ cameraOn: !settings.cameraOn })}
             >
               Camera
@@ -460,7 +597,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
               </label>
             )}
             {settings.cameraOn && !recording && (
-              <button type="button" className="btn" onClick={startRec}>
+              <button type="button" className="btn btn-tool" onClick={startRec}>
                 Record
               </button>
             )}
@@ -472,7 +609,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
             {speechOk && (
               <button
                 type="button"
-                className={`btn${settings.voiceExperimental ? ' is-on' : ''}`}
+                className={`btn btn-tool${settings.voiceExperimental ? ' is-on' : ''}`}
                 onClick={() => patch({ voiceExperimental: !settings.voiceExperimental })}
                 title="Experimental"
               >
@@ -482,7 +619,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
           </div>
         </div>
         <div className="prompt-keys">
-          Teleprompter · Space start/pause scroll · ↑↓ speed · ←→ jump · R reset · M mirror · F fullscreen · Esc exit
+          Space play/pause · Wheel scrub · ↑↓ speed · [ ] size · ←→ jump · R reset · M mirror · Esc exit
         </div>
       </div>
     </div>

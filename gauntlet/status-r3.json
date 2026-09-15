@@ -1,0 +1,66 @@
+{
+  "status": "phase_b3_complete",
+  "product": "MileCue",
+  "slug": "teleprompter",
+  "phase": "B3",
+  "demoUrl": "https://buildgames-teleprompter.vercel.app",
+  "bar": "https://www.teleprompter.com/",
+  "path": "/workspace/build-games/apps/teleprompter",
+  "identityHeld": true,
+  "aesthetic": "MileCue / Roadside Dispatch",
+  "reseed": false,
+  "jobFirst": "write cue \u2192 Open stage \u2192 scroll (teleprompter); dispatch is skin",
+  "phaseB3": {
+    "roundsCompleted": 20,
+    "roundsTarget": 20,
+    "workbench": "apps/teleprompter/gauntlet/workbench-r3.md",
+    "focus": [
+      "fonts_hierarchy_vs_original",
+      "contrast_no_wash",
+      "teleprompter_tool_buttons",
+      "stage_craft_scroll_ux",
+      "flat_no_gradient_bar",
+      "real_cue_scripts"
+    ],
+    "brandonNote": "MileCue NOT close or better \u2014 close stage craft + type + controls gap",
+    "honestCriticStart": 3.8,
+    "honestCriticEnd": 5.6,
+    "criticNote": "Original still wins overall; stage readability + transport deck closed largest craft gaps under locked identity"
+  },
+  "shots": [
+    "apps/teleprompter/gauntlet/shots/b3-original-home.png",
+    "apps/teleprompter/gauntlet/shots/b3-original-app-signin.png",
+    "apps/teleprompter/gauntlet/shots/b3-live-before-library.png",
+    "apps/teleprompter/gauntlet/shots/b3-after-library.png",
+    "apps/teleprompter/gauntlet/shots/b3-after-stage-hint.png",
+    "apps/teleprompter/gauntlet/shots/b3-after-stage-scroll.png",
+    "apps/teleprompter/gauntlet/shots/b3-after-stage-controls.png"
+  ],
+  "topCraftFixes": [
+    "Stage black reading veil + white 64px prompt (vs washed road photo)",
+    "Transport deck: Play / Speed (\u2212/+/slider) / AA size clusters like a real prompter",
+    "Button hierarchy: Open stage sole amber primary; tools/quiet secondary",
+    "Type hierarchy: Plex sentence-case cue titles; Condensed only for brand/display",
+    "Scroll UX: wheel scrub, drag scrub, seekable progress, [ ] size keys",
+    "Hero stripe moved under copy; stage preview marker on rail not through glyphs"
+  ],
+  "tests": {
+    "vitest": "pass",
+    "playwrightCoreLoop": "pass",
+    "build": "pass"
+  },
+  "antiSlopHardBar": {
+    "gradients": "stripped_from_chrome",
+    "glow": "killed",
+    "glassBlur": "killed",
+    "materials": "flat_panels_plus_real_photos"
+  },
+  "finishedAtUtc": "2026-09-15T04:38:54Z",
+  "finishedAtPt": "2026-09-14 9:38 PM PT",
+  "notes": "Phase B3 twenty rounds under locked Roadside Dispatch. Craft focus vs teleprompter.com: stage veil, transport controls, type/contrast, scroll UX. Honest critic ~5.6 \u2014 closer, not better.",
+  "prUrl": null,
+  "prMerged": false,
+  "liveHttp": null,
+  "deployUrl": "https://buildgames-teleprompter.vercel.app",
+  "liveSmoke": null
+}

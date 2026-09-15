@@ -1,21 +1,21 @@
 @import './transitions.css';
 
 :root {
-  --asphalt: #12110f;
-  --asphalt-2: #1a1916;
-  --panel: #23211c;
-  --panel-2: #2c2923;
-  --line: #3d3930;
-  --amber: #e8952a;
-  --amber-dim: #b8731a;
-  --amber-hot: #ffb84a;
-  --rust: #b85428;
-  --sand: #d4c7ab;
-  --fog: #8f8878;
-  --ink: #f2ebe0;
+  --asphalt: #0e0d0b;
+  --asphalt-2: #161411;
+  --panel: #1e1c18;
+  --panel-2: #28251f;
+  --line: #4a453a;
+  --amber: #f0a020;
+  --amber-dim: #c47812;
+  --amber-hot: #ffc14d;
+  --rust: #c45a2a;
+  --sand: #e8dcc4;
+  --fog: #9a917f;
+  --ink: #f8f3ea;
   --hivis: #c6d94a;
-  --danger: #d9543a;
-  --ok: #6dbf6a;
+  --danger: #e05a3c;
+  --ok: #5fbf6a;
   --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
   --font-ui: 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
@@ -1294,4 +1294,604 @@ a {
 
 .hint-row {
   color: #b8ae96;
+}
+
+
+/* ============================================================
+   Phase B3 craft — fonts, contrast, buttons, stage, scroll UX
+   Roadside Dispatch locked. Flat chrome. No decorative gradients.
+   ============================================================ */
+
+.btn-tool {
+  background: var(--panel-2);
+  border-color: var(--line);
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.btn-tool:hover {
+  border-color: color-mix(in srgb, var(--amber) 40%, var(--line));
+  background: #322e27;
+}
+
+.btn-tool.is-on {
+  border-color: var(--amber);
+  color: var(--amber-hot);
+  background: #1a1610;
+}
+
+.btn-quiet {
+  background: transparent;
+  border-color: transparent;
+  color: var(--fog);
+  font-size: 0.8rem;
+}
+
+.btn-quiet:hover {
+  color: #e8a898;
+  border-color: color-mix(in srgb, var(--danger) 35%, transparent);
+  background: rgba(217, 84, 58, 0.08);
+}
+
+.btn-exit {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--fog);
+  margin-left: auto;
+}
+
+.btn-exit:hover {
+  color: var(--ink);
+  border-color: #6a6356;
+}
+
+.btn-nudge {
+  width: 1.85rem;
+  height: 1.85rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+  background: #1a1814;
+  color: var(--sand);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.btn-nudge:hover {
+  border-color: var(--amber);
+  color: var(--amber-hot);
+}
+
+.btn-transport {
+  min-width: 6.75rem;
+  gap: 0.45rem;
+  padding: 0.55rem 1rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 1.05rem;
+}
+
+.transport-glyph {
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.transport {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding-right: 0.55rem;
+  border-right: 1px solid #3a3630;
+  margin-right: 0.15rem;
+}
+
+.control-cluster {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid #3a3630;
+  border-radius: 2px;
+  background: #141210;
+}
+
+.cluster-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-right: 0.15rem;
+}
+
+.cluster-aa {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.12rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.aa-sm {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--fog);
+}
+
+.aa-lg {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--sand);
+}
+
+.slider-inline input[type='range'] {
+  width: 72px;
+}
+
+.speed-readout,
+.font-readout {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink);
+  min-width: 3.6rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.speed-readout em {
+  font-style: normal;
+  font-size: 0.58rem;
+  color: var(--fog);
+  margin-left: 0.2rem;
+  letter-spacing: 0.04em;
+}
+
+/* Hero: stripe under copy — never through the title */
+.library-hero {
+  height: clamp(7.25rem, 13vh, 9.75rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.library-hero-copy {
+  flex: 1;
+  max-width: 48rem;
+  padding: 0.55rem 1.25rem 0.35rem;
+}
+
+.library-hero-stripe {
+  position: relative;
+  left: auto;
+  right: auto;
+  top: auto;
+  height: 6px;
+  transform: none;
+  flex-shrink: 0;
+  opacity: 1;
+}
+
+.hero-title {
+  font-size: clamp(1.65rem, 3.8vw, 2.65rem);
+  color: var(--ink);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.03em;
+}
+
+.hero-sub {
+  color: var(--fog);
+  font-size: 0.9rem;
+  max-width: 34rem;
+}
+
+.hero-kicker {
+  color: var(--amber-hot);
+}
+
+/* Job loop: quieter, less wash */
+.job-loop {
+  padding: 0.4rem 1.15rem;
+  background: var(--asphalt-2);
+}
+
+.job-loop-label strong {
+  color: var(--ink);
+  font-size: 0.88rem;
+}
+
+.job-loop-label em {
+  color: var(--fog);
+}
+
+.job-loop-num {
+  color: var(--amber-hot);
+}
+
+/* Cue board type hierarchy — titles readable, not all shouting */
+.script-card .title {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: #14110c;
+  line-height: 1.2;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.script-card .meta {
+  color: #5a5246;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-size: 0.68rem;
+}
+
+.sidebar-head h2 {
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+
+.brand h1 {
+  color: var(--ink);
+  font-size: clamp(1.65rem, 2.8vw, 2.2rem);
+}
+
+.brand .tag {
+  color: var(--fog);
+}
+
+.title-input {
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  color: var(--ink);
+  background: var(--asphalt);
+  border-color: var(--line);
+  border-bottom-color: var(--amber);
+}
+
+.body-input {
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--asphalt);
+  border-color: var(--line);
+}
+
+.editor {
+  background: rgba(14, 13, 11, 0.88);
+}
+
+.editor-job-hint {
+  color: var(--fog);
+}
+
+/* Stage preview: marker on top rail, text clear below */
+.stage-preview {
+  grid-template-columns: 1fr auto;
+  background: var(--asphalt);
+  border-color: var(--line);
+  border-left-color: var(--amber);
+}
+
+.stage-preview-frame {
+  display: flex;
+  flex-direction: column;
+  min-height: 4.2rem;
+  padding: 0;
+  background: #050403;
+}
+
+.stage-preview-marker {
+  position: relative;
+  left: auto;
+  right: auto;
+  top: auto;
+  transform: none;
+  flex-shrink: 0;
+  height: 1.35rem;
+  padding: 0 0.35rem;
+  background: #12110f;
+  border-bottom: 1px solid #2a2620;
+}
+
+.stage-preview-text {
+  padding: 0.55rem 0.7rem 0.65rem;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: #fff;
+  text-shadow: none;
+  font-weight: 600;
+}
+
+.stage-preview-go {
+  align-self: center;
+}
+
+/* —— Stage craft: readable like a real teleprompter —— */
+.stage-road-img {
+  filter: brightness(0.42) contrast(1.25) saturate(0.75);
+  opacity: 0.85;
+}
+
+.stage-road-vignette {
+  background: rgba(0, 0, 0, 0.62);
+}
+
+.stage-road-vignette::before,
+.stage-road-vignette::after {
+  height: 22%;
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.stage-road-grain {
+  opacity: 0.18;
+}
+
+.stage-read-veil {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.78);
+  border-left: 1px solid rgba(255, 255, 255, 0.04);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.prompt-scroll::before,
+.prompt-scroll::after {
+  height: 16%;
+  background: rgba(0, 0, 0, 0.82);
+  z-index: 3;
+}
+
+.prompt-text {
+  position: relative;
+  z-index: 2;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  color: #ffffff;
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.9),
+    0 2px 10px rgba(0, 0, 0, 0.65);
+  padding: 40vh 0 58vh;
+}
+
+/* Reading line: thinner, tool-like — still amber mile marker */
+.prompt-marker {
+  height: 10px;
+  z-index: 3;
+}
+
+.prompt-marker-paint {
+  background: var(--amber);
+  border-top: 1px solid #1a1208;
+  border-bottom: 1px solid #1a1208;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.65);
+}
+
+.prompt-marker-cap {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  padding: 0.18rem 0.4rem;
+  border-width: 1px;
+  box-shadow: none;
+}
+
+.prompt-marker::before,
+.prompt-marker::after {
+  border-top-width: 9px;
+  border-bottom-width: 9px;
+}
+
+.prompt-marker::before {
+  border-left-width: 12px;
+}
+
+.prompt-marker::after {
+  border-right-width: 12px;
+}
+
+.prompt-marker.is-playing .prompt-marker-paint {
+  animation: mile-marker-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes mile-marker-pulse {
+  0%,
+  100% {
+    opacity: 0.95;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.2);
+  }
+}
+
+.prompt-chrome {
+  background: #0a0908;
+  border-top: 1px solid #3a3630;
+  padding: 0.7rem 0.95rem 0.85rem;
+}
+
+.prompt-controls {
+  gap: 0.5rem 0.55rem;
+  max-width: 1180px;
+}
+
+.prompt-controls .btn {
+  background: #1a1814;
+  border-color: #3f3b32;
+  color: var(--ink);
+}
+
+.prompt-controls .btn-transport,
+.prompt-controls .btn-scroll {
+  background: var(--amber);
+  color: #1a1208;
+  border-color: var(--amber-dim);
+}
+
+.prompt-controls .btn-transport:hover,
+.prompt-controls .btn-scroll:hover {
+  background: var(--amber-hot);
+  color: #1a1208;
+}
+
+.prompt-controls .btn-tool.is-on {
+  border-color: var(--amber);
+  color: var(--amber-hot);
+}
+
+.prompt-keys {
+  color: #6e675c;
+  margin-top: 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+.stage-topbar {
+  background: #0a0908;
+  border-bottom-color: #3a3630;
+}
+
+.stage-badge {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  padding: 0.22rem 0.45rem;
+  border-width: 1px;
+}
+
+.stage-script-title {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--ink);
+  text-shadow: none;
+}
+
+.stage-scroll-pct {
+  color: var(--fog);
+  font-variant-numeric: tabular-nums;
+}
+
+.stage-progress {
+  background: #1a1814;
+  height: 2px;
+}
+
+.stage-start-hint {
+  background: #0e0d0b;
+  border-width: 2px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.65);
+}
+
+.stage-start-main {
+  color: var(--ink);
+  font-size: clamp(1.4rem, 3.5vw, 2.1rem);
+}
+
+.stage-start-sub {
+  color: var(--fog);
+}
+
+/* Topbar flat */
+.topbar {
+  background: var(--asphalt-2);
+  border-bottom-width: 2px;
+  box-shadow: none;
+}
+
+.sidebar {
+  background: var(--asphalt-2);
+}
+
+/* Kill washed AI button look — Cut for stage is a tool now */
+.btn-ai {
+  border-color: var(--line);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.hint-row {
+  color: var(--fog);
+}
+
+.hint-row kbd {
+  color: var(--ink);
+  background: var(--panel);
+}
+
+.stage-progress {
+  height: 4px;
+  cursor: ew-resize;
+  z-index: 6;
+}
+
+.stage-progress:hover {
+  height: 6px;
+}
+
+.stage-progress-fill {
+  background: var(--amber-hot);
+}
+
+.prompt-stage.is-playing .btn-transport {
+  box-shadow: inset 0 0 0 2px #1a1208;
+}
+
+.btn-quiet {
+  padding: 0.4rem 0.65rem;
+}
+
+.topbar-actions .btn-quiet {
+  color: var(--fog);
+}
+
+.topbar-actions .btn-quiet:hover {
+  color: var(--ink);
+  border-color: var(--line);
+  background: var(--panel);
+}
+
+/* Editor job label hierarchy */
+.editor-job-kicker {
+  color: var(--amber-hot);
+  font-size: 0.64rem;
+}
+
+.body-label {
+  color: var(--fog);
+  letter-spacing: 0.12em;
+}
+
+/* Ticket selected: stronger tool selection, less wash */
+.script-card.is-active {
+  outline: 2px solid var(--amber-hot);
+  border-color: var(--amber-hot);
+}
+
+.ticket-mile {
+  background: #0e0d0b;
+}
+
+.ticket-mile-num {
+  color: var(--amber-hot);
 }
