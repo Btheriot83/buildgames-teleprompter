@@ -2532,3 +2532,20 @@ a {
   padding: 0.35rem 1.15rem;
   font-size: 0.78rem;
 }
+
+/* r5 reading line — hardware hairline craft */
+.prompt-marker {
+  height: 3px;
+}
+.prompt-marker-cap {
+  font-size: 0.58rem;
+  opacity: 0.95;
+}
+.stage-progress {
+  height: 3px;
+  background: #1a1814;
+}
+.stage-progress-fill {
+  background: var(--amber);
+  height: 100%;
+}
