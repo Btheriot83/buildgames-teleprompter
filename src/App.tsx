@@ -14,6 +14,10 @@ import type { PromptSettings, Script } from './lib/types'
 
 type View = 'library' | 'prompt'
 
+function mileLabel(index: number): string {
+  return String(index + 1).padStart(2, '0')
+}
+
 export default function App() {
   const [booting, setBooting] = useState(true)
   const [scripts, setScripts] = useState<Script[]>([])
@@ -167,11 +171,18 @@ export default function App() {
 
   return (
     <div className="app">
+      <div className="asphalt-field" aria-hidden>
+        <div className="asphalt-field-img" />
+        <div className="asphalt-field-wash" />
+      </div>
+
       <header className="topbar">
         <div className="brand">
-          <span className="brand-mark" aria-hidden />
-          <h1>MileCue</h1>
-          <span className="tag">local cue</span>
+          <img className="brand-mark-img" src="/milecue-mark.jpg" alt="" width={36} height={36} />
+          <div className="brand-copy">
+            <h1>MileCue</h1>
+            <span className="tag">Roadside dispatch · local cue</span>
+          </div>
         </div>
         <div className="topbar-actions">
           <button type="button" className="btn" onClick={onExport}>
@@ -197,6 +208,25 @@ export default function App() {
         </div>
       </header>
 
+      <section className="library-hero" aria-label="MileCue atmosphere">
+        <video
+          className="library-hero-video"
+          src="/asphalt-drift.mp4"
+          poster="/night-road.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div className="library-hero-shade" />
+        <div className="library-hero-stripe" aria-hidden />
+        <div className="library-hero-copy">
+          <p className="hero-kicker">MILE MARKER · LIVE BOARD</p>
+          <h2 className="hero-title">Eyes on the amber line</h2>
+          <p className="hero-sub">File the cue. Open stage. Let the stripe carry you.</p>
+        </div>
+      </section>
+
       {booting ? (
         <div className="layout skeleton-lib" aria-busy>
           <aside className="sidebar">
@@ -214,20 +244,23 @@ export default function App() {
           <aside className="sidebar">
             <div className="sidebar-head">
               <h2 className="t-texts-reveal" data-state="in">
-                Library
+                Dispatch board
               </h2>
-              <span className="t-digit-group is-animating" aria-label={`${scripts.length} scripts`}>
-                {String(scripts.length)
-                  .split('')
-                  .map((d, i) => (
-                    <span key={`${d}-${i}`} className="t-digit" data-stagger={i}>
-                      {d}
-                    </span>
-                  ))}
+              <span className="board-count" aria-label={`${scripts.length} scripts`}>
+                <span className="board-count-label">CUES</span>
+                <span className="t-digit-group is-animating">
+                  {String(scripts.length)
+                    .split('')
+                    .map((d, i) => (
+                      <span key={`${d}-${i}`} className="t-digit" data-stagger={i}>
+                        {d}
+                      </span>
+                    ))}
+                </span>
               </span>
             </div>
             <ul className="script-list">
-              {scripts.map((s) => (
+              {scripts.map((s, idx) => (
                 <li key={s.id}>
                   <button
                     type="button"
@@ -235,8 +268,22 @@ export default function App() {
                     onClick={() => setSelectedId(s.id)}
                     data-testid={`script-${s.id}`}
                   >
-                    <p className="title">{s.title || 'Untitled'}</p>
-                    <p className="meta">{new Date(s.updatedAt).toLocaleString()}</p>
+                    <span className="ticket-mile" aria-hidden>
+                      <span className="ticket-mile-num">{mileLabel(idx)}</span>
+                      <span className="ticket-mile-cap">MI</span>
+                    </span>
+                    <span className="ticket-body">
+                      <p className="title">{s.title || 'Untitled'}</p>
+                      <p className="meta">
+                        FILED {new Date(s.updatedAt).toLocaleString(undefined, {
+                          month: 'short',
+                          day: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        })}
+                      </p>
+                    </span>
+                    <span className="ticket-stub" aria-hidden />
                   </button>
                 </li>
               ))}
@@ -285,7 +332,7 @@ export default function App() {
                   </button>
                   <button
                     type="button"
-                    className="btn btn-primary"
+                    className="btn btn-primary btn-stage"
                     onClick={openPrompt}
                     data-testid="open-prompt"
                   >
@@ -306,9 +353,7 @@ export default function App() {
                   placeholder="Lines you’ll say — short beats, blank line for a pause."
                 />
                 <div className="hint-row">
-                  <span>
-                    Saves here. Tighten when the draft rambles.
-                  </span>
+                  <span>Saves here. Tighten when the draft rambles.</span>
                   <span>
                     Stage: <kbd>Space</kbd> · <kbd>M</kbd> mirror · <kbd>Esc</kbd> out
                   </span>
