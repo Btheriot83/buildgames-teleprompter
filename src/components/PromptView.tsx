@@ -332,7 +332,8 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
 
   return (
     <div
-      className={`prompt-stage is-entering${playing ? " is-playing" : ""}`}
+      className={`prompt-stage is-entering t-panel-reveal${playing ? " is-playing" : ""}`}
+      data-state="in"
       data-testid="prompt-stage"
       onMouseMove={(e) => {
         bumpChrome()
@@ -368,6 +369,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
       <div className={`stage-topbar${chromeVisible ? '' : ' is-hidden'}`}>
         <span className="stage-badge">TELEPROMPTER</span>
         <span className="stage-script-title">{script.title || 'Untitled cue'}</span>
+        {settings.mirror && <span className="stage-mirror-chip">MIRROR</span>}
         <span className="stage-scroll-pct" data-testid="scroll-pct">
           {scrollPct}%
         </span>
@@ -399,9 +401,8 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
           data-testid="start-hint"
           onClick={() => setPlaying(true)}
         >
-          <span className="stage-start-kicker">SCROLL THE CUE</span>
-          <span className="stage-start-main">Space · Start scroll</span>
-          <span className="stage-start-sub">Wheel to scrub. Reading line stays put.</span>
+          <span className="stage-start-main">Space to scroll</span>
+          <span className="stage-start-sub">Wheel scrub · reading line fixed</span>
         </button>
       )}
 

@@ -36,6 +36,7 @@ export default function App() {
   const [toasts, setToasts] = useState<ToastMsg[]>([])
   const [titleError, setTitleError] = useState(false)
   const [bodyDirty, setBodyDirty] = useState(false)
+  const [digitPop, setDigitPop] = useState(0)
   const fileRef = useRef<HTMLInputElement>(null)
   const bodyTimer = useRef(0)
   const bodyRef = useRef<HTMLTextAreaElement>(null)
@@ -107,6 +108,7 @@ export default function App() {
     const s = createScript(`Cue ${scripts.length + 1}`)
     persist([s, ...scripts])
     setSelectedId(s.id)
+    setDigitPop((n) => n + 1)
     pushToast('Cue filed', 'ok')
     window.setTimeout(() => bodyRef.current?.focus(), 50)
   }
@@ -230,76 +232,35 @@ export default function App() {
         </div>
       </header>
 
-      {/* R1+R3: job-first hero — teleprompter loop, dispatch is atmosphere only */}
-      <section className="library-hero" aria-label="What MileCue does">
-        <video
-          className="library-hero-video"
-          src="/asphalt-drift.mp4"
-          poster="/night-road.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-        <div className="library-hero-shade" />
-        <div className="library-hero-copy">
+      {/* r8 dream: thin job banner — closer to target.png (no video soup) */}
+      <section className="job-banner" aria-label="What MileCue does">
+        <div className="job-banner-copy">
           <p className="hero-kicker">BROWSER TELEPROMPTER</p>
           <h2 className="hero-title">Write cue → Open stage → Scroll</h2>
-          <p className="hero-sub">
-            Paste spoken lines. Fullscreen scroll with a reading line. Dispatch look is skin — the job is the
-            prompter.
-          </p>
-          <div className="hero-cta-row">
-            <button
-              type="button"
-              className="btn btn-primary btn-stage"
-              onClick={openPrompt}
-              disabled={!stageReady}
-              data-testid="hero-open-stage"
-            >
-              {stageReady ? 'Open stage' : 'Write a cue first'}
-            </button>
-            <button type="button" className="btn btn-tool" onClick={() => bodyRef.current?.focus()}>
-              Edit cue
-            </button>
-          </div>
         </div>
-        <div className="library-hero-stripe" aria-hidden />
+        <div className="hero-cta-row">
+          <button
+            type="button"
+            className="btn btn-primary btn-stage"
+            onClick={openPrompt}
+            disabled={!stageReady}
+            data-testid="hero-open-stage"
+          >
+            {stageReady ? 'Open stage' : 'Write a cue first'}
+          </button>
+        </div>
+        <div className="job-banner-stripe" aria-hidden />
       </section>
 
-      {/* R3: unmistakable 3-step job loop */}
-      <ol className="job-loop" aria-label="Teleprompter job in three steps">
-        <li className="job-loop-step is-active">
-          <span className="job-loop-num">01</span>
-          <span className="job-loop-label">
-            <strong>Write cue</strong>
-            <em>Script in the editor</em>
-          </span>
-        </li>
-        <li className="job-loop-arrow" aria-hidden>
-          →
-        </li>
-        <li className={`job-loop-step${stageReady ? ' is-ready' : ''}`}>
-          <span className="job-loop-num">02</span>
-          <span className="job-loop-label">
-            <strong>Open stage</strong>
-            <em>Fullscreen prompter</em>
-          </span>
-        </li>
-        <li className="job-loop-arrow" aria-hidden>
-          →
-        </li>
-        <li className="job-loop-step">
-          <span className="job-loop-num">03</span>
-          <span className="job-loop-label">
-            <strong>Scroll</strong>
-            <em>Space plays the line</em>
-          </span>
-        </li>
-      </ol>
+      {/* r8: status chip only — job line lives in banner */}
+      <div className="job-rail job-rail-slim" aria-label="Stage readiness">
+        <span className={`job-rail-status${stageReady ? ' is-ready' : ''}`}>
+          {stageReady ? 'Stage ready · Space scrolls on stage' : 'Write lines first'}
+        </span>
+      </div>
 
       {booting ? (
-        <div className="layout skeleton-lib" aria-busy>
+        <div className="layout skeleton-lib loading-shell t-skeleton-reveal" aria-busy data-state="in">
           <aside className="sidebar">
             <div className="t-skeleton" />
             <div className="t-skeleton" />
@@ -315,14 +276,14 @@ export default function App() {
           <aside className="sidebar">
             <div className="sidebar-head">
               <div className="sidebar-head-copy">
-                <p className="sidebar-kicker">TELEPROMPTER CUES</p>
+                <p className="sidebar-kicker">CUES</p>
                 <h2 className="t-texts-reveal" data-state="in">
                   Cue board
                 </h2>
               </div>
               <span className="board-count" aria-label={`${scripts.length} scripts`}>
                 <span className="board-count-label">CUES</span>
-                <span className="t-digit-group is-animating">
+                <span className="t-digit-group is-animating" key={digitPop}>
                   {String(scripts.length)
                     .split('')
                     .map((d, i) => (
@@ -391,12 +352,12 @@ export default function App() {
             ) : (
               <>
                 <div className="editor-job-label">
-                  <span className="editor-job-kicker">STEP 01 · SCRIPT</span>
-                  <span className="editor-job-hint">Lines you read on the teleprompter stage</span>
+                  <span className="editor-job-kicker">CURRENT CUE</span>
+                  <span className="editor-job-hint">Script you scroll on stage</span>
                 </div>
                 <div className="editor-toolbar">
                   <input
-                    className={`title-input t-input${titleError ? ' is-error' : ''}`}
+                    className={`title-input t-input${titleError ? ' is-error t-error-state-shake is-shaking' : ''}`}
                     value={selected.title}
                     onChange={(e) => updateSelected({ title: e.target.value })}
                     onBlur={() => saveScripts(scripts)}
@@ -428,7 +389,7 @@ export default function App() {
                 {/* R4: mini stage preview — shows scroll job before opening */}
                 {stageReady && (
                   <div className="stage-preview" aria-hidden>
-                    <div className="stage-preview-cap">STAGE PREVIEW · how the cue scrolls</div>
+                    <div className="stage-preview-cap">STAGE PREVIEW</div>
                     <div className="stage-preview-frame">
                       <div className="stage-preview-marker">
                         <span>READ</span>
@@ -437,19 +398,16 @@ export default function App() {
                       </div>
                       <pre className="stage-preview-text">{previewLines(selected.body, 2)}</pre>
                     </div>
-                    <button type="button" className="btn btn-primary btn-stage stage-preview-go" onClick={openPrompt}>
-                      Open stage
-                    </button>
                   </div>
                 )}
 
                 <label className="body-label" htmlFor="cue-body">
-                  Cue script
+                  Script
                 </label>
                 <textarea
                   id="cue-body"
                   ref={bodyRef}
-                  className={`body-input t-input${titleError ? ' is-error' : ''}`}
+                  className={`body-input t-input${titleError ? ' is-error t-error-state-shake is-shaking' : ''}`}
                   value={selected.body}
                   onChange={(e) => onBodyChange(e.target.value)}
                   onBlur={onBodyBlur}

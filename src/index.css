@@ -753,9 +753,10 @@ a {
   white-space: pre-wrap;
   word-break: break-word;
   font-family: var(--font-prompt);
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75), 0 0 2px rgba(0, 0, 0, 0.9);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.95), 0 3px 18px rgba(0, 0, 0, 0.85);
   will-change: transform;
 }
 
@@ -1894,4 +1895,355 @@ a {
 
 .ticket-mile-num {
   color: var(--amber-hot);
+}
+
+/* ============================================================
+   Phase B4 INTEGRITY — per-round craft vs teleprompter.com
+   Roadside Dispatch LOCKED. Flat chrome. No decorative gradients.
+   ============================================================ */
+
+/* r2: contrast — blacker reading column, quieter road wash */
+.stage-read-veil {
+  background: rgba(0, 0, 0, 0.92);
+}
+.stage-road-img {
+  filter: brightness(0.28) contrast(1.05) saturate(0.55);
+}
+.stage-road-vignette {
+  background: rgba(0, 0, 0, 0.62);
+}
+.prompt-scroll::before,
+.prompt-scroll::after {
+  background: rgba(0, 0, 0, 0.9);
+}
+.prompt-text {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.95), 0 3px 18px rgba(0, 0, 0, 0.85);
+}
+
+/* r3: buttons — transport Play dominates like original orange tool CTA */
+.btn-transport {
+  min-width: 8.5rem;
+  padding: 0.7rem 1.25rem;
+  font-size: 1.15rem;
+  border-width: 2px;
+}
+.prompt-controls .btn-transport {
+  background: var(--amber-hot);
+  border-color: var(--amber);
+  color: #1a1208;
+}
+.prompt-controls .btn-exit {
+  opacity: 0.72;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.7rem;
+}
+.prompt-controls .btn-exit:hover {
+  opacity: 1;
+}
+.btn-nudge {
+  width: 2rem;
+  height: 2rem;
+  border-width: 1.5px;
+}
+.control-cluster {
+  background: #12100e;
+  border-color: #4a453a;
+  padding: 0.28rem 0.55rem;
+}
+
+/* r4: bar gap — compact job rail replaces numbered 01·02·03 strip */
+.job-loop { display: none !important; }
+.job-rail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 1.15rem;
+  border-bottom: 1px solid var(--line);
+  background: #141210;
+}
+.job-rail-copy {
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.job-rail-copy span {
+  color: var(--amber);
+  margin: 0 0.35rem;
+  font-weight: 700;
+}
+.job-rail-status {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fog);
+}
+.job-rail-status.is-ready {
+  color: var(--amber-hot);
+}
+.library-hero {
+  height: clamp(5.5rem, 11vh, 7.75rem);
+}
+.library-hero-copy .hero-sub {
+  display: none;
+}
+.hero-title {
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem) !important;
+}
+
+/* r5: bar gap / dream — denser cue cards (target: quieter tickets) */
+.ticket-mile {
+  width: 2.4rem;
+  min-width: 2.4rem;
+  padding: 0.35rem 0.2rem;
+}
+.ticket-mile-num {
+  font-size: 1.05rem;
+}
+.ticket-mile-cap {
+  font-size: 0.55rem;
+  opacity: 0.75;
+}
+.ticket-stub {
+  width: 0.45rem;
+  opacity: 0.35;
+}
+.script-card {
+  padding: 0.45rem 0.5rem;
+  gap: 0.45rem;
+}
+.script-card .title {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.script-card .meta {
+  font-size: 0.68rem;
+}
+.sidebar {
+  width: min(18.5rem, 32vw);
+}
+
+/* r6: transitions — error-state-shake on empty Open stage / import fail */
+.title-input.t-error-state-shake.is-shaking,
+.body-input.t-error-state-shake.is-shaking {
+  border-color: var(--danger);
+  outline-color: color-mix(in srgb, var(--danger) 55%, transparent);
+}
+
+/* r7: transitions — panel-reveal on stage enter (real Open stage action) */
+.prompt-stage.t-panel-reveal[data-state="in"] {
+  animation: t-panel-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* r8: dream — thin job banner (close live→target.png) */
+.library-hero { display: none !important; }
+.job-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.15rem 1rem;
+  border-bottom: 3px solid var(--amber);
+  background: #12110f;
+}
+.job-banner-copy { min-width: 0; }
+.job-banner .hero-kicker {
+  margin: 0 0 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: var(--amber);
+}
+.job-banner .hero-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.45rem, 3vw, 2.1rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.05;
+}
+.job-banner-stripe {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--amber);
+}
+.job-rail-slim {
+  justify-content: flex-end;
+  padding: 0.3rem 1.15rem;
+}
+.job-rail-slim .job-rail-status { margin-left: auto; }
+
+/* r9: dream — editor / sidebar labels match target.png craft */
+.editor-job-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+.editor-job-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--amber-hot);
+}
+.editor-job-hint {
+  font-size: 0.78rem;
+  color: var(--fog);
+}
+.sidebar-kicker {
+  letter-spacing: 0.2em;
+}
+.stage-preview {
+  margin-bottom: 0.75rem;
+  border: 1px solid #3a3630;
+  background: #0a0908;
+  padding: 0.55rem 0.65rem 0.65rem;
+}
+.stage-preview-frame {
+  min-height: 5.2rem;
+}
+.stage-preview-text {
+  font-size: 1.05rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+.body-input {
+  min-height: 14rem;
+  border-width: 1px;
+  background: #141210;
+}
+
+/* r10: dream/bar — thinner reading line like studio guide */
+.prompt-marker {
+  height: 6px;
+}
+.prompt-marker-paint {
+  opacity: 0.95;
+}
+.prompt-marker-cap {
+  font-size: 0.62rem;
+  padding: 0.12rem 0.35rem;
+  border-width: 1px;
+}
+.prompt-marker::before,
+.prompt-marker::after {
+  border-top-width: 8px;
+  border-bottom-width: 8px;
+}
+.prompt-marker::before { border-left-width: 10px; }
+.prompt-marker::after { border-right-width: 10px; }
+.stage-preview-bar {
+  height: 4px;
+}
+
+/* r11: dream — quieter start affordance */
+.stage-start-hint {
+  padding: 0.75rem 1.1rem;
+  box-shadow: none;
+  border-width: 1px;
+}
+.stage-start-main {
+  font-size: clamp(1.15rem, 2.5vw, 1.65rem);
+  letter-spacing: 0.06em;
+}
+.stage-start-sub {
+  font-size: 0.75rem;
+  color: var(--fog);
+}
+
+/* r12: transitions — skeleton-reveal on boot shell */
+.skeleton-lib.t-skeleton-reveal {
+  animation: t-skeleton-in 360ms ease both;
+}
+@keyframes t-skeleton-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* r13: fonts — cue title sentence case (not billboard shout) */
+.title-input {
+  text-transform: none;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+}
+
+/* r14: buttons — single Open stage primary (toolbar); preview is proof only */
+.stage-preview {
+  grid-template-columns: 1fr;
+}
+.stage-preview-go { display: none !important; }
+
+/* r15: dream — quieter stage topbar (don't compete with prompt) */
+.stage-topbar {
+  padding: 0.4rem 0.85rem;
+  background: rgba(0, 0, 0, 0.72);
+}
+.stage-badge {
+  font-size: 0.68rem;
+  padding: 0.15rem 0.4rem;
+  border-width: 1px;
+}
+.stage-script-title {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-weight: 500;
+  color: #d8d0c0;
+  text-shadow: none;
+}
+
+/* r16: contrast — mirror chip when mirrored */
+.stage-mirror-chip {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  color: #1a1208;
+  background: var(--amber);
+  padding: 0.15rem 0.4rem;
+  border: 1px solid #1a1208;
+}
+.prompt-controls .btn-tool.is-on {
+  background: #1f1a12;
+}
+
+/* r18: dream — flatter cue cards (less ticket paper wash vs target) */
+.script-card {
+  background: #1a1814;
+  background-image: none;
+}
+.script-card .ticket-body {
+  background: transparent;
+}
+.ticket-stub {
+  display: none;
+}
+
+/* r19: contrast — quieter hint row (don't compete with editor) */
+.hint-row {
+  font-size: 0.72rem;
+  color: #7a7466;
+  opacity: 0.9;
+}
+.hint-row kbd {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  border: 1px solid #3a3630;
+  padding: 0.05rem 0.28rem;
+  background: #12100e;
 }

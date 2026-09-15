@@ -10,3 +10,4 @@ playwright-report
 .vercel
 .env*
 .env.local
+.dream-loop
