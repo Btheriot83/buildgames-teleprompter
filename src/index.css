@@ -3642,3 +3642,21 @@ a {
   font-size: 1rem;
 }
 
+/* ============================================================
+   ELEVATE elevate7 — make-it-alive: VoiceTrack-class + Read&Record
+   ============================================================ */
+.btn-voice.is-on {
+  border-color: var(--amber);
+  color: var(--amber-hot);
+  background: #1a1712;
+}
+.btn-record {
+  border-radius: 2px;
+  width: 2.2rem;
+  height: 2.2rem;
+}
+.prompt-chrome .btn-tool.is-on {
+  border-color: var(--amber-dim);
+  color: var(--amber-hot);
+}
+
