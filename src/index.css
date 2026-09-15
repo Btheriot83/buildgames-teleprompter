@@ -3620,3 +3620,25 @@ a {
   transform: translateY(var(--prompt-y, 0px));
 }
 
+/* ============================================================
+   ELEVATE elevate6 — hand-rewrite-copy wired (Cueglass Desk)
+   ============================================================ */
+.brand .tag {
+  text-transform: none;
+  letter-spacing: 0.03em;
+  color: var(--fog);
+  font-size: 0.7rem;
+}
+.job-banner .hero-kicker {
+  color: var(--amber);
+  letter-spacing: 0.18em;
+}
+.job-banner .hero-title {
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
+  font-weight: 600;
+  color: var(--ink);
+}
+.sidebar-head h2 {
+  font-size: 1rem;
+}
+
