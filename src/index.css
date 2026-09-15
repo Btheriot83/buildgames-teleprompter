@@ -2715,3 +2715,46 @@ a {
   color: #ffffff;
   text-shadow: 0 1px 0 #000, 0 3px 10px rgba(0, 0, 0, 0.9);
 }
+
+/* r3 buttons — Play as sole hot CTA (dream-target weight) */
+.btn-transport {
+  min-width: 3.4rem;
+  min-height: 3.4rem;
+  width: 3.4rem;
+  height: 3.4rem;
+  padding: 0;
+  border-radius: 999px;
+  font-size: 0;
+  letter-spacing: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--amber);
+  color: #120e08;
+  border: none;
+}
+.btn-transport .transport-glyph {
+  font-size: 1.15rem;
+  line-height: 1;
+  color: #120e08;
+}
+.btn-transport:hover {
+  background: var(--amber-hot);
+  color: #120e08;
+}
+.prompt-controls .btn-tool,
+.prompt-controls .btn-exit {
+  min-height: 2.2rem;
+  background: transparent;
+  border: 1px solid #2e2a24;
+  color: var(--fog);
+  font-weight: 500;
+}
+.prompt-controls .btn-exit {
+  border-color: transparent;
+  color: #6e675c;
+}
+.transport {
+  gap: 0.55rem;
+  margin-right: 0.55rem;
+}
