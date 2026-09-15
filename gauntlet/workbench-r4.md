@@ -26,5 +26,26 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - files: src/index.css (.btn-transport larger/hotter amber; Exit quieter; nudge + clusters tighter tool deck)
 - shot: gauntlet/shots-r4/r3-buttons-transport.png
 - verdict: Play reads as the one orange tool CTA closer to original's Start-for-free weight pattern; Exit no longer competes — original still has cleaner consumer chrome overall
-- commit: a9d46e9
+- commit: a0cd9cd
+
+
+## Dream-loop
+- baseline: `.dream-loop/baseline-library.png`, `.dream-loop/baseline-stage.png`
+- target: `.dream-loop/target.png` (also `gauntlet/shots-r4/dream-target.png`) — refined UI screenshot under Roadside Dispatch toward teleprompter.com craft clarity
+- critic axis: live → target AND live → teleprompter.com bar
+
+## Transitions.dev wiring log
+| Recipe | Action |
+|--------|--------|
+| toast (`t-toast`) | ToastHost on autosave / cue filed / tighten / errors |
+| success-check (`t-success-check`) | ok toasts (Cue filed, Autosaved, Cut down) |
+| number-pop-in (`t-digit`) | Cue board count digits |
+| texts-reveal (`t-texts-reveal`) | Cue board heading |
+| skeleton (`.t-skeleton`) | Boot library skeleton |
+
+## r4 — bar gap (compact job rail vs numbered steps)
+- files: src/App.tsx (job-rail), src/index.css (.job-rail; hide .job-loop; shorter hero), .gitignore (.dream-loop), gauntlet/shots-r4/dream-target.png
+- shot: gauntlet/shots-r4/r4-bar-gap-job-rail.png
+- verdict: vs target+bar — killing 01·02·03 strip closes anti-slop and density gap; hero still taller/busier than dream target and original still wins light SaaS clarity
+- commit: dc76462
 

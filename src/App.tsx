@@ -267,36 +267,15 @@ export default function App() {
         <div className="library-hero-stripe" aria-hidden />
       </section>
 
-      {/* R3: unmistakable 3-step job loop */}
-      <ol className="job-loop" aria-label="Teleprompter job in three steps">
-        <li className="job-loop-step is-active">
-          <span className="job-loop-num">01</span>
-          <span className="job-loop-label">
-            <strong>Write cue</strong>
-            <em>Script in the editor</em>
-          </span>
-        </li>
-        <li className="job-loop-arrow" aria-hidden>
-          →
-        </li>
-        <li className={`job-loop-step${stageReady ? ' is-ready' : ''}`}>
-          <span className="job-loop-num">02</span>
-          <span className="job-loop-label">
-            <strong>Open stage</strong>
-            <em>Fullscreen prompter</em>
-          </span>
-        </li>
-        <li className="job-loop-arrow" aria-hidden>
-          →
-        </li>
-        <li className="job-loop-step">
-          <span className="job-loop-num">03</span>
-          <span className="job-loop-label">
-            <strong>Scroll</strong>
-            <em>Space plays the line</em>
-          </span>
-        </li>
-      </ol>
+      {/* r4: compact job rail — no numbered marketing steps (anti-slop) */}
+      <div className="job-rail" aria-label="Teleprompter job">
+        <span className="job-rail-copy">
+          Write cue <span aria-hidden>→</span> Open stage <span aria-hidden>→</span> Scroll
+        </span>
+        <span className={`job-rail-status${stageReady ? ' is-ready' : ''}`}>
+          {stageReady ? 'Stage ready' : 'Write lines first'}
+        </span>
+      </div>
 
       {booting ? (
         <div className="layout skeleton-lib" aria-busy>

@@ -1953,3 +1953,46 @@ a {
   border-color: #4a453a;
   padding: 0.28rem 0.55rem;
 }
+
+/* r4: bar gap — compact job rail replaces numbered 01·02·03 strip */
+.job-loop { display: none !important; }
+.job-rail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 1.15rem;
+  border-bottom: 1px solid var(--line);
+  background: #141210;
+}
+.job-rail-copy {
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.job-rail-copy span {
+  color: var(--amber);
+  margin: 0 0.35rem;
+  font-weight: 700;
+}
+.job-rail-status {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fog);
+}
+.job-rail-status.is-ready {
+  color: var(--amber-hot);
+}
+.library-hero {
+  height: clamp(5.5rem, 11vh, 7.75rem);
+}
+.library-hero-copy .hero-sub {
+  display: none;
+}
+.hero-title {
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem) !important;
+}
