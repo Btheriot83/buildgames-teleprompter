@@ -258,7 +258,7 @@ export default function App() {
       </div>
 
       {booting ? (
-        <div className="layout skeleton-lib" aria-busy>
+        <div className="layout skeleton-lib loading-shell t-skeleton-reveal" aria-busy data-state="in">
           <aside className="sidebar">
             <div className="t-skeleton" />
             <div className="t-skeleton" />

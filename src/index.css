@@ -2163,3 +2163,12 @@ a {
   font-size: 0.75rem;
   color: var(--fog);
 }
+
+/* r12: transitions — skeleton-reveal on boot shell */
+.skeleton-lib.t-skeleton-reveal {
+  animation: t-skeleton-in 360ms ease both;
+}
+@keyframes t-skeleton-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}

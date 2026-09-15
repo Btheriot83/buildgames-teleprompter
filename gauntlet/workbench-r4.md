@@ -44,6 +44,7 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 | skeleton (`.t-skeleton`) | Boot library skeleton |
 | error-state-shake | Empty Open stage / import fail on title+body |
 | panel-reveal | PromptView on Open stage enter |
+| skeleton-reveal | Boot library shell |
 
 ## r4 — bar gap (compact job rail vs numbered steps)
 - files: src/App.tsx (job-rail), src/index.css (.job-rail; hide .job-loop; shorter hero), .gitignore (.dream-loop), gauntlet/shots-r4/dream-target.png
@@ -99,5 +100,13 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - files: src/components/PromptView.tsx, src/index.css
 - shot: gauntlet/shots-r4/r11-start-hint.png
 - verdict: vs target/bar — less billboard over the prompt; original still wins empty-to-record fantasy
-- commit: 0fdd14f
+- commit: 2499ff0
+
+
+## r12 — transitions (skeleton-reveal on boot)
+- files: src/App.tsx (loading-shell t-skeleton-reveal), src/index.css
+- shot: gauntlet/shots-r4/r12-skeleton-boot.png
+- transitions: skeleton-reveal → initial boot skeleton
+- verdict: vs bar — boot feedback is real; original marketing still cleaner first paint
+- commit: fd4b13d
 
