@@ -42,6 +42,8 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 | number-pop-in (`t-digit`) | Cue board count digits |
 | texts-reveal (`t-texts-reveal`) | Cue board heading |
 | skeleton (`.t-skeleton`) | Boot library skeleton |
+| error-state-shake | Empty Open stage / import fail on title+body |
+| panel-reveal | PromptView on Open stage enter |
 
 ## r4 — bar gap (compact job rail vs numbered steps)
 - files: src/App.tsx (job-rail), src/index.css (.job-rail; hide .job-loop; shorter hero), .gitignore (.dream-loop), gauntlet/shots-r4/dream-target.png
@@ -76,5 +78,12 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - files: src/App.tsx (job-banner; slim status rail), src/index.css (hide .library-hero)
 - shot: gauntlet/shots-r4/r8-dream-job-banner.png
 - verdict: vs target.png — closer (no video soup, job line + one Open stage); vs bar — original still wins bright consumer polish
-- commit: 574dba8
+- commit: 5d4830e
+
+
+## r9 — dream (editor CURRENT CUE chrome)
+- files: src/App.tsx (CURRENT CUE / CUES / STAGE PREVIEW labels), src/index.css
+- shot: gauntlet/shots-r4/r9-dream-editor-chrome.png
+- verdict: vs target — labels closer; vs bar — still denser/tool-dark than white SaaS original
+- commit: bc7b11d
 

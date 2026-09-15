@@ -274,7 +274,7 @@ export default function App() {
           <aside className="sidebar">
             <div className="sidebar-head">
               <div className="sidebar-head-copy">
-                <p className="sidebar-kicker">TELEPROMPTER CUES</p>
+                <p className="sidebar-kicker">CUES</p>
                 <h2 className="t-texts-reveal" data-state="in">
                   Cue board
                 </h2>
@@ -350,8 +350,8 @@ export default function App() {
             ) : (
               <>
                 <div className="editor-job-label">
-                  <span className="editor-job-kicker">STEP 01 · SCRIPT</span>
-                  <span className="editor-job-hint">Lines you read on the teleprompter stage</span>
+                  <span className="editor-job-kicker">CURRENT CUE</span>
+                  <span className="editor-job-hint">Script you scroll on stage</span>
                 </div>
                 <div className="editor-toolbar">
                   <input
@@ -387,7 +387,7 @@ export default function App() {
                 {/* R4: mini stage preview — shows scroll job before opening */}
                 {stageReady && (
                   <div className="stage-preview" aria-hidden>
-                    <div className="stage-preview-cap">STAGE PREVIEW · how the cue scrolls</div>
+                    <div className="stage-preview-cap">STAGE PREVIEW</div>
                     <div className="stage-preview-frame">
                       <div className="stage-preview-marker">
                         <span>READ</span>
@@ -403,7 +403,7 @@ export default function App() {
                 )}
 
                 <label className="body-label" htmlFor="cue-body">
-                  Cue script
+                  Script
                 </label>
                 <textarea
                   id="cue-body"

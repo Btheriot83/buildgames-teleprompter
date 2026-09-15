@@ -2084,3 +2084,44 @@ a {
   padding: 0.3rem 1.15rem;
 }
 .job-rail-slim .job-rail-status { margin-left: auto; }
+
+/* r9: dream — editor / sidebar labels match target.png craft */
+.editor-job-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+.editor-job-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--amber-hot);
+}
+.editor-job-hint {
+  font-size: 0.78rem;
+  color: var(--fog);
+}
+.sidebar-kicker {
+  letter-spacing: 0.2em;
+}
+.stage-preview {
+  margin-bottom: 0.75rem;
+  border: 1px solid #3a3630;
+  background: #0a0908;
+  padding: 0.55rem 0.65rem 0.65rem;
+}
+.stage-preview-frame {
+  min-height: 5.2rem;
+}
+.stage-preview-text {
+  font-size: 1.05rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+.body-input {
+  min-height: 14rem;
+  border-width: 1px;
+  background: #141210;
+}
