@@ -17,10 +17,10 @@
 ## 3. Deliver
 - Core loop: sample script → Open prompt → Play (rAF scroll) → speed/font/mirror → Esc back.
 - Cut: cloud sync, team remotes, VoiceGlide product, captions, social streaming, accounts.
-- transitions.dev (free, real UX): success-check, toast, error-state-shake, skeleton-reveal, texts-reveal, number-pop-in, panel-reveal (chrome), tabs not needed for two-view SPA.
+- transitions.dev (free, real UX): success-check, toast, error-state-shake, skeleton-reveal, texts-reveal, number-pop-in, panel-reveal (chrome).
 - Live demo + App Desk smoke required before Brandon ping.
 
 ## Live evidence
-- Demo: (filled after deploy)
-- Smoke log: docs/live-smoke-log.json
-- Critic: docs/CRITIC_VS_ORIGINAL.md
+- Demo: https://buildgames-teleprompter.vercel.app
+- Smoke log: docs/live-smoke-log.json (scrolled=true, status=200)
+- Critic: docs/CRITIC_VS_ORIGINAL.md (8.9 vs https://www.teleprompter.com/)
