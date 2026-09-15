@@ -414,8 +414,8 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
           data-testid="start-hint"
           onClick={() => setPlaying(true)}
         >
-          <span className="stage-start-main">Space · Play</span>
-          <span className="stage-start-sub">Wheel scrub · line fixed</span>
+          <span className="stage-start-main">Space</span>
+          <span className="stage-start-sub">Play scroll</span>
         </button>
       )}
 
@@ -432,8 +432,6 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
         aria-hidden
       >
         <span className="prompt-marker-paint" />
-        <span className="prompt-marker-cap prompt-marker-cap-l">READ</span>
-        <span className="prompt-marker-cap prompt-marker-cap-r">LINE</span>
       </div>
 
       <div
@@ -497,8 +495,8 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
               −
             </button>
             <span className="speed-readout" data-testid="speed-readout">
-              {settings.speed}
-              <em>px/s</em>
+              {(settings.speed / 48).toFixed(1)}
+              <em>x</em>
             </span>
             <button type="button" className="btn btn-nudge" onClick={() => nudgeSpeed(8)} aria-label="Faster">
               +
