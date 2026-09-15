@@ -65,5 +65,18 @@
   "finishedAtUtc": "2026-09-15T05:16:41Z",
   "finishedAtPt": "2026-09-14 10:16 PM PT",
   "workbench": "apps/teleprompter/gauntlet/workbench-r4.md",
-  "mainSha": "bcafe2e"
+  "mainSha": "bcafe2e",
+  "prUrl": "https://github.com/Btheriot83/buildgames-teleprompter/pull/9",
+  "prMerged": true,
+  "deployUrl": "https://buildgames-teleprompter.vercel.app",
+  "liveHttp": 200,
+  "liveSmoke": {
+    "ok": true,
+    "atPt": "2026-09-14 10:18 PM PT",
+    "checks": [
+      "GET / 200",
+      "prod CSS index-DfgPbzo9.css",
+      "job-banner present in prod CSS"
+    ]
+  }
 }
