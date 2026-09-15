@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { Marketing } from './components/Marketing'
+import { Onboarding, ONBOARD_KEY, isOnboarded } from './components/Onboarding'
 import { PromptView } from './components/PromptView'
 import { ToastHost, type ToastMsg } from './components/Toast'
 import {
@@ -12,7 +14,12 @@ import {
 } from './lib/storage'
 import type { PromptSettings, Script } from './lib/types'
 
-type View = 'library' | 'prompt'
+type Route = 'marketing' | 'desk'
+type DeskView = 'library' | 'prompt'
+
+function pathToRoute(pathname: string): Route {
+  return pathname.startsWith('/app') ? 'desk' : 'marketing'
+}
 
 function previewLines(body: string, n = 3): string {
   return body
@@ -24,26 +31,70 @@ function previewLines(body: string, n = 3): string {
 }
 
 export default function App() {
+  const [route, setRoute] = useState<Route>(() =>
+    typeof window !== 'undefined' ? pathToRoute(window.location.pathname) : 'marketing',
+  )
   const [booting, setBooting] = useState(true)
   const [scripts, setScripts] = useState<Script[]>([])
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [settings, setSettings] = useState<PromptSettings>(() => loadSettings())
-  const [view, setView] = useState<View>('library')
+  const [view, setView] = useState<DeskView>('library')
   const [toasts, setToasts] = useState<ToastMsg[]>([])
   const [titleError, setTitleError] = useState(false)
   const [bodyDirty, setBodyDirty] = useState(false)
   const [digitPop, setDigitPop] = useState(0)
+  const [showOnboard, setShowOnboard] = useState(false)
   const fileRef = useRef<HTMLInputElement>(null)
   const bodyTimer = useRef(0)
   const bodyRef = useRef<HTMLTextAreaElement>(null)
+
+  const goDesk = useCallback(() => {
+    window.history.pushState({}, '', '/app')
+    setRoute('desk')
+  }, [])
+
+  const goMarketing = useCallback(() => {
+    window.history.pushState({}, '', '/')
+    setRoute('marketing')
+    setView('library')
+  }, [])
+
+  useEffect(() => {
+    const onPop = () => setRoute(pathToRoute(window.location.pathname))
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [])
 
   useEffect(() => {
     const list = loadScripts()
     setScripts(list)
     setSelectedId(list[0]?.id ?? null)
+    const url = new URL(window.location.href)
+    if (url.searchParams.get('onboard') === '1') {
+      try {
+        localStorage.removeItem(ONBOARD_KEY)
+      } catch {
+        /* ignore */
+      }
+      url.searchParams.delete('onboard')
+      window.history.replaceState({}, '', url.pathname + url.search)
+      setShowOnboard(true)
+      if (!url.pathname.startsWith('/app')) {
+        window.history.replaceState({}, '', '/app')
+        setRoute('desk')
+      }
+    } else if (pathToRoute(window.location.pathname) === 'desk') {
+      setShowOnboard(!isOnboarded())
+    }
     const t = window.setTimeout(() => setBooting(false), 280)
     return () => clearTimeout(t)
   }, [])
+
+  useEffect(() => {
+    if (route === 'desk' && !booting && !isOnboarded()) {
+      setShowOnboard(true)
+    }
+  }, [route, booting])
 
   const selected = useMemo(
     () => scripts.find((s) => s.id === selectedId) ?? null,
@@ -187,7 +238,37 @@ export default function App() {
     }
   }
 
+  const completeOnboard = (script?: Script, openStage?: boolean) => {
+    setShowOnboard(false)
+    if (script) {
+      const list = loadScripts()
+      setScripts(list)
+      setSelectedId(script.id)
+      if (openStage && script.body.trim()) {
+        setView('prompt')
+      }
+    }
+  }
+
+  const skipOnboard = () => {
+    try {
+      localStorage.setItem(ONBOARD_KEY, '1')
+    } catch {
+      /* ignore */
+    }
+    setShowOnboard(false)
+  }
+
   const stageReady = Boolean(selected?.body.trim())
+
+  if (route === 'marketing') {
+    return (
+      <>
+        <Marketing onOpenDesk={goDesk} />
+        <ToastHost items={toasts} onDismiss={(id) => setToasts((t) => t.filter((x) => x.id !== id))} />
+      </>
+    )
+  }
 
   return (
     <div className="app">
@@ -197,13 +278,13 @@ export default function App() {
       </div>
 
       <header className="topbar">
-        <div className="brand">
+        <button type="button" className="brand" onClick={goMarketing} aria-label="MileCue home">
           <img className="brand-mark-img" src="/milecue-mark.jpg" alt="" width={36} height={36} />
           <div className="brand-copy">
             <h1>MileCue</h1>
             <span className="tag">Cueglass Desk</span>
           </div>
-        </div>
+        </button>
         <div className="topbar-actions">
           <button type="button" className="btn btn-quiet" onClick={onExport}>
             Export
@@ -230,7 +311,7 @@ export default function App() {
 
       <section className="job-banner" aria-label="What MileCue does">
         <div className="job-banner-copy">
-          <p className="hero-kicker">READ &amp; RECORD</p>
+          <p className="hero-kicker">CUEGLASS</p>
           <h2 className="hero-title">Write the cue. Open stage. Scroll.</h2>
         </div>
         <span className={`job-rail-status${stageReady ? ' is-ready' : ''}`}>
@@ -359,7 +440,6 @@ export default function App() {
                   </button>
                 </div>
 
-                {/* R4: mini stage preview — shows scroll job before opening */}
                 {stageReady && (
                   <div className="stage-preview" aria-hidden>
                     <div className="stage-preview-cap">Preview</div>
@@ -412,6 +492,8 @@ export default function App() {
           onToast={pushToast}
         />
       )}
+
+      {showOnboard && <Onboarding onDone={completeOnboard} onSkip={skipOnboard} />}
 
       <ToastHost items={toasts} onDismiss={(id) => setToasts((t) => t.filter((x) => x.id !== id))} />
     </div>
