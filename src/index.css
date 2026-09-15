@@ -2692,3 +2692,26 @@ a {
   font-weight: 600;
   letter-spacing: 0.01em;
 }
+
+/* r2 contrast — deeper cueglass veil vs washed stage */
+.stage-read-veil {
+  background: rgba(0, 0, 0, 0.96);
+  border-left: 1px solid rgba(232, 148, 31, 0.08);
+  border-right: 1px solid rgba(232, 148, 31, 0.08);
+}
+.stage-road-img {
+  opacity: 0.18;
+  filter: brightness(0.28) contrast(1.05) saturate(0.15);
+}
+.stage-road-vignette {
+  background: rgba(0, 0, 0, 0.86);
+}
+.prompt-scroll::before,
+.prompt-scroll::after {
+  height: 16%;
+  background: rgba(0, 0, 0, 0.97);
+}
+.prompt-text {
+  color: #ffffff;
+  text-shadow: 0 1px 0 #000, 0 3px 10px rgba(0, 0, 0, 0.9);
+}
