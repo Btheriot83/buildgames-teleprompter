@@ -3676,3 +3676,30 @@ a {
   background: var(--amber-hot);
 }
 
+/* ============================================================
+   ELEVATE elevate9 — library desk denser (cut leftover shout)
+   ============================================================ */
+.job-banner {
+  padding: 0.45rem 1rem;
+  min-height: 0;
+}
+.sidebar {
+  width: 15rem;
+}
+.script-card .title {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.script-card .meta {
+  font-size: 0.68rem;
+}
+.stage-preview {
+  margin-bottom: 0.55rem;
+}
+.stage-preview-cap {
+  letter-spacing: 0.14em;
+}
+.editor-toolbar .btn-stage {
+  letter-spacing: 0.06em;
+}
+
