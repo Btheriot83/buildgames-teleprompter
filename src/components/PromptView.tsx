@@ -386,18 +386,28 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
         <div className="stage-road-grain" />
       </div>
 
+      {!settings.cameraOn && (
+        <div className="prompt-cam-plate" aria-hidden>
+          <span>Cam off</span>
+        </div>
+      )}
       {settings.cameraOn && (
-        <video
-          ref={videoRef}
-          className="prompt-cam prompt-cam-pip"
-          muted
-          playsInline
-        />
+        <div className="prompt-cam-frame" aria-hidden={!recording}>
+          <video
+            ref={videoRef}
+            className="prompt-cam prompt-cam-pip"
+            muted
+            playsInline
+          />
+          {recording && <span className="pip-rec-chip" data-testid="pip-rec">REC</span>}
+        </div>
       )}
       {camDenied && <div className="cam-note">Camera blocked — cueglass stage</div>}
 
       <div className={`stage-topbar${chromeVisible ? '' : ' is-hidden'}`}>
-        <span className="stage-badge">TELEPROMPTER</span>
+        <span className="stage-badge">STAGE</span>
+        {settings.voiceExperimental && <span className="stage-voice-chip">VOICE</span>}
+        {recording && <span className="stage-rec-chip">REC</span>}
         <span className="stage-script-title">{script.title || 'Untitled cue'}</span>
         {settings.mirror && <span className="stage-mirror-chip">MIRROR</span>}
         <span className="stage-scroll-pct" data-testid="scroll-pct">
@@ -441,7 +451,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
           }}
         >
           <span className="stage-start-main">Space</span>
-          <span className="stage-start-sub">Play scroll</span>
+          <span className="stage-start-sub">to scroll</span>
         </button>
       )}
 
@@ -488,42 +498,8 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
 
       <div className={`prompt-chrome${chromeVisible ? '' : ' is-hidden'}`}>
         <div className="prompt-controls">
-          {/* Transport cluster — real teleprompter tool buttons */}
-          <div className="transport" role="group" aria-label="Scroll transport">
-            <button
-              type="button"
-              className="btn btn-transport btn-scroll"
-              data-testid="play-toggle"
-              onClick={() => {
-                if (playing || countdown != null) {
-                  setCountdown(null)
-                  setPlaying(false)
-                  return
-                }
-                setShowStartHint(false)
-                setCountdown(3)
-              }}
-            >
-              <span className="transport-glyph" aria-hidden>
-                {playing ? '❚❚' : '▶'}
-              </span>
-              {playing ? 'Pause' : 'Play'}
-            </button>
-            <button
-              type="button"
-              className="btn btn-tool"
-              data-testid="reset-scroll"
-              onClick={() => {
-                offsetRef.current = 0
-                applyOffset()
-              }}
-              title="Reset scroll (R)"
-            >
-              Reset
-            </button>
-          </div>
-
-          <div className="control-cluster" role="group" aria-label="Scroll speed">
+          {/* BIGVU-class rail: Speed · Play · Size · Position — explicit order classes */}
+          <div className="control-cluster cluster-speed" role="group" aria-label="Scroll speed">
             <span className="cluster-label">Speed</span>
             <button type="button" className="btn btn-nudge" onClick={() => nudgeSpeed(-8)} aria-label="Slower">
               −
@@ -547,15 +523,46 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
             </label>
           </div>
 
-          <div className="control-cluster" role="group" aria-label="Type size">
-            <span className="cluster-label cluster-aa">
-              <span className="aa-sm">A</span>
-              <span className="aa-lg">A</span>
-            </span>
+          <div className="transport" role="group" aria-label="Scroll transport">
+            <button
+              type="button"
+              className="btn btn-transport btn-scroll"
+              data-testid="play-toggle"
+              onClick={() => {
+                if (playing || countdown != null) {
+                  setCountdown(null)
+                  setPlaying(false)
+                  return
+                }
+                setShowStartHint(false)
+                setCountdown(3)
+              }}
+            >
+              <span className="transport-glyph" aria-hidden>
+                {playing ? '❚❚' : '▶'}
+              </span>
+              <span className="transport-label">{playing ? 'Pause' : 'Play'}</span>
+            </button>
+            <button
+              type="button"
+              className="btn btn-tool btn-reset"
+              data-testid="reset-scroll"
+              onClick={() => {
+                offsetRef.current = 0
+                applyOffset()
+              }}
+              title="Reset scroll (R)"
+            >
+              Reset
+            </button>
+          </div>
+
+          <div className="control-cluster cluster-size" role="group" aria-label="Type size">
+            <span className="cluster-label">Size</span>
             <button type="button" className="btn btn-nudge" onClick={() => nudgeSize(-4)} aria-label="Smaller type">
               −
             </button>
-            <span className="font-readout">{settings.fontSize}px</span>
+            <span className="font-readout">{settings.fontSize}</span>
             <button type="button" className="btn btn-nudge" onClick={() => nudgeSize(4)} aria-label="Larger type">
               +
             </button>
@@ -571,6 +578,40 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
             </label>
           </div>
 
+          <div className="control-cluster cluster-position" role="group" aria-label="Reading line position">
+            <span className="cluster-label">Pos</span>
+            <button
+              type="button"
+              className="btn btn-nudge"
+              onClick={() => patch({ markerY: clamp(settings.markerY - 3, 15, 70) })}
+              aria-label="Raise reading line"
+            >
+              −
+            </button>
+            <span className="pos-readout" data-testid="pos-readout">
+              {settings.markerY}
+            </span>
+            <button
+              type="button"
+              className="btn btn-nudge"
+              onClick={() => patch({ markerY: clamp(settings.markerY + 3, 15, 70) })}
+              aria-label="Lower reading line"
+            >
+              +
+            </button>
+            <label className="slider-wrap slider-inline">
+              <input
+                type="range"
+                min={15}
+                max={70}
+                value={settings.markerY}
+                onChange={(e) => patch({ markerY: Number(e.target.value) })}
+                aria-label="Reading line position"
+                data-testid="marker-slider"
+              />
+            </label>
+          </div>
+
           <button
             type="button"
             className={`btn btn-tool${settings.mirror ? ' is-on' : ''}`}
@@ -578,6 +619,14 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
             onClick={() => patch({ mirror: !settings.mirror })}
           >
             Mirror
+          </button>
+          <button
+            type="button"
+            className={`btn btn-tool${settings.cameraOn ? ' is-on' : ''}`}
+            data-testid="camera-toggle"
+            onClick={() => patch({ cameraOn: !settings.cameraOn })}
+          >
+            Cam
           </button>
           {settings.cameraOn && !recording && (
             <button type="button" className="btn btn-record" data-testid="record-btn" onClick={startRec} aria-label="Record">
@@ -587,6 +636,17 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
           {recording && (
             <button type="button" className="btn btn-record is-hot" data-testid="record-btn" onClick={stopRec} aria-label="Stop recording">
               <span className="record-dot" aria-hidden />
+            </button>
+          )}
+          {speechOk && (
+            <button
+              type="button"
+              className={`btn btn-tool btn-voice${settings.voiceExperimental ? ' is-on' : ''}`}
+              data-testid="voice-toggle"
+              onClick={() => patch({ voiceExperimental: !settings.voiceExperimental })}
+              title="VoiceTrack-class scroll (experimental)"
+            >
+              Voice
             </button>
           )}
           <button
@@ -613,16 +673,6 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
               />
             </label>
             <label className="slider-wrap">
-              Marker
-              <input
-                type="range"
-                min={15}
-                max={70}
-                value={settings.markerY}
-                onChange={(e) => patch({ markerY: Number(e.target.value) })}
-              />
-            </label>
-            <label className="slider-wrap">
               Leading
               <input
                 type="range"
@@ -632,13 +682,6 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
                 onChange={(e) => patch({ lineHeight: Number(e.target.value) / 100 })}
               />
             </label>
-            <button
-              type="button"
-              className={`btn btn-tool${settings.cameraOn ? ' is-on' : ''}`}
-              onClick={() => patch({ cameraOn: !settings.cameraOn })}
-            >
-              Camera
-            </button>
             {settings.cameraOn && (
               <label className="slider-wrap">
                 Cam opacity
@@ -651,26 +694,6 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
                   onChange={(e) => patch({ cameraOpacity: Number(e.target.value) })}
                 />
               </label>
-            )}
-            {settings.cameraOn && !recording && (
-              <button type="button" className="btn btn-tool" onClick={startRec}>
-                Record
-              </button>
-            )}
-            {recording && (
-              <button type="button" className="btn btn-danger" onClick={stopRec}>
-                Stop rec
-              </button>
-            )}
-            {speechOk && (
-              <button
-                type="button"
-                className={`btn btn-tool${settings.voiceExperimental ? ' is-on' : ''}`}
-                onClick={() => patch({ voiceExperimental: !settings.voiceExperimental })}
-                title="Experimental"
-              >
-                Voice (exp)
-              </button>
             )}
           </div>
         </div>

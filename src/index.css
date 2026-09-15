@@ -3370,3 +3370,424 @@ a {
 .prompt-text {
   transform: translateY(var(--prompt-y, 0px));
 }
+
+/* ============================================================
+   ELEVATE elevate1 — BIGVU Speed · Play · Size · Pos rail
+   Fix broken nth-of-type order; surface Position. PLAY FIX held.
+   ============================================================ */
+.prompt-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem 0.7rem;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.prompt-controls .cluster-speed { order: 1; }
+.prompt-controls .transport { order: 2; }
+.prompt-controls .cluster-size { order: 3; }
+.prompt-controls .cluster-position { order: 4; }
+.prompt-controls > .btn-tool { order: 5; }
+.prompt-controls > .btn-record { order: 5; }
+.prompt-controls > .btn-exit { order: 6; opacity: 0.7; }
+.prompt-controls .prompt-more { order: 7; width: 100%; justify-content: center; }
+.prompt-controls .prompt-keys { order: 8; width: 100%; }
+
+.control-cluster {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid #2a2620;
+  border-radius: 2px;
+  background: #100e0c;
+}
+.cluster-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fog);
+  min-width: 2.4rem;
+}
+.pos-readout,
+.font-readout,
+.speed-readout {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  min-width: 2.1rem;
+  text-align: center;
+  color: var(--sand);
+}
+.speed-readout em {
+  font-style: normal;
+  color: var(--fog);
+  margin-left: 0.05rem;
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
+
+/* ============================================================
+   ELEVATE elevate2 — specify-the-look: pure cueglass reading field
+   Script is the stage. Kill road texture competing with Lexend.
+   ============================================================ */
+.stage-road-img {
+  opacity: 0;
+  visibility: hidden;
+}
+.stage-road-vignette {
+  background: #000;
+}
+.stage-road-vignette::before,
+.stage-road-vignette::after {
+  display: none;
+}
+.stage-road-grain { display: none; }
+.stage-read-veil {
+  max-width: 48rem;
+  background: #000;
+  border-left: 1px solid #1a1714;
+  border-right: 1px solid #1a1714;
+}
+.prompt-text {
+  font-family: var(--font-prompt);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  max-width: 44rem;
+  color: #fafaf8;
+  text-shadow: none;
+  transform: translateY(var(--prompt-y, 0px));
+}
+.prompt-scroll::before,
+.prompt-scroll::after {
+  background: #000;
+}
+.prompt-marker {
+  height: 2px;
+}
+.prompt-marker-paint {
+  background: var(--amber);
+  box-shadow: none;
+}
+
+/* ============================================================
+   ELEVATE elevate3 — hardware flat chrome (design-system-from-assets)
+   Hard plate, no soft circle play; rectangular transport.
+   ============================================================ */
+.prompt-chrome {
+  background: #050504;
+  border-top: 2px solid #2e2a24;
+  padding: 0.5rem 0.85rem 0.55rem;
+}
+.btn-transport {
+  width: auto;
+  min-width: 4.6rem;
+  height: 2.65rem;
+  min-height: 2.65rem;
+  border-radius: 2px;
+  padding: 0 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  box-shadow: none;
+  border: 1px solid var(--amber-dim);
+  background: var(--amber);
+  color: #120e08;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.btn-transport .transport-glyph {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+.btn-transport .transport-label {
+  font-size: 0.82rem;
+}
+.btn-nudge {
+  min-width: 1.7rem;
+  min-height: 1.7rem;
+  border-radius: 2px;
+  border: 1px solid #3a3630;
+  background: #161410;
+}
+.slider-inline input[type='range'] {
+  width: 4.5rem;
+  accent-color: var(--amber);
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
+
+/* ============================================================
+   ELEVATE elevate4 — cut-elements: kill MI tickets + quieter hint
+   ============================================================ */
+.ticket-mile,
+.ticket-stub { display: none !important; }
+.script-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.7rem 0.75rem;
+}
+.ticket-body { flex: 1; min-width: 0; }
+.stage-start-hint {
+  opacity: 0.55;
+  border-color: #2a2620;
+  background: #0a0908;
+  max-width: 7.5rem;
+  padding: 0.32rem 0.5rem;
+}
+.stage-start-main {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+}
+.stage-start-sub {
+  font-size: 0.58rem;
+  color: var(--fog);
+}
+
+/* ============================================================
+   ELEVATE elevate5 — remove-ai-tells: hard PIP, no glow countdown
+   ============================================================ */
+.prompt-cam-frame {
+  position: absolute;
+  right: 1rem;
+  bottom: 5.25rem;
+  z-index: 4;
+  width: min(20vw, 180px);
+  pointer-events: none;
+}
+.prompt-cam-pip {
+  position: static !important;
+  right: auto;
+  bottom: auto;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 2px;
+  border: 1px solid #3a3630;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+.pip-rec-chip,
+.stage-rec-chip {
+  position: absolute;
+  top: 0.35rem;
+  left: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  padding: 0.12rem 0.35rem;
+  background: #e05a3c;
+  color: #fff;
+  border-radius: 1px;
+}
+.stage-rec-chip,
+.stage-voice-chip {
+  position: static;
+  margin-left: 0.35rem;
+}
+.stage-voice-chip {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  padding: 0.12rem 0.4rem;
+  border: 1px solid var(--amber-dim);
+  color: var(--amber);
+  border-radius: 999px;
+}
+.stage-countdown {
+  color: #fff;
+  text-shadow: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+.stage-badge {
+  border-radius: 2px;
+  background: transparent;
+  color: var(--fog);
+  border: 1px solid #2a2620;
+  letter-spacing: 0.16em;
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
+
+/* ============================================================
+   ELEVATE elevate6 — hand-rewrite-copy wired (Cueglass Desk)
+   ============================================================ */
+.brand .tag {
+  text-transform: none;
+  letter-spacing: 0.03em;
+  color: var(--fog);
+  font-size: 0.7rem;
+}
+.job-banner .hero-kicker {
+  color: var(--amber);
+  letter-spacing: 0.18em;
+}
+.job-banner .hero-title {
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
+  font-weight: 600;
+  color: var(--ink);
+}
+.sidebar-head h2 {
+  font-size: 1rem;
+}
+
+/* ============================================================
+   ELEVATE elevate7 — make-it-alive: VoiceTrack-class + Read&Record
+   ============================================================ */
+.btn-voice.is-on {
+  border-color: var(--amber);
+  color: var(--amber-hot);
+  background: #1a1712;
+}
+.btn-record {
+  border-radius: 2px;
+  width: 2.2rem;
+  height: 2.2rem;
+}
+.prompt-chrome .btn-tool.is-on {
+  border-color: var(--amber-dim);
+  color: var(--amber-hot);
+}
+
+/* ============================================================
+   ELEVATE elevate8 — playing: reading field owns the frame
+   ============================================================ */
+.prompt-stage.is-playing .stage-topbar {
+  opacity: 0.55;
+}
+.prompt-stage.is-playing .prompt-chrome {
+  border-top-color: #1f1c18;
+}
+.prompt-stage.is-playing .stage-start-hint {
+  display: none;
+}
+.prompt-marker.is-playing .prompt-marker-paint {
+  background: var(--amber-hot);
+}
+
+/* ============================================================
+   ELEVATE elevate9 — library desk denser (cut leftover shout)
+   ============================================================ */
+.job-banner {
+  padding: 0.45rem 1rem;
+  min-height: 0;
+}
+.sidebar {
+  width: 15rem;
+}
+.script-card .title {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.script-card .meta {
+  font-size: 0.68rem;
+}
+.stage-preview {
+  margin-bottom: 0.55rem;
+}
+.stage-preview-cap {
+  letter-spacing: 0.14em;
+}
+.editor-toolbar .btn-stage {
+  letter-spacing: 0.06em;
+}
+
+/* ============================================================
+   ELEVATE elevate10 — design-system tokens: hard bar + Lexend
+   PLAY FIX LOCK: --prompt-y only; mile-stage-rise opacity-only.
+   ============================================================ */
+:root {
+  --cue-black: #000000;
+  --cue-plate: #050504;
+  --cue-line: #2e2a24;
+  --cue-read: #fafaf8;
+}
+.prompt-stage {
+  background: var(--cue-black);
+}
+.prompt-text {
+  color: var(--cue-read);
+  font-optical-sizing: auto;
+  transform: translateY(var(--prompt-y, 0px));
+}
+.prompt-stage.is-entering .prompt-text {
+  animation: mile-stage-rise 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes mile-stage-rise {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ============================================================
+   ELEVATE elevate11 — Read&Record camera plate (vs BIGVU)
+   Cam off: hard empty plate cue; Cam on: PIP hard frame.
+   ============================================================ */
+.prompt-cam-plate {
+  position: absolute;
+  right: 1rem;
+  bottom: 5.25rem;
+  z-index: 4;
+  width: min(20vw, 180px);
+  aspect-ratio: 3 / 4;
+  border: 1px dashed #3a3630;
+  background: #0a0908;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0.4rem;
+  pointer-events: none;
+}
+.prompt-cam-plate span {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  color: #6e675c;
+  text-transform: uppercase;
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
+
+/* ============================================================
+   ELEVATE elevate12 — critic polish: denser single-row hardware
+   ============================================================ */
+.prompt-controls {
+  gap: 0.35rem 0.55rem;
+  max-width: 1120px;
+}
+.control-cluster {
+  padding: 0.15rem 0.32rem;
+}
+.slider-inline input[type='range'] {
+  width: 3.6rem;
+}
+.btn-transport {
+  min-width: 4.2rem;
+  height: 2.45rem;
+  min-height: 2.45rem;
+}
+.stage-progress {
+  height: 2px;
+  background: #12100e;
+}
+.stage-progress-fill {
+  background: var(--amber);
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
+
+/* elevate12-follow: marker hairline 1px */
+.prompt-marker { height: 1px; }
+.prompt-text { transform: translateY(var(--prompt-y, 0px)); }
