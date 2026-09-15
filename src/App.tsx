@@ -265,7 +265,7 @@ export default function App() {
                 </h2>
               </div>
               <span className="board-count" aria-label={`${scripts.length} scripts`}>
-                <span className="board-count-label">n</span>
+                <span className="board-count-label" aria-hidden></span>
                 <span className="t-digit-group is-animating" key={digitPop}>
                   {String(scripts.length)
                     .split('')

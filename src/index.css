@@ -3325,23 +3325,13 @@ a {
 /* ============================================================
    BEAT-ORIGINAL beat13 — reading veil craft
    ============================================================ */
-.prompt-scroll::before,
-.prompt-scroll::after {
-  height: 18%;
-  background: linear-gradient(to bottom, #000 20%, transparent);
-}
-.prompt-scroll::after {
-  background: linear-gradient(to top, #000 20%, transparent);
-}
-/* flat rule: no decorative gradient chrome — use stepped opacity bands instead */
 .prompt-scroll::before {
-  background: rgba(0, 0, 0, 0.96);
   height: 12%;
-  mask-image: none;
+  background: rgba(0, 0, 0, 0.96);
 }
 .prompt-scroll::after {
-  background: rgba(0, 0, 0, 0.96);
   height: 18%;
+  background: rgba(0, 0, 0, 0.96);
 }
 .prompt-text {
   padding: 38vh 0 55vh;
