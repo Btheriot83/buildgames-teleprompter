@@ -1,6 +1,6 @@
 import {
   DEFAULT_SETTINGS,
-  SAMPLE_SCRIPT,
+  SEED_SCRIPTS,
   SCRIPTS_KEY,
   SETTINGS_KEY,
   type PromptSettings,
@@ -12,23 +12,31 @@ function uid(): string {
   return `s-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`
 }
 
+function seedBoard(): Script[] {
+  const now = Date.now()
+  return SEED_SCRIPTS.map((s, i) => ({
+    ...s,
+    updatedAt: now - i * 1000 * 60 * 35,
+  }))
+}
+
 export function loadScripts(): Script[] {
   try {
     const raw = localStorage.getItem(SCRIPTS_KEY)
     if (!raw) {
-      const seed = [{ ...SAMPLE_SCRIPT, updatedAt: Date.now() }]
+      const seed = seedBoard()
       localStorage.setItem(SCRIPTS_KEY, JSON.stringify(seed))
       return seed
     }
     const parsed = JSON.parse(raw) as Script[]
     if (!Array.isArray(parsed) || parsed.length === 0) {
-      const seed = [{ ...SAMPLE_SCRIPT, updatedAt: Date.now() }]
+      const seed = seedBoard()
       localStorage.setItem(SCRIPTS_KEY, JSON.stringify(seed))
       return seed
     }
     return parsed
   } catch {
-    return [{ ...SAMPLE_SCRIPT, updatedAt: Date.now() }]
+    return seedBoard()
   }
 }
 

@@ -18,6 +18,15 @@ function mileLabel(index: number): string {
   return String(index + 1).padStart(2, '0')
 }
 
+function previewLines(body: string, n = 3): string {
+  return body
+    .split(/\n+/)
+    .map((l) => l.trim())
+    .filter(Boolean)
+    .slice(0, n)
+    .join('\n')
+}
+
 export default function App() {
   const [booting, setBooting] = useState(true)
   const [scripts, setScripts] = useState<Script[]>([])
@@ -26,8 +35,10 @@ export default function App() {
   const [view, setView] = useState<View>('library')
   const [toasts, setToasts] = useState<ToastMsg[]>([])
   const [titleError, setTitleError] = useState(false)
+  const [bodyDirty, setBodyDirty] = useState(false)
   const fileRef = useRef<HTMLInputElement>(null)
   const bodyTimer = useRef(0)
+  const bodyRef = useRef<HTMLTextAreaElement>(null)
 
   useEffect(() => {
     const list = loadScripts()
@@ -97,6 +108,7 @@ export default function App() {
     persist([s, ...scripts])
     setSelectedId(s.id)
     pushToast('Cue filed', 'ok')
+    window.setTimeout(() => bodyRef.current?.focus(), 50)
   }
 
   const onDelete = () => {
@@ -143,7 +155,8 @@ export default function App() {
     if (!selected || !selected.body.trim()) {
       setTitleError(true)
       window.setTimeout(() => setTitleError(false), 600)
-      pushToast('Write something first', 'err')
+      pushToast('Write the cue first', 'err')
+      bodyRef.current?.focus()
       return
     }
     setView('prompt')
@@ -156,18 +169,27 @@ export default function App() {
 
   const onBodyChange = (body: string) => {
     if (!selected) return
+    setBodyDirty(true)
     const next = scripts.map((s) =>
       s.id === selected.id ? { ...s, body, updatedAt: Date.now() } : s,
     )
     setScripts(next)
     window.clearTimeout(bodyTimer.current)
-    bodyTimer.current = window.setTimeout(() => saveScripts(next), 400)
+    bodyTimer.current = window.setTimeout(() => {
+      saveScripts(next)
+      setBodyDirty(false)
+    }, 400)
   }
 
   const onBodyBlur = () => {
     saveScripts(scripts)
-    pushToast('Autosaved', 'ok')
+    if (bodyDirty) {
+      setBodyDirty(false)
+      pushToast('Autosaved', 'ok')
+    }
   }
+
+  const stageReady = Boolean(selected?.body.trim())
 
   return (
     <div className="app">
@@ -181,7 +203,7 @@ export default function App() {
           <img className="brand-mark-img" src="/milecue-mark.jpg" alt="" width={36} height={36} />
           <div className="brand-copy">
             <h1>MileCue</h1>
-            <span className="tag">Roadside dispatch · local cue</span>
+            <span className="tag">Local teleprompter · roadside skin</span>
           </div>
         </div>
         <div className="topbar-actions">
@@ -208,7 +230,8 @@ export default function App() {
         </div>
       </header>
 
-      <section className="library-hero" aria-label="MileCue atmosphere">
+      {/* R1+R3: job-first hero — teleprompter loop, dispatch is atmosphere only */}
+      <section className="library-hero" aria-label="What MileCue does">
         <video
           className="library-hero-video"
           src="/asphalt-drift.mp4"
@@ -221,11 +244,63 @@ export default function App() {
         <div className="library-hero-shade" />
         <div className="library-hero-stripe" aria-hidden />
         <div className="library-hero-copy">
-          <p className="hero-kicker">MILE MARKER · LIVE BOARD</p>
-          <h2 className="hero-title">Eyes on the amber line</h2>
-          <p className="hero-sub">File the cue. Open stage. Let the stripe carry you.</p>
+          <p className="hero-kicker">BROWSER TELEPROMPTER</p>
+          <h2 className="hero-title">Write cue → Open stage → Scroll</h2>
+          <p className="hero-sub">
+            Paste the lines you&apos;ll say. Fullscreen scroll with a reading line. Roadside look is skin —
+            the job is the prompter.
+          </p>
+          <div className="hero-cta-row">
+            <button
+              type="button"
+              className="btn btn-primary btn-stage"
+              onClick={openPrompt}
+              disabled={!stageReady}
+              data-testid="hero-open-stage"
+            >
+              {stageReady ? 'Open stage' : 'Write a cue first'}
+            </button>
+            <button
+              type="button"
+              className="btn"
+              onClick={() => bodyRef.current?.focus()}
+            >
+              Edit cue
+            </button>
+          </div>
         </div>
       </section>
+
+      {/* R3: unmistakable 3-step job loop */}
+      <ol className="job-loop" aria-label="Teleprompter job in three steps">
+        <li className="job-loop-step is-active">
+          <span className="job-loop-num">01</span>
+          <span className="job-loop-label">
+            <strong>Write cue</strong>
+            <em>Script in the editor</em>
+          </span>
+        </li>
+        <li className="job-loop-arrow" aria-hidden>
+          →
+        </li>
+        <li className={`job-loop-step${stageReady ? ' is-ready' : ''}`}>
+          <span className="job-loop-num">02</span>
+          <span className="job-loop-label">
+            <strong>Open stage</strong>
+            <em>Fullscreen prompter</em>
+          </span>
+        </li>
+        <li className="job-loop-arrow" aria-hidden>
+          →
+        </li>
+        <li className="job-loop-step">
+          <span className="job-loop-num">03</span>
+          <span className="job-loop-label">
+            <strong>Scroll</strong>
+            <em>Space plays the line</em>
+          </span>
+        </li>
+      </ol>
 
       {booting ? (
         <div className="layout skeleton-lib" aria-busy>
@@ -243,9 +318,12 @@ export default function App() {
         <div className="layout">
           <aside className="sidebar">
             <div className="sidebar-head">
-              <h2 className="t-texts-reveal" data-state="in">
-                Dispatch board
-              </h2>
+              <div className="sidebar-head-copy">
+                <p className="sidebar-kicker">TELEPROMPTER CUES</p>
+                <h2 className="t-texts-reveal" data-state="in">
+                  Cue board
+                </h2>
+              </div>
               <span className="board-count" aria-label={`${scripts.length} scripts`}>
                 <span className="board-count-label">CUES</span>
                 <span className="t-digit-group is-animating">
@@ -275,12 +353,16 @@ export default function App() {
                     <span className="ticket-body">
                       <p className="title">{s.title || 'Untitled'}</p>
                       <p className="meta">
-                        FILED {new Date(s.updatedAt).toLocaleString(undefined, {
-                          month: 'short',
-                          day: 'numeric',
-                          hour: '2-digit',
-                          minute: '2-digit',
-                        })}
+                        {s.body.trim()
+                          ? `${s.body.trim().split(/\s+/).length} words · filed ${new Date(
+                              s.updatedAt,
+                            ).toLocaleString(undefined, {
+                              month: 'short',
+                              day: 'numeric',
+                              hour: '2-digit',
+                              minute: '2-digit',
+                            })}`
+                          : 'Empty — write lines to scroll'}
                       </p>
                     </span>
                     <span className="ticket-stub" aria-hidden />
@@ -304,21 +386,25 @@ export default function App() {
                   aria-hidden
                 />
                 <div className="stripe" />
-                <h2>Empty board</h2>
-                <p>Nothing on the board. Write a cue, or grab one from the library.</p>
+                <h2>No cue yet</h2>
+                <p>Write the words you&apos;ll say on camera. Then open stage and scroll.</p>
                 <button type="button" className="btn btn-primary" onClick={onNew}>
                   New cue
                 </button>
               </div>
             ) : (
               <>
+                <div className="editor-job-label">
+                  <span className="editor-job-kicker">STEP 01 · SCRIPT</span>
+                  <span className="editor-job-hint">Lines you read on the teleprompter stage</span>
+                </div>
                 <div className="editor-toolbar">
                   <input
                     className={`title-input t-input${titleError ? ' is-error' : ''}`}
                     value={selected.title}
                     onChange={(e) => updateSelected({ title: e.target.value })}
                     onBlur={() => saveScripts(scripts)}
-                    aria-label="Script title"
+                    aria-label="Cue title"
                     data-testid="script-title"
                   />
                   <button
@@ -342,20 +428,46 @@ export default function App() {
                     Delete
                   </button>
                 </div>
+
+                {/* R4: mini stage preview — shows scroll job before opening */}
+                {stageReady && (
+                  <div className="stage-preview" aria-hidden>
+                    <div className="stage-preview-cap">STAGE PREVIEW · scroll job</div>
+                    <div className="stage-preview-frame">
+                      <div className="stage-preview-marker">
+                        <span>READ</span>
+                        <span className="stage-preview-bar" />
+                        <span>LINE</span>
+                      </div>
+                      <pre className="stage-preview-text">{previewLines(selected.body)}</pre>
+                    </div>
+                    <button type="button" className="btn btn-primary btn-stage stage-preview-go" onClick={openPrompt}>
+                      Open fullscreen stage
+                    </button>
+                  </div>
+                )}
+
+                <label className="body-label" htmlFor="cue-body">
+                  Cue script
+                </label>
                 <textarea
+                  id="cue-body"
+                  ref={bodyRef}
                   className={`body-input t-input${titleError ? ' is-error' : ''}`}
                   value={selected.body}
                   onChange={(e) => onBodyChange(e.target.value)}
                   onBlur={onBodyBlur}
                   spellCheck
-                  aria-label="Script body"
+                  aria-label="Cue script body"
                   data-testid="script-body"
-                  placeholder="Lines you’ll say — short beats, blank line for a pause."
+                  placeholder={
+                    'Short spoken lines.\nBlank line = pause.\n\nExample:\nDriver, this is dispatch.\nETA forty minutes.\nStay with the truck.'
+                  }
                 />
                 <div className="hint-row">
-                  <span>Saves here. Tighten when the draft rambles.</span>
+                  <span>Saves on this machine. Cut for stage when the draft rambles.</span>
                   <span>
-                    Stage: <kbd>Space</kbd> · <kbd>M</kbd> mirror · <kbd>Esc</kbd> out
+                    Teleprompter: <kbd>Space</kbd> scroll · <kbd>M</kbd> mirror · <kbd>Esc</kbd> exit
                   </span>
                 </div>
               </>
