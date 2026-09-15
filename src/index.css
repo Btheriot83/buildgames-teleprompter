@@ -2465,3 +2465,20 @@ a {
   font-family: var(--font-display);
   font-weight: 700;
 }
+
+/* r2 contrast — cueglass reading column */
+.stage-read-veil {
+  background: rgba(0, 0, 0, 0.92);
+}
+.prompt-text {
+  color: #ffffff;
+  text-shadow: 0 1px 0 #000, 0 2px 6px rgba(0, 0, 0, 0.85);
+}
+.stage-road-img {
+  opacity: 0.35;
+  filter: brightness(0.4) contrast(1.1) saturate(0.2);
+}
+.prompt-scroll::before,
+.prompt-scroll::after {
+  background: rgba(0, 0, 0, 0.94);
+}
