@@ -1996,3 +1996,35 @@ a {
 .hero-title {
   font-size: clamp(1.35rem, 2.6vw, 1.85rem) !important;
 }
+
+/* r5: bar gap / dream — denser cue cards (target: quieter tickets) */
+.ticket-mile {
+  width: 2.4rem;
+  min-width: 2.4rem;
+  padding: 0.35rem 0.2rem;
+}
+.ticket-mile-num {
+  font-size: 1.05rem;
+}
+.ticket-mile-cap {
+  font-size: 0.55rem;
+  opacity: 0.75;
+}
+.ticket-stub {
+  width: 0.45rem;
+  opacity: 0.35;
+}
+.script-card {
+  padding: 0.45rem 0.5rem;
+  gap: 0.45rem;
+}
+.script-card .title {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.script-card .meta {
+  font-size: 0.68rem;
+}
+.sidebar {
+  width: min(18.5rem, 32vw);
+}

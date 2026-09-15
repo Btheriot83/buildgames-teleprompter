@@ -49,3 +49,9 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - verdict: vs target+bar — killing 01·02·03 strip closes anti-slop and density gap; hero still taller/busier than dream target and original still wins light SaaS clarity
 - commit: dc76462
 
+## r5 — bar gap / dream density (cue cards)
+- files: src/index.css (smaller ticket-mile, quieter stub, denser script-card), .gitignore
+- shot: gauntlet/shots-r4/r5-library-density.png · bar A/B: gauntlet/shots-r4/bar-r5-home.png
+- verdict: vs target — cue board denser and less billboard; vs bar — original still wins clean white product marketing + single orange CTA fantasy; MileCue remains dark tool
+- commit: fb9d88e
+
