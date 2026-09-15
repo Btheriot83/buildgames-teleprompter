@@ -22,29 +22,33 @@ export const SETTINGS_KEY = 'milecue-settings-v1'
 export const SCRIPTS_KEY = 'milecue-scripts-v2'
 
 export const DEFAULT_SETTINGS: PromptSettings = {
-  speed: 48,
-  fontSize: 56,
-  lineHeight: 1.45,
-  textWidth: 72,
+  speed: 42,
+  fontSize: 64,
+  lineHeight: 1.55,
+  textWidth: 68,
   mirror: false,
-  markerY: 38,
-  cameraOpacity: 0.35,
+  markerY: 36,
+  cameraOpacity: 0.28,
   cameraOn: false,
   voiceExperimental: false,
 }
 
-/** Real spoken cues — roadside flavor OK; reads as teleprompter scripts first. */
+/** Real spoken cues — short lines for scroll UX; roadside flavor OK. */
 export const SEED_SCRIPTS: Script[] = [
   {
     id: 'cue-hotshot-eta-001',
     title: 'Hotshot ETA — I-17 mile 214',
     body: `Driver, this is MileCue board.
 
-You're on I-17 northbound, mile two-fourteen.
-Broken serpentine. Cab's hot. Hazards on.
+You're on I-17 northbound.
+Mile two-fourteen.
+
+Broken serpentine. Cab's hot.
+Hazards on.
 
 We've got a tech rolling from Flagstaff.
-ETA forty minutes. White Dodge. Unit seven.
+ETA forty minutes.
+White Dodge. Unit seven.
 
 Stay with the truck.
 If temp climbs past two-twenty, shut it down.
@@ -68,7 +72,8 @@ Card or fleet account — either works.
 Keys are on the board under your name.
 Call if the idle dips under six hundred.
 
-Appreciate the business. Drive safe.`,
+Appreciate the business.
+Drive safe.`,
     updatedAt: Date.now() - 1000 * 60 * 90,
   },
   {
