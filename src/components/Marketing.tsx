@@ -57,8 +57,8 @@ function LiveMiniPrompter() {
   return (
     <div className="mkt-preview" role="region" aria-label="Live cueglass preview">
       <div className="mkt-preview-bar">
-        <span>Try it</span>
-        <span>Cueglass scroll</span>
+        <span>Live cueglass</span>
+        <span>Play it</span>
       </div>
       <div className="mkt-preview-scroll">
         <span className="mkt-cue-line" aria-hidden />
@@ -127,8 +127,8 @@ export function Marketing({ onOpenDesk }: Props) {
             Scroll.
           </h1>
           <p className="mkt-lede">
-            Browser teleprompter with a real cueglass read line — speed, mirror, and optional
-            cam. Scripts stay on this machine.
+            Cueglass read line in the browser. Speed, size, position, mirror. Cues stay on this
+            machine.
           </p>
           <div className="mkt-actions">
             <button type="button" className="mkt-primary" onClick={onOpenDesk}>
@@ -142,20 +142,16 @@ export function Marketing({ onOpenDesk }: Props) {
 
       <section className="mkt-proof" aria-label="What you get">
         <article className="mkt-card">
-          <h3>Fixed scroll</h3>
-          <p>One pace under the amber line. Space plays. Esc exits.</p>
+          <h3>Scroll under the line</h3>
+          <p>One pace. Space plays. Esc exits. Hardware Speed · Size · Pos on stage.</p>
         </article>
         <article className="mkt-card">
           <h3>Mirror for glass</h3>
-          <p>Flip for a beam-splitter rig without leaving the browser.</p>
+          <p>Flip for a beam-splitter without leaving the browser.</p>
         </article>
         <article className="mkt-card">
           <h3>Read &amp; record</h3>
-          <p>Optional cam plate while you scroll — clip stays local.</p>
-        </article>
-        <article className="mkt-card">
-          <h3>Tighten</h3>
-          <p>Cut a rambling draft for the stage when you need it.</p>
+          <p>Optional cam while you scroll. Clip stays local.</p>
         </article>
       </section>
 
