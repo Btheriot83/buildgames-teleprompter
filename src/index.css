@@ -4839,3 +4839,16 @@ a {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* craft7 follow — transport stays; tool chrome retreats while scrolling */
+.prompt-stage.is-playing .prompt-controls > .btn-tool,
+.prompt-stage.is-playing .prompt-controls > .btn-exit,
+.prompt-stage.is-playing .prompt-controls > .btn-record {
+  opacity: 0.45;
+}
+.prompt-stage.is-playing .control-cluster {
+  border-color: #1f1c18;
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
