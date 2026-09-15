@@ -1,0 +1,68 @@
+{
+  "status": "r6_integrity_complete",
+  "product": "MileCue",
+  "slug": "teleprompter",
+  "phase": "R6",
+  "demoUrl": "https://buildgames-teleprompter.vercel.app",
+  "bar": "https://www.teleprompter.com/",
+  "path": "/workspace/build-games/apps/teleprompter",
+  "identityHeld": true,
+  "aesthetic": "MileCue / Cueglass Desk",
+  "reseed": false,
+  "reseedNote": "Identity LOCKED Cueglass Desk \u2014 no Anshu reseed; Phase B integrity only",
+  "playScroll": {
+    "held": true,
+    "architecture": "--prompt-y + opacity-only mile-stage-rise; is-entering dropped ~560ms",
+    "e2e": "npm run test:e2e passed after r10 (fresh dist)"
+  },
+  "dreamLoop": {
+    "baseline": [
+      ".dream-loop/baseline-library.png",
+      ".dream-loop/baseline-stage.png"
+    ],
+    "target": ".dream-loop/target.png",
+    "targetCopy": "gauntlet/shots-r6/dream-target.png",
+    "notes": "r7\u2013r8 closed chrome toward target under locked identity"
+  },
+  "roundsCounted": 10,
+  "roundShas": [
+    "336228d",
+    "74d4160",
+    "a247aa8",
+    "3ec4dd7",
+    "782c415",
+    "e45b846",
+    "bb38184",
+    "7930c84",
+    "1a18578",
+    "4b9a20f"
+  ],
+  "shotCount": 16,
+  "barShotRounds": [
+    5,
+    10
+  ],
+  "honestNotes": [
+    "teleprompter.com still wins overall (light SaaS, device mock, VoiceGlide).",
+    "Cueglass Desk closed denser chrome / hairline / circular Play gap vs r5.",
+    "Play scroll did not regress (computed translateY e2e green)."
+  ],
+  "transitionsWired": {
+    "toast": "ToastHost on autosave/cue filed/tighten/errors",
+    "success-check": "ok toasts",
+    "error-state-shake": "empty Open stage / import fail",
+    "panel-reveal": "Open stage enter",
+    "skeleton-reveal": "boot library shell",
+    "number-pop-in": "New cue board count",
+    "texts-reveal": "Cue board heading"
+  },
+  "finishedAtUtc": "2026-09-15T07:13:57Z",
+  "finishedAtPt": "2026-09-15 12:13 AM PT",
+  "workbench": "apps/teleprompter/gauntlet/workbench-r6.md",
+  "mainSha": null,
+  "prUrl": null,
+  "prMerged": false,
+  "deployUrl": "https://buildgames-teleprompter.vercel.app",
+  "liveHttp": null,
+  "liveSmoke": null
+}

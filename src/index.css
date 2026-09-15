@@ -2666,3 +2666,320 @@ a {
   border-radius: 3px;
   border: 1px solid var(--line);
 }
+
+/* ============================================================
+   r6 integrity — Cueglass Desk locked (no reseed)
+   PLAY FIX LOCK held: --prompt-y + opacity-only mile-stage-rise
+   ============================================================ */
+
+/* r1 fonts — reading scale closer to teleprompter.com device mock */
+.prompt-text {
+  font-weight: 580;
+  letter-spacing: -0.008em;
+  word-spacing: 0.02em;
+}
+.stage-preview-text {
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.hero-title {
+  letter-spacing: 0.01em;
+  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+}
+.script-card-title {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* r2 contrast — deeper cueglass veil vs washed stage */
+.stage-read-veil {
+  background: rgba(0, 0, 0, 0.96);
+  border-left: 1px solid rgba(232, 148, 31, 0.08);
+  border-right: 1px solid rgba(232, 148, 31, 0.08);
+}
+.stage-road-img {
+  opacity: 0.18;
+  filter: brightness(0.28) contrast(1.05) saturate(0.15);
+}
+.stage-road-vignette {
+  background: rgba(0, 0, 0, 0.86);
+}
+.prompt-scroll::before,
+.prompt-scroll::after {
+  height: 16%;
+  background: rgba(0, 0, 0, 0.97);
+}
+.prompt-text {
+  color: #ffffff;
+  text-shadow: 0 1px 0 #000, 0 3px 10px rgba(0, 0, 0, 0.9);
+}
+
+/* r3 buttons — Play as sole hot CTA (dream-target weight) */
+.btn-transport {
+  min-width: 3.4rem;
+  min-height: 3.4rem;
+  width: 3.4rem;
+  height: 3.4rem;
+  padding: 0;
+  border-radius: 999px;
+  font-size: 0;
+  letter-spacing: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--amber);
+  color: #120e08;
+  border: none;
+}
+.btn-transport .transport-glyph {
+  font-size: 1.15rem;
+  line-height: 1;
+  color: #120e08;
+}
+.btn-transport:hover {
+  background: var(--amber-hot);
+  color: #120e08;
+}
+.prompt-controls .btn-tool,
+.prompt-controls .btn-exit {
+  min-height: 2.2rem;
+  background: transparent;
+  border: 1px solid #2e2a24;
+  color: var(--fog);
+  font-weight: 500;
+}
+.prompt-controls .btn-exit {
+  border-color: transparent;
+  color: #6e675c;
+}
+.transport {
+  gap: 0.55rem;
+  margin-right: 0.55rem;
+}
+
+/* r4 bar gap — denser job strip vs marketing hero */
+.job-banner {
+  padding: 0.45rem 1rem;
+  gap: 0.55rem;
+  min-height: 0;
+}
+.job-banner .hero-kicker {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+}
+.job-banner .hero-title {
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  margin: 0.05rem 0 0;
+}
+.job-banner-stripe {
+  height: 2px;
+}
+.btn-stage {
+  min-height: 2.35rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.88rem;
+}
+.job-rail-slim {
+  padding: 0.25rem 1rem;
+  font-size: 0.72rem;
+}
+.topbar {
+  padding: 0.45rem 1rem;
+}
+
+/* r5 reading line — hardware hairline; quieter caps */
+.prompt-marker {
+  height: 2px;
+}
+.prompt-marker-paint {
+  background: var(--amber);
+  box-shadow: none;
+}
+.prompt-marker-cap {
+  font-size: 0.52rem;
+  letter-spacing: 0.16em;
+  padding: 0.08rem 0.28rem;
+  opacity: 0.72;
+  border-radius: 2px;
+}
+.prompt-marker::before,
+.prompt-marker::after {
+  border-top-width: 4px;
+  border-bottom-width: 4px;
+}
+.prompt-marker::before { border-left-width: 6px; }
+.prompt-marker::after { border-right-width: 6px; }
+.stage-progress {
+  height: 2px;
+}
+.stage-preview-bar {
+  height: 2px;
+}
+
+/* r6 library — list rows closer to product chrome (keep Cueglass palette) */
+.script-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0.55rem 0.7rem;
+  gap: 0.15rem;
+  border-radius: 2px;
+  border-left-width: 2px;
+}
+.script-card.is-active {
+  border-left-color: var(--amber);
+  border-color: var(--line);
+  border-left-width: 2px;
+  background: #1f1c17;
+}
+.ticket-mile {
+  display: none;
+}
+.script-card-meta {
+  font-size: 0.7rem;
+  color: var(--fog);
+}
+.sidebar-head {
+  padding: 0.55rem 0.75rem;
+  font-size: 0.72rem;
+}
+.sidebar {
+  width: 15.5rem;
+}
+
+/* r7 stage topbar — dream quieter chrome density */
+.stage-topbar {
+  min-height: 1.85rem;
+  padding: 0.28rem 0.7rem;
+  background: rgba(5, 4, 4, 0.94);
+  border-bottom: 1px solid #1e1b17;
+}
+.stage-badge {
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  padding: 0.08rem 0.3rem;
+  border-color: #3a3228;
+  color: var(--amber-dim);
+}
+.stage-script-title {
+  font-size: 0.78rem;
+  font-weight: 500;
+  opacity: 0.82;
+  color: var(--sand);
+}
+.stage-scroll-pct {
+  font-size: 0.68rem;
+  color: #6e675c;
+}
+.stage-mirror-chip {
+  font-size: 0.55rem;
+  padding: 0.06rem 0.25rem;
+  opacity: 0.85;
+}
+
+/* r8 dream — close live→target control deck */
+.prompt-chrome {
+  padding: 0.45rem 0.75rem 0.5rem;
+  background: #050404;
+  border-top: 1px solid #1e1b17;
+}
+.prompt-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem 0.65rem;
+}
+.control-cluster {
+  gap: 0.25rem;
+}
+.control-cluster .cluster-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: #6e675c;
+}
+.speed-readout,
+.font-readout {
+  font-size: 0.72rem;
+  min-width: 3.6rem;
+  color: var(--sand);
+}
+.slider-inline {
+  width: 4.5rem;
+  max-width: 4.5rem;
+}
+.prompt-keys {
+  text-align: center;
+  font-size: 0.68rem;
+  opacity: 0.65;
+  margin-top: 0.25rem;
+}
+.btn-nudge {
+  min-width: 1.75rem;
+  min-height: 1.75rem;
+  font-size: 0.85rem;
+  background: #12100e;
+}
+
+/* r9 start hint — less loud overlay on reading field */
+.stage-start-hint {
+  padding: 0.45rem 0.75rem;
+  border-radius: 2px;
+  max-width: 12.5rem;
+  border: 1px solid #3a3228;
+  background: rgba(10, 9, 8, 0.88);
+  opacity: 0.9;
+}
+.stage-start-main {
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--sand);
+}
+.stage-start-sub {
+  font-size: 0.65rem;
+  color: #6e675c;
+  margin-top: 0.12rem;
+}
+
+/* r10 final — editor craft under Cueglass Desk */
+.editor-job-label {
+  gap: 0.15rem;
+}
+.editor-job-kicker {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  color: var(--amber-dim);
+}
+.editor-job-hint {
+  font-size: 0.72rem;
+  color: #6e675c;
+}
+.title-input {
+  font-size: 1.05rem;
+  padding: 0.45rem 0.65rem;
+}
+.body-input {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding: 0.75rem 0.85rem;
+}
+.stage-preview-frame {
+  border-radius: 2px;
+  min-height: 7.5rem;
+}
+.stage-preview-cap {
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+}
+.hint-row {
+  font-size: 0.7rem;
+  color: #6e675c;
+}
+.btn-stage {
+  border-radius: 3px;
+}
+/* Keep Play scroll lock visible for auditors */
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
