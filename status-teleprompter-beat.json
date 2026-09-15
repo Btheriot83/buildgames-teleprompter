@@ -1,0 +1,137 @@
+{
+  "status": "beat_complete",
+  "product": "MileCue",
+  "aesthetic": "MileCue / Cueglass Desk",
+  "identityLocked": true,
+  "demoUrl": "https://buildgames-teleprompter.vercel.app",
+  "bar": "https://www.teleprompter.com/",
+  "sop": "/workspace/build-games/narrow/BEAT_ORIGINAL_SOP.md",
+  "designCatalog": {
+    "prompts": "https://design-catalog-three.vercel.app/data/prompts.json",
+    "guide": "/workspace/build-games/narrow/DESIGN_CATALOG_GUIDE.md",
+    "techniquesUsed": [
+      "critic-subagents",
+      "cut-elements",
+      "remove-ai-tells",
+      "hand-rewrite-copy",
+      "specify-the-look",
+      "ambitious-prompts",
+      "make-it-alive"
+    ]
+  },
+  "playScrollLock": {
+    "held": true,
+    "architecture": "--prompt-y + opacity-only mile-stage-rise",
+    "e2e": "passed after r16",
+    "localProofY": -20
+  },
+  "maxLoops": 25,
+  "loopsCounted": 16,
+  "loops": [
+    {
+      "id": "r1",
+      "sha": "5f0dad1",
+      "summary": "r1: studio reading field \u2014 Cueglass type scale vs teleprompter.com"
+    },
+    {
+      "id": "r2",
+      "sha": "e86f600",
+      "summary": "r2: cut duplicate Open Stage \u2014 quieter Cueglass banner"
+    },
+    {
+      "id": "r3",
+      "sha": "b17f9dc",
+      "summary": "r3: dream chrome \u2014 centered Play, hairline, speed as 1.0x"
+    },
+    {
+      "id": "r4",
+      "sha": "e0e54c3",
+      "summary": "r4: quiet library desk \u2014 kill asphalt wallpaper"
+    },
+    {
+      "id": "r5",
+      "sha": "a80ba72",
+      "summary": "r5: 3-2-1 countdown before scroll (make-it-alive)"
+    },
+    {
+      "id": "r6",
+      "sha": "982a2d1",
+      "summary": "r6: Lexend on cueglass stage \u2014 intentional reading face"
+    },
+    {
+      "id": "r7",
+      "sha": "e71c563",
+      "summary": "r7: camera PIP + red record \u2014 beat device-mock fantasy"
+    },
+    {
+      "id": "r8",
+      "sha": "d0660d0",
+      "summary": "r8: progress scrub craft \u2014 denser teleprompter tool chrome"
+    },
+    {
+      "id": "r9",
+      "sha": "c0cf3a8",
+      "summary": "r9: cut shortcut shout + empty-state video"
+    },
+    {
+      "id": "r10",
+      "sha": "11b1101",
+      "summary": "r10: quieter stage topbar \u2014 reading field stays the hero"
+    },
+    {
+      "id": "r11",
+      "sha": "23eb719",
+      "summary": "r11: soften library shout \u2014 Scripts not CUE BOARD"
+    },
+    {
+      "id": "r12",
+      "sha": "ae45267",
+      "summary": "r12: Speed \u00b7 Play \u00b7 Size control order (dream-target)"
+    },
+    {
+      "id": "r13",
+      "sha": "f3d08b0",
+      "summary": "r13: reading zone padding \u2014 more air around the line"
+    },
+    {
+      "id": "r14",
+      "sha": "c73d2a2",
+      "summary": "r14: Open stage CTA weight + quieter brand tag"
+    },
+    {
+      "id": "r15",
+      "sha": "a25e5d6",
+      "summary": "r15: calmer playing marker + stronger countdown numeral"
+    },
+    {
+      "id": "r16",
+      "sha": "79a2737",
+      "summary": "r16: strip fade gradients \u2014 flat hard bar + count label fix"
+    }
+  ],
+  "shots": [
+    "gauntlet/shots-beat/final-library.png",
+    "gauntlet/shots-beat/final-stage.png",
+    "gauntlet/shots-beat/final-countdown.png",
+    "gauntlet/shots-beat/final-playing.png",
+    "gauntlet/shots-beat/bar-r10-home.png"
+  ],
+  "critic": {
+    "mode": "screenshots-only vs teleprompter.com home + candidate library/stage/playing",
+    "aestheticNamed": "Cueglass Desk / hardware teleprompter tool",
+    "studioBar": "Dark product craft (Linear restraint) + broadcast cueglass reading field",
+    "scoreOutOf10": 8.6,
+    "winsOverBar": [
+      "Playable local stage denser than marketing phone mock",
+      "3-2-1 countdown + Lexend reading + hairline marker",
+      "Honest local-first copy; no fake social proof"
+    ],
+    "stillLoses": [
+      "teleprompter.com marketing packaging / device photography / VoiceGlide story still richer as a storefront"
+    ],
+    "verdictVsOriginal": "Candidate wins as craft teleprompter tool UI; original still wins consumer marketing landing. Overall product craft for the job (write\u2192stage\u2192scroll): candidate preferred.",
+    "beatsOriginalOverall": true
+  },
+  "finishedAtPt": "2026-09-15 12:43 AM PT",
+  "branch": "gauntlet/beat-original-cueglass"
+}
