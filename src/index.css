@@ -3524,3 +3524,31 @@ a {
   transform: translateY(var(--prompt-y, 0px));
 }
 
+/* ============================================================
+   ELEVATE elevate4 — cut-elements: kill MI tickets + quieter hint
+   ============================================================ */
+.ticket-mile,
+.ticket-stub { display: none !important; }
+.script-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.7rem 0.75rem;
+}
+.ticket-body { flex: 1; min-width: 0; }
+.stage-start-hint {
+  opacity: 0.55;
+  border-color: #2a2620;
+  background: #0a0908;
+  max-width: 7.5rem;
+  padding: 0.32rem 0.5rem;
+}
+.stage-start-main {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+}
+.stage-start-sub {
+  font-size: 0.58rem;
+  color: var(--fog);
+}
+

@@ -14,10 +14,6 @@ import type { PromptSettings, Script } from './lib/types'
 
 type View = 'library' | 'prompt'
 
-function mileLabel(index: number): string {
-  return String(index + 1).padStart(2, '0')
-}
-
 function previewLines(body: string, n = 3): string {
   return body
     .split(/\n+/)
@@ -205,7 +201,7 @@ export default function App() {
           <img className="brand-mark-img" src="/milecue-mark.jpg" alt="" width={36} height={36} />
           <div className="brand-copy">
             <h1>MileCue</h1>
-            <span className="tag">Local cue · cueglass stage</span>
+            <span className="tag">Cueglass Desk</span>
           </div>
         </div>
         <div className="topbar-actions">
@@ -234,11 +230,11 @@ export default function App() {
 
       <section className="job-banner" aria-label="What MileCue does">
         <div className="job-banner-copy">
-          <p className="hero-kicker">BROWSER TELEPROMPTER</p>
-          <h2 className="hero-title">Look at the lens. We hold the line.</h2>
+          <p className="hero-kicker">READ &amp; RECORD</p>
+          <h2 className="hero-title">Write the cue. Open stage. Scroll.</h2>
         </div>
         <span className={`job-rail-status${stageReady ? ' is-ready' : ''}`}>
-          {stageReady ? 'Space scrolls' : 'Write lines first'}
+          {stageReady ? 'Ready to scroll' : 'Write lines first'}
         </span>
       </section>
 
@@ -261,7 +257,7 @@ export default function App() {
               <div className="sidebar-head-copy">
                 <p className="sidebar-kicker">Library</p>
                 <h2 className="t-texts-reveal" data-state="in">
-                  Scripts
+                  Cues
                 </h2>
               </div>
               <span className="board-count" aria-label={`${scripts.length} scripts`}>
@@ -278,7 +274,7 @@ export default function App() {
               </span>
             </div>
             <ul className="script-list">
-              {scripts.map((s, idx) => (
+              {scripts.map((s) => (
                 <li key={s.id}>
                   <button
                     type="button"
@@ -286,10 +282,6 @@ export default function App() {
                     onClick={() => setSelectedId(s.id)}
                     data-testid={`script-${s.id}`}
                   >
-                    <span className="ticket-mile" aria-hidden>
-                      <span className="ticket-mile-num">{mileLabel(idx)}</span>
-                      <span className="ticket-mile-cap">MI</span>
-                    </span>
                     <span className="ticket-body">
                       <p className="title">{s.title || 'Untitled'}</p>
                       <p className="meta">
@@ -305,7 +297,6 @@ export default function App() {
                           : 'Empty — write lines to scroll'}
                       </p>
                     </span>
-                    <span className="ticket-stub" aria-hidden />
                   </button>
                 </li>
               ))}
@@ -327,7 +318,7 @@ export default function App() {
                 />
                 <div className="stripe" />
                 <h2>No cue yet</h2>
-                <p>Write the words you&apos;ll say on camera. Then open stage and scroll.</p>
+                <p>Type what you&apos;ll say to camera. Then open stage.</p>
                 <button type="button" className="btn btn-primary btn-stage" onClick={onNew}>
                   New cue
                 </button>
@@ -335,7 +326,7 @@ export default function App() {
             ) : (
               <>
                 <div className="editor-job-label">
-                  <span className="editor-job-kicker">Script</span>
+                  <span className="editor-job-kicker">Cue</span>
                 </div>
                 <div className="editor-toolbar">
                   <input
@@ -361,7 +352,7 @@ export default function App() {
                     disabled={tightening}
                     data-testid="tighten-ai"
                   >
-                    {tightening ? 'Cutting…' : 'Cut for stage'}
+                    {tightening ? 'Cutting…' : 'Tighten'}
                   </button>
                   <button type="button" className="btn btn-quiet" onClick={onDelete}>
                     Delete
@@ -401,9 +392,9 @@ export default function App() {
                   }
                 />
                 <div className="hint-row">
-                  <span>Saves on this machine. Cut for stage when the draft rambles.</span>
+                  <span>Stays on this machine. Tighten when the draft rambles.</span>
                   <span>
-                    Teleprompter: <kbd>Space</kbd> scroll · <kbd>M</kbd> mirror · <kbd>Esc</kbd> exit
+                    Stage: <kbd>Space</kbd> scroll · <kbd>M</kbd> mirror · <kbd>Esc</kbd> exit
                   </span>
                 </div>
               </>
