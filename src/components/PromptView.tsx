@@ -400,9 +400,8 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
           data-testid="start-hint"
           onClick={() => setPlaying(true)}
         >
-          <span className="stage-start-kicker">SCROLL THE CUE</span>
-          <span className="stage-start-main">Space · Start scroll</span>
-          <span className="stage-start-sub">Wheel to scrub. Reading line stays put.</span>
+          <span className="stage-start-main">Space to scroll</span>
+          <span className="stage-start-sub">Wheel scrub · reading line fixed</span>
         </button>
       )}
 

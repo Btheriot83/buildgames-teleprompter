@@ -92,5 +92,12 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - files: src/index.css (.prompt-marker 6px; quieter caps)
 - shot: gauntlet/shots-r4/r10-reading-line.png · bar A/B: gauntlet/shots-r4/bar-r10-home.png
 - verdict: vs target/bar — marker guides without dominating white glyphs; original still cleaner device-stage marketing mock
-- commit: 3eba0d8
+- commit: ff42cba
+
+
+## r11 — dream (quieter stage start hint)
+- files: src/components/PromptView.tsx, src/index.css
+- shot: gauntlet/shots-r4/r11-start-hint.png
+- verdict: vs target/bar — less billboard over the prompt; original still wins empty-to-record fantasy
+- commit: 0fdd14f
 

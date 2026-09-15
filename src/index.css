@@ -2148,3 +2148,18 @@ a {
 .stage-preview-bar {
   height: 4px;
 }
+
+/* r11: dream — quieter start affordance */
+.stage-start-hint {
+  padding: 0.75rem 1.1rem;
+  box-shadow: none;
+  border-width: 1px;
+}
+.stage-start-main {
+  font-size: clamp(1.15rem, 2.5vw, 1.65rem);
+  letter-spacing: 0.06em;
+}
+.stage-start-sub {
+  font-size: 0.75rem;
+  color: var(--fog);
+}
