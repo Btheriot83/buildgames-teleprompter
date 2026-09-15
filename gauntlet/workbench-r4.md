@@ -53,5 +53,13 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - files: src/index.css (smaller ticket-mile, quieter stub, denser script-card), .gitignore
 - shot: gauntlet/shots-r4/r5-library-density.png · bar A/B: gauntlet/shots-r4/bar-r5-home.png
 - verdict: vs target — cue board denser and less billboard; vs bar — original still wins clean white product marketing + single orange CTA fantasy; MileCue remains dark tool
-- commit: fb9d88e
+- commit: 9c0f241
+
+
+## r6 — transitions (error-state-shake on empty Open stage)
+- files: src/App.tsx (title/body get t-error-state-shake is-shaking), src/index.css
+- shot: gauntlet/shots-r4/r6-error-shake.png
+- transitions: error-state-shake → Open stage with empty cue / import fail; toast+success-check already on ok paths
+- verdict: vs target/bar — feedback is real interaction not CSS-only; original still wins polish of empty-to-record fantasy
+- commit: 627a962
 

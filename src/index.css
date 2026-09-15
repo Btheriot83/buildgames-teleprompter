@@ -2028,3 +2028,10 @@ a {
 .sidebar {
   width: min(18.5rem, 32vw);
 }
+
+/* r6: transitions — error-state-shake on empty Open stage / import fail */
+.title-input.t-error-state-shake.is-shaking,
+.body-input.t-error-state-shake.is-shaking {
+  border-color: var(--danger);
+  outline-color: color-mix(in srgb, var(--danger) 55%, transparent);
+}

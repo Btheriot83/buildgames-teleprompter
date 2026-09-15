@@ -375,7 +375,7 @@ export default function App() {
                 </div>
                 <div className="editor-toolbar">
                   <input
-                    className={`title-input t-input${titleError ? ' is-error' : ''}`}
+                    className={`title-input t-input${titleError ? ' is-error t-error-state-shake is-shaking' : ''}`}
                     value={selected.title}
                     onChange={(e) => updateSelected({ title: e.target.value })}
                     onBlur={() => saveScripts(scripts)}
@@ -428,7 +428,7 @@ export default function App() {
                 <textarea
                   id="cue-body"
                   ref={bodyRef}
-                  className={`body-input t-input${titleError ? ' is-error' : ''}`}
+                  className={`body-input t-input${titleError ? ' is-error t-error-state-shake is-shaking' : ''}`}
                   value={selected.body}
                   onChange={(e) => onBodyChange(e.target.value)}
                   onBlur={onBodyBlur}
