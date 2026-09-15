@@ -389,10 +389,9 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
       {settings.cameraOn && (
         <video
           ref={videoRef}
-          className="prompt-cam"
+          className="prompt-cam prompt-cam-pip"
           muted
           playsInline
-          style={{ opacity: settings.cameraOpacity }}
         />
       )}
       {camDenied && <div className="cam-note">Camera blocked — cueglass stage</div>}
@@ -580,6 +579,16 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
           >
             Mirror
           </button>
+          {settings.cameraOn && !recording && (
+            <button type="button" className="btn btn-record" data-testid="record-btn" onClick={startRec} aria-label="Record">
+              <span className="record-dot" aria-hidden />
+            </button>
+          )}
+          {recording && (
+            <button type="button" className="btn btn-record is-hot" data-testid="record-btn" onClick={stopRec} aria-label="Stop recording">
+              <span className="record-dot" aria-hidden />
+            </button>
+          )}
           <button
             type="button"
             className={`btn btn-tool${moreOpen ? ' is-on' : ''}`}

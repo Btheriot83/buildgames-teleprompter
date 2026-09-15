@@ -3197,3 +3197,48 @@ a {
 .stage-preview-text {
   font-family: var(--font-prompt);
 }
+
+/* ============================================================
+   BEAT-ORIGINAL beat7 — camera PIP + record (ambitious vs bar mock)
+   ============================================================ */
+.prompt-cam-pip {
+  position: absolute;
+  right: 1rem;
+  bottom: 5.5rem;
+  width: min(22vw, 200px);
+  height: min(28vw, 260px);
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #3a3630;
+  opacity: 1 !important;
+  z-index: 4;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+}
+.btn-record {
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  border-radius: 999px;
+  border: 2px solid #e05a3c;
+  background: #141210;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  order: 4;
+}
+.record-dot {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 999px;
+  background: #e05a3c;
+}
+.btn-record.is-hot {
+  background: #e05a3c;
+}
+.btn-record.is-hot .record-dot {
+  background: #0a0908;
+  border-radius: 2px;
+  width: 0.7rem;
+  height: 0.7rem;
+}
