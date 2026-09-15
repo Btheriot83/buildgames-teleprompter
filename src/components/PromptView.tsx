@@ -358,7 +358,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
       aria-label="Teleprompter stage — scrolling cue"
     >
       <div className="stage-road" aria-hidden>
-        <img className="stage-road-img" src="/asphalt-marker.jpg" alt="" />
+        <img className="stage-road-img" src="/cueglass-stage.jpg" alt="" />
         <div className="stage-road-vignette" />
         <div className="stage-road-grain" />
       </div>
@@ -372,7 +372,7 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
           style={{ opacity: settings.cameraOpacity }}
         />
       )}
-      {camDenied && <div className="cam-note">Camera blocked — night road stage</div>}
+      {camDenied && <div className="cam-note">Camera blocked — cueglass stage</div>}
 
       <div className={`stage-topbar${chromeVisible ? '' : ' is-hidden'}`}>
         <span className="stage-badge">TELEPROMPTER</span>
@@ -409,8 +409,8 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
           data-testid="start-hint"
           onClick={() => setPlaying(true)}
         >
-          <span className="stage-start-main">Space to scroll</span>
-          <span className="stage-start-sub">Wheel scrub · reading line fixed</span>
+          <span className="stage-start-main">Space · Play</span>
+          <span className="stage-start-sub">Wheel scrub · line fixed</span>
         </button>
       )}
 
