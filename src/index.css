@@ -3473,3 +3473,54 @@ a {
   box-shadow: none;
 }
 
+/* ============================================================
+   ELEVATE elevate3 — hardware flat chrome (design-system-from-assets)
+   Hard plate, no soft circle play; rectangular transport.
+   ============================================================ */
+.prompt-chrome {
+  background: #050504;
+  border-top: 2px solid #2e2a24;
+  padding: 0.5rem 0.85rem 0.55rem;
+}
+.btn-transport {
+  width: auto;
+  min-width: 4.6rem;
+  height: 2.65rem;
+  min-height: 2.65rem;
+  border-radius: 2px;
+  padding: 0 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  box-shadow: none;
+  border: 1px solid var(--amber-dim);
+  background: var(--amber);
+  color: #120e08;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.btn-transport .transport-glyph {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+.btn-transport .transport-label {
+  font-size: 0.82rem;
+}
+.btn-nudge {
+  min-width: 1.7rem;
+  min-height: 1.7rem;
+  border-radius: 2px;
+  border: 1px solid #3a3630;
+  background: #161410;
+}
+.slider-inline input[type='range'] {
+  width: 4.5rem;
+  accent-color: var(--amber);
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
+
