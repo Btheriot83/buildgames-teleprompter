@@ -49,7 +49,26 @@
     "clientSecrets": false
   },
   "mobbin": "paid_plan_required",
-  "finishedAtUtc": "2026-09-15T03:47:00Z",
-  "finishedAtPt": "2026-09-14 8:47 PM PT",
-  "notes": "Phase A Anshu 1-8 once + IDENTITY lock; Phase B five execution rounds vs teleprompter.com without reseeding. Honest 3.8\u21926.2."
+  "finishedAtUtc": "2026-09-15T03:49:00Z",
+  "finishedAtPt": "2026-09-14 8:49 PM PT",
+  "notes": "Phase A Anshu 1-8 once + IDENTITY lock; Phase B five execution rounds vs teleprompter.com without reseeding. Honest 3.8\u21926.2.",
+  "mainSha": "e38a5ee7643ff7387ba5bb9d4a2f143574fccca3",
+  "prUrl": "https://github.com/Btheriot83/buildgames-teleprompter/pull/4",
+  "prMerged": true,
+  "liveHttp": 200,
+  "liveSmoke": {
+    "ok": true,
+    "atPt": "2026-09-14 8:49 PM PT",
+    "checks": [
+      "GET / 200",
+      "assets asphalt-marker.jpg / milecue-mark.jpg / asphalt-drift.mp4 200",
+      "POST /api/tighten 200 (provider anthropic fallback glm-5.3)",
+      "Open stage \u2192 Play \u2192 Pause (Playwright)",
+      "hand copy labels live (Open stage)"
+    ],
+    "shots": [
+      "apps/teleprompter/gauntlet/shots/post-r5-library.png",
+      "apps/teleprompter/gauntlet/shots/post-r5-stage.png"
+    ]
+  }
 }
