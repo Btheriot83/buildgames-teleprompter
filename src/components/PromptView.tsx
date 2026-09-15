@@ -386,6 +386,11 @@ export function PromptView({ script, settings, onSettings, onExit, onToast }: Pr
         <div className="stage-road-grain" />
       </div>
 
+      {!settings.cameraOn && (
+        <div className="prompt-cam-plate" aria-hidden>
+          <span>Cam off</span>
+        </div>
+      )}
       {settings.cameraOn && (
         <div className="prompt-cam-frame" aria-hidden={!recording}>
           <video

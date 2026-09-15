@@ -3728,3 +3728,62 @@ a {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* ============================================================
+   ELEVATE elevate11 — Read&Record camera plate (vs BIGVU)
+   Cam off: hard empty plate cue; Cam on: PIP hard frame.
+   ============================================================ */
+.prompt-cam-plate {
+  position: absolute;
+  right: 1rem;
+  bottom: 5.25rem;
+  z-index: 4;
+  width: min(20vw, 180px);
+  aspect-ratio: 3 / 4;
+  border: 1px dashed #3a3630;
+  background: #0a0908;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0.4rem;
+  pointer-events: none;
+}
+.prompt-cam-plate span {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  color: #6e675c;
+  text-transform: uppercase;
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
+
+/* ============================================================
+   ELEVATE elevate12 — critic polish: denser single-row hardware
+   ============================================================ */
+.prompt-controls {
+  gap: 0.35rem 0.55rem;
+  max-width: 1120px;
+}
+.control-cluster {
+  padding: 0.15rem 0.32rem;
+}
+.slider-inline input[type='range'] {
+  width: 3.6rem;
+}
+.btn-transport {
+  min-width: 4.2rem;
+  height: 2.45rem;
+  min-height: 2.45rem;
+}
+.stage-progress {
+  height: 2px;
+  background: #12100e;
+}
+.stage-progress-fill {
+  background: var(--amber);
+}
+.prompt-text {
+  transform: translateY(var(--prompt-y, 0px));
+}
