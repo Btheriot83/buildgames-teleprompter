@@ -130,11 +130,21 @@
     "beatsProBarsForJob": true,
     "honestNote": "Not claiming 9+/studio parity with PromptSmart VoiceTrack or BIGVU suite; 8.4 on stage-craft bar."
   },
-  "finishedAtPt": "2026-09-15 6:36 AM PT",
+  "finishedAtPt": "2026-09-15 6:37 AM PT",
   "branch": "gauntlet/elevate-cueglass-pro-bars",
-  "prUrl": null,
-  "prMerged": false,
+  "prUrl": "https://github.com/Btheriot83/buildgames-teleprompter/pull/15",
+  "prMerged": true,
   "deployUrl": "https://buildgames-teleprompter.vercel.app",
-  "liveHttp": null,
-  "liveSmoke": null
+  "liveHttp": 200,
+  "liveSmoke": {
+    "ok": true,
+    "scrolled": true,
+    "beforeY": 0,
+    "afterY": -51.9984,
+    "css": "assets/index-DemmC6DU.css",
+    "atPt": "2026-09-15 6:37 AM PT"
+  },
+  "mergeCommit": "645bff7",
+  "previewUrl": "https://buildgames-teleprompter-git-ga-580d85-brandon-theriots-projects.vercel.app",
+  "vercel": "READY"
 }
