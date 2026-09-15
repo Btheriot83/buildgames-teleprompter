@@ -2040,3 +2040,47 @@ a {
 .prompt-stage.t-panel-reveal[data-state="in"] {
   animation: t-panel-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+/* r8: dream — thin job banner (close live→target.png) */
+.library-hero { display: none !important; }
+.job-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.15rem 1rem;
+  border-bottom: 3px solid var(--amber);
+  background: #12110f;
+}
+.job-banner-copy { min-width: 0; }
+.job-banner .hero-kicker {
+  margin: 0 0 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: var(--amber);
+}
+.job-banner .hero-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.45rem, 3vw, 2.1rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.05;
+}
+.job-banner-stripe {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--amber);
+}
+.job-rail-slim {
+  justify-content: flex-end;
+  padding: 0.3rem 1.15rem;
+}
+.job-rail-slim .job-rail-status { margin-left: auto; }

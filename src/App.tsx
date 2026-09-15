@@ -230,50 +230,30 @@ export default function App() {
         </div>
       </header>
 
-      {/* R1+R3: job-first hero — teleprompter loop, dispatch is atmosphere only */}
-      <section className="library-hero" aria-label="What MileCue does">
-        <video
-          className="library-hero-video"
-          src="/asphalt-drift.mp4"
-          poster="/night-road.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-        <div className="library-hero-shade" />
-        <div className="library-hero-copy">
+      {/* r8 dream: thin job banner — closer to target.png (no video soup) */}
+      <section className="job-banner" aria-label="What MileCue does">
+        <div className="job-banner-copy">
           <p className="hero-kicker">BROWSER TELEPROMPTER</p>
           <h2 className="hero-title">Write cue → Open stage → Scroll</h2>
-          <p className="hero-sub">
-            Paste spoken lines. Fullscreen scroll with a reading line. Dispatch look is skin — the job is the
-            prompter.
-          </p>
-          <div className="hero-cta-row">
-            <button
-              type="button"
-              className="btn btn-primary btn-stage"
-              onClick={openPrompt}
-              disabled={!stageReady}
-              data-testid="hero-open-stage"
-            >
-              {stageReady ? 'Open stage' : 'Write a cue first'}
-            </button>
-            <button type="button" className="btn btn-tool" onClick={() => bodyRef.current?.focus()}>
-              Edit cue
-            </button>
-          </div>
         </div>
-        <div className="library-hero-stripe" aria-hidden />
+        <div className="hero-cta-row">
+          <button
+            type="button"
+            className="btn btn-primary btn-stage"
+            onClick={openPrompt}
+            disabled={!stageReady}
+            data-testid="hero-open-stage"
+          >
+            {stageReady ? 'Open stage' : 'Write a cue first'}
+          </button>
+        </div>
+        <div className="job-banner-stripe" aria-hidden />
       </section>
 
-      {/* r4: compact job rail — no numbered marketing steps (anti-slop) */}
-      <div className="job-rail" aria-label="Teleprompter job">
-        <span className="job-rail-copy">
-          Write cue <span aria-hidden>→</span> Open stage <span aria-hidden>→</span> Scroll
-        </span>
+      {/* r8: status chip only — job line lives in banner */}
+      <div className="job-rail job-rail-slim" aria-label="Stage readiness">
         <span className={`job-rail-status${stageReady ? ' is-ready' : ''}`}>
-          {stageReady ? 'Stage ready' : 'Write lines first'}
+          {stageReady ? 'Stage ready · Space scrolls on stage' : 'Write lines first'}
         </span>
       </div>
 

@@ -69,5 +69,12 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - shot: gauntlet/shots-r4/r7-stage-panel-reveal.png
 - transitions: panel-reveal → Open stage enter
 - verdict: vs target — stage enter feels intentional; vs bar — original device mock still cleaner empty-to-record fantasy
-- commit: cbdcb33
+- commit: af2d94a
+
+
+## r8 — dream (thin job banner vs video hero)
+- files: src/App.tsx (job-banner; slim status rail), src/index.css (hide .library-hero)
+- shot: gauntlet/shots-r4/r8-dream-job-banner.png
+- verdict: vs target.png — closer (no video soup, job line + one Open stage); vs bar — original still wins bright consumer polish
+- commit: 574dba8
 
