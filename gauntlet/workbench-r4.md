@@ -20,11 +20,11 @@ Before: `shots-r4/r0-live-before-library.png` · Bar baseline: `shots-r4/bar-r0-
 - files: src/index.css (.stage-read-veil 0.92 black, dimmer road, darker fades; reassert r1 prompt type)
 - shot: gauntlet/shots-r4/r2-stage-contrast.png
 - verdict: stage text finally sits on a near-black column like original's dark device screen; road photo no longer washes glyphs — original still wins on marketing clarity, but stage contrast gap narrowed
-- commit: bb213f3
+- commit: a31a947
 
 ## r3 — buttons (transport Play weight)
 - files: src/index.css (.btn-transport larger/hotter amber; Exit quieter; nudge + clusters tighter tool deck)
 - shot: gauntlet/shots-r4/r3-buttons-transport.png
 - verdict: Play reads as the one orange tool CTA closer to original's Start-for-free weight pattern; Exit no longer competes — original still has cleaner consumer chrome overall
-- commit: a9d79ef
+- commit: a9d46e9
 

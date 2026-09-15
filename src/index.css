@@ -1922,3 +1922,34 @@ a {
   color: #ffffff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.95), 0 3px 18px rgba(0, 0, 0, 0.85);
 }
+
+/* r3: buttons — transport Play dominates like original orange tool CTA */
+.btn-transport {
+  min-width: 8.5rem;
+  padding: 0.7rem 1.25rem;
+  font-size: 1.15rem;
+  border-width: 2px;
+}
+.prompt-controls .btn-transport {
+  background: var(--amber-hot);
+  border-color: var(--amber);
+  color: #1a1208;
+}
+.prompt-controls .btn-exit {
+  opacity: 0.72;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.7rem;
+}
+.prompt-controls .btn-exit:hover {
+  opacity: 1;
+}
+.btn-nudge {
+  width: 2rem;
+  height: 2rem;
+  border-width: 1.5px;
+}
+.control-cluster {
+  background: #12100e;
+  border-color: #4a453a;
+  padding: 0.28rem 0.55rem;
+}
